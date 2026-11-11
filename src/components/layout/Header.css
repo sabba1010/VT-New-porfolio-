@@ -3,17 +3,11 @@
   position: fixed;
   inset: 0 0 auto;
   z-index: 100;
-  transition:
-    background-color var(--dur) var(--ease),
-    box-shadow var(--dur) var(--ease),
-    backdrop-filter var(--dur) var(--ease);
+  pointer-events: none; /* only the bar itself is interactive */
 }
 
-.header.is-solid {
-  background: rgba(255, 255, 255, 0.86);
-  backdrop-filter: saturate(180%) blur(14px);
-  -webkit-backdrop-filter: saturate(180%) blur(14px);
-  box-shadow: 0 1px 0 var(--c-border);
+.header > * {
+  pointer-events: auto;
 }
 
 .header__inner {
@@ -21,6 +15,63 @@
   display: flex;
   align-items: center;
   gap: var(--sp-5);
+  border: 1px solid transparent;
+  transition:
+    height 500ms var(--ease),
+    margin 500ms var(--ease),
+    padding 500ms var(--ease),
+    max-width 500ms var(--ease),
+    background-color 500ms var(--ease),
+    border-color 500ms var(--ease),
+    box-shadow 500ms var(--ease);
+}
+
+/* Floating glass pill once the page scrolls */
+.header.is-solid .header__inner {
+  height: 64px;
+  margin-top: 12px;
+  max-width: min(var(--container), calc(100% - var(--gutter) * 2));
+  padding-inline: 20px 8px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  border-color: rgba(11, 13, 18, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 12px 40px -12px rgba(11, 13, 18, 0.18);
+}
+
+.header.is-solid .header__burger {
+  width: 46px;
+  height: 46px;
+}
+
+/* Scroll progress (inside the pill) */
+.header__progress {
+  position: absolute;
+  left: 50%;
+  top: calc(12px + 64px - 2px);
+  width: min(calc(var(--container) - 48px), calc(100% - var(--gutter) * 2 - 48px));
+  height: 2px;
+  translate: -50% 0;
+  border-radius: 2px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.header.is-solid .header__progress {
+  opacity: 1;
+}
+
+.header__progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-accent), var(--c-accent-2));
+  transform-origin: left;
+  transform: scaleX(var(--progress, 0));
 }
 
 .header__logo {

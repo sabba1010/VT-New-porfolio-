@@ -2,7 +2,7 @@
  * Site-wide content. Edit copy here without touching components.
  */
 import {
-  Smartphone, Server, MonitorSmartphone, Database, Cloud, Sparkles,
+  Smartphone, Server, MonitorSmartphone, Database, Cloud, Sparkles, LayoutTemplate,
   Info, UsersRound, Handshake, Coffee, Briefcase, Newspaper,
 } from 'lucide-react';
 import * as img from './images';
@@ -105,6 +105,16 @@ export const techStack = [
     { name: 'GitHub Actions', icon: dv('githubactions') },
     { name: 'Nginx', icon: dv('nginx') },
   ] },
+  { id: 'cms', label: 'CMS & E-commerce', icon: LayoutTemplate, items: [
+    { name: 'WordPress', icon: img.platforms.wordpress },
+    { name: 'WooCommerce', icon: img.platforms.woocommerce },
+    { name: 'Shopify', icon: img.platforms.shopify },
+    { name: 'Wix', icon: img.platforms.wix },
+    { name: 'Squarespace', icon: img.platforms.squarespace },
+    { name: 'Square Online', icon: img.platforms.square },
+    { name: 'Webflow', icon: img.platforms.webflow },
+    { name: 'Magento', icon: dv('magento') },
+  ] },
   { id: 'ai', label: 'AI & Machine Learning', icon: Sparkles, items: [
     { name: 'TensorFlow', icon: dv('tensorflow') },
     { name: 'PyTorch', icon: dv('pytorch') },
@@ -194,7 +204,11 @@ export const faqs = [
   },
   {
     q: 'Which technologies do you work with?',
-    a: 'We work across modern stacks — React, Next.js, Node.js, Python, Go, Flutter, Swift, Kotlin, AWS, GCP, Azure and leading AI/ML frameworks. We recommend technology based on your goals, not our preferences.',
+    a: 'We work across modern stacks — React, Next.js, Node.js, Python, Go, Flutter, Swift, Kotlin, AWS, GCP, Azure and leading AI/ML frameworks — plus CMS platforms like WordPress, Shopify, Wix, Squarespace and Square Online. We recommend technology based on your goals, not our preferences.',
+  },
+  {
+    q: 'Do you build on WordPress, Shopify, Wix, Squarespace or Square?',
+    a: 'Yes. We design and develop custom themes, plugins and stores on all major CMS platforms, migrate sites between them without losing SEO, and offer monthly care plans for updates, security and content support.',
   },
   {
     q: 'How do you communicate during a project?',

@@ -1,4 +1,4 @@
-import { Bot, MonitorSmartphone, Smartphone } from 'lucide-react';
+import { Bot, MonitorSmartphone, Smartphone, LayoutTemplate } from 'lucide-react';
 
 /**
  * Hire Developers — powers the mega menu, /hire-developers and /hire-developers/:slug.
@@ -35,6 +35,17 @@ export const hireGroups = [
       { slug: 'android-engineers', title: 'Android Engineers', desc: 'Kotlin & Jetpack Compose', skills: ['Kotlin', 'Jetpack Compose', 'Coroutines', 'Room', 'Firebase', 'Play Console'] },
       { slug: 'flutter-engineers', title: 'Flutter Engineers', desc: 'Beautiful cross-platform apps', skills: ['Flutter', 'Dart', 'Riverpod', 'Bloc', 'Firebase', 'REST & GraphQL'] },
       { slug: 'react-native-engineers', title: 'React Native Engineers', desc: 'One codebase, every device', skills: ['React Native', 'TypeScript', 'Expo', 'Redux', 'Native modules', 'Detox'] },
+    ],
+  },
+  {
+    id: 'cms',
+    label: 'CMS Developers',
+    icon: LayoutTemplate,
+    roles: [
+      { slug: 'wordpress-developers', title: 'WordPress Developers', desc: 'Themes, plugins & WooCommerce', skills: ['PHP', 'Gutenberg blocks', 'Custom plugins', 'WooCommerce', 'ACF', 'Performance tuning'] },
+      { slug: 'shopify-developers', title: 'Shopify Developers', desc: 'Themes, apps & Shopify Plus', skills: ['Liquid', 'Shopify apps', 'Online Store 2.0', 'Hydrogen', 'Checkout extensions', 'Shopify Plus'] },
+      { slug: 'wix-squarespace-developers', title: 'Wix & Squarespace Developers', desc: 'Polished, easy-to-edit sites', skills: ['Wix Studio', 'Velo by Wix', 'Squarespace 7.1', 'Custom CSS', 'Code injection', 'SEO setup'] },
+      { slug: 'square-online-developers', title: 'Square Online Developers', desc: 'Stores synced with Square POS', skills: ['Square Online', 'Square POS sync', 'Square APIs', 'Payments', 'Inventory', 'Order workflows'] },
     ],
   },
 ];

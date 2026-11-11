@@ -40,3 +40,15 @@ export const industries = {
 
 // Client & partner logo placeholders
 export const logos = Array.from({ length: 12 }, (_, i) => `/images/logos/logo-${i + 1}.svg`);
+
+// CMS platform badges (monogram placeholders — swap for official logos if you have permission)
+const devicon = (n) => `https://cdn.jsdelivr.net/gh/devicons/devicon@2.16.0/icons/${n}/${n}-original.svg`;
+export const platforms = {
+  wordpress: devicon('wordpress'),
+  woocommerce: devicon('woocommerce'),
+  webflow: devicon('webflow'),
+  shopify: '/images/platforms/shopify.svg',
+  wix: '/images/platforms/wix.svg',
+  squarespace: '/images/platforms/squarespace.svg',
+  square: '/images/platforms/square.svg',
+};

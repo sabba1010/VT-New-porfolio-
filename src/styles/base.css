@@ -270,3 +270,79 @@ ol {
   font-weight: 700;
   font-size: 0.9em;
 }
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Premium layer
+   ───────────────────────────────────────────── */
+
+/* Subtle film grain on dark surfaces */
+.section--dark,
+.cta,
+.stats,
+.ctab,
+.footer {
+  position: relative;
+}
+
+.section--dark::after,
+.cta::after,
+.ctab::after,
+.footer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Section titles rise from a mask when revealed */
+.reveal .sh__title,
+.reveal .h2 {
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(24px);
+  transition:
+    clip-path 1100ms var(--ease) 80ms,
+    transform 1100ms var(--ease) 80ms;
+}
+
+.reveal.is-visible .sh__title,
+.reveal.is-visible .h2 {
+  clip-path: inset(-10% -5% -20% -5%);
+  transform: none;
+}
+
+/* Case study images unveil with a clip-path */
+.case.reveal .case__media {
+  clip-path: inset(10% 6% 10% 6% round var(--r-xl));
+  transition: clip-path 1300ms var(--ease);
+}
+
+.case.reveal.is-visible .case__media {
+  clip-path: inset(0 0 0 0 round var(--r-xl));
+}
+
+/* Inset "panel" dark sections on large screens */
+@media (min-width: 1100px) {
+  .section--panel {
+    margin-inline: clamp(12px, 1.5vw, 24px);
+    border-radius: var(--r-2xl);
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal .sh__title,
+  .reveal .h2,
+  .case.reveal .case__media {
+    clip-path: none !important;
+    transform: none !important;
+  }
+}

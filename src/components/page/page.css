@@ -1041,3 +1041,27 @@ button.chip:hover {
 .section-gap {
   margin-top: var(--section-y);
 }
+
+/* Platform cards (CMS service) */
+.platform__logo {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--sp-5);
+  border-radius: var(--r-lg);
+  background: var(--c-cream);
+  border: 1px solid var(--c-border);
+  transition: transform var(--dur) var(--ease);
+}
+
+.platform__logo img,
+.platform__logo .smart-fallback {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.platform:hover .platform__logo {
+  transform: rotate(-6deg) scale(1.06);
+}

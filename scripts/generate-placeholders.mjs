@@ -188,4 +188,17 @@ industries.forEach((slug, i) => write(`industries/${slug}.svg`, industry(`indust
 const logos = ['Lumora', 'Quantix', 'Arcwave', 'Nexora', 'Brightline', 'Kitecore', 'Orbitly', 'Fernhill', 'Solace', 'Vantage', 'Helixa', 'Northpeak'];
 logos.forEach((label, i) => write(`logos/logo-${i + 1}.svg`, logo(label, i)));
 
+/* ---------- Platform monogram badges (replace with official logos if desired) ---------- */
+const badge = (label, bg) => `<!-- PLACEHOLDER BADGE: ${label} — replace with the official logo if you have permission -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="16" fill="${bg}"/>
+  <text x="32" y="41" text-anchor="middle" font-family="Sora, Manrope, 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="700" fill="#fff">${label}</text>
+</svg>`;
+[
+  ['shopify', 'Sh', '#5E8E3E'],
+  ['wix', 'Wx', '#111111'],
+  ['squarespace', 'Ss', '#1A1A1A'],
+  ['square', 'Sq', '#2B2B2B'],
+].forEach(([slug, label, bg]) => write(`platforms/${slug}.svg`, badge(label, bg)));
+
 console.log('✔ Placeholder images generated in public/images');

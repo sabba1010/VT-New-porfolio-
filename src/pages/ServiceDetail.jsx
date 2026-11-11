@@ -6,6 +6,7 @@ import CTABanner from '../components/page/CTABanner';
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import Button from '../components/ui/Button';
+import SmartImage from '../components/ui/SmartImage';
 import { CaseCard } from '../sections/CaseStudies';
 import FAQ from '../sections/FAQ';
 import { getService, services, caseStudies, approach } from '../data/content';
@@ -74,6 +75,30 @@ export default function ServiceDetail() {
           </Reveal>
         </div>
       </section>
+
+      {/* Platforms (only for services that define them, e.g. CMS) */}
+      {service.platforms && (
+        <section className="section" style={{ paddingTop: 0 }}>
+          <div className="container">
+            <SectionHeading
+              eyebrow="Platforms"
+              title="Platforms we work with"
+              desc="Certified-level expertise across the CMS and commerce platforms businesses rely on."
+            />
+            <ul className="fgrid">
+              {service.platforms.map((p, i) => (
+                <Reveal as="li" key={p.name} delay={(i % 3) * 80} className="fcard platform">
+                  <span className="platform__logo">
+                    <SmartImage src={p.logo} alt="" fallback={p.name.slice(0, 2)} width="36" height="36" />
+                  </span>
+                  <h3>{p.name}</h3>
+                  <p>{p.desc}</p>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* Capabilities */}
       <section className="section section--cream">

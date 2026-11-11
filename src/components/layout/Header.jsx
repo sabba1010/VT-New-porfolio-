@@ -54,6 +54,29 @@ export default function Header() {
 
   const section = (href) => href !== '/' && pathname.startsWith(href);
 
+  // Reading progress — written straight to a CSS variable (no re-renders)
+  const progressRef = useRef(null);
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+      progressRef.current?.style.setProperty('--progress', p.toFixed(4));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, [pathname]);
+
   return (
     <header
       ref={headerRef}
@@ -133,6 +156,10 @@ export default function Header() {
       {open && (
         <div className="mega__scrim" aria-hidden="true" onClick={close} onMouseEnter={scheduleClose} />
       )}
+
+      <div className="header__progress" aria-hidden="true">
+        <span ref={progressRef} />
+      </div>
 
       <MobileNav open={mobileOpen} onClose={closeMobile} />
     </header>

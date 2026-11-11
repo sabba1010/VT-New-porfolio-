@@ -20,7 +20,7 @@ export default function GlobalPresence() {
   const hub = project(HUB.lon, HUB.lat);
 
   return (
-    <section className="section section--dark global" id="global" aria-labelledby="global-title">
+    <section className="section section--dark section--panel global" id="global" aria-labelledby="global-title">
       <div className="container">
         <SectionHeading
           id="global-title"

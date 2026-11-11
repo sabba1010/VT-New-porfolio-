@@ -23,7 +23,7 @@ export default function Industries() {
   };
 
   return (
-    <section className="section section--dark industries" id="industries" aria-labelledby="industries-title">
+    <section className="section section--dark section--panel industries" id="industries" aria-labelledby="industries-title">
       <div className="industries__glow" aria-hidden="true" />
       <div className="container">
         <SectionHeading

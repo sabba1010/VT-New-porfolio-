@@ -1,5 +1,5 @@
-import { Layers, PenTool, Globe, Smartphone, BrainCircuit, Code2, ShoppingCart, Users } from 'lucide-react';
-import { projects } from './images';
+import { Layers, PenTool, Globe, Smartphone, BrainCircuit, Code2, ShoppingCart, Users, LayoutTemplate } from 'lucide-react';
+import { projects, platforms as platformImg } from './images';
 
 /**
  * Services — powers the home grid, mega menu, /services and /services/:slug.
@@ -165,7 +165,38 @@ export const services = [
       { title: 'ERP & inventory sync', desc: 'Real-time stock, orders and fulfilment integrations.' },
       { title: 'Store migrations', desc: 'Re-platform without losing SEO, data or revenue.' },
     ],
-    tech: ['Shopify', 'Next.js', 'Medusa', 'Stripe', 'Algolia', 'PostgreSQL'],
+    tech: ['Shopify', 'WooCommerce', 'Square Online', 'Next.js', 'Stripe', 'Algolia'],
+  },
+  {
+    slug: 'cms-development',
+    title: 'CMS Development',
+    short: 'CMS Development',
+    desc: 'WordPress, Shopify, Wix, Squarespace and Square Online sites your team can update — no developer needed.',
+    icon: LayoutTemplate,
+    group: 'development',
+    image: projects[5],
+    tagline: 'Websites and stores your team can manage with confidence.',
+    overview: [
+      'We design, build and maintain websites on the platforms businesses already trust — WordPress, Shopify, Wix, Squarespace and Square Online — and recommend the right one for your goals and budget.',
+      'From custom themes and plugins to store setup, migrations and speed optimization, we make your CMS fast, secure and easy for non-technical teams to update.',
+    ],
+    features: [
+      { title: 'Custom themes', desc: 'Pixel-perfect, on-brand themes built for your platform — not generic templates.' },
+      { title: 'Plugins & apps', desc: 'Custom WordPress plugins, Shopify apps and third-party integrations.' },
+      { title: 'Store setup', desc: 'Products, payments, shipping and taxes configured on Shopify, WooCommerce or Square Online.' },
+      { title: 'Platform migrations', desc: 'Move between Wix, Squarespace, WordPress or Shopify without losing SEO or data.' },
+      { title: 'Speed & SEO', desc: 'Core Web Vitals tuning, technical SEO and clean, accessible markup.' },
+      { title: 'Care plans', desc: 'Updates, backups, security monitoring and content support every month.' },
+    ],
+    platforms: [
+      { name: 'WordPress', logo: platformImg.wordpress, desc: 'Custom themes, Gutenberg blocks, plugins and WooCommerce stores.' },
+      { name: 'Shopify', logo: platformImg.shopify, desc: 'Custom themes, Shopify apps, Plus stores and headless storefronts.' },
+      { name: 'Wix', logo: platformImg.wix, desc: 'Wix Studio sites with custom code, Velo logic and integrations.' },
+      { name: 'Squarespace', logo: platformImg.squarespace, desc: 'Elegant brand sites with custom CSS, code blocks and commerce.' },
+      { name: 'Square Online', logo: platformImg.square, desc: 'Online stores connected to Square POS, payments and inventory.' },
+      { name: 'Webflow', logo: platformImg.webflow, desc: 'Visually managed marketing sites with interactions and CMS collections.' },
+    ],
+    tech: ['WordPress', 'WooCommerce', 'Shopify', 'Wix', 'Squarespace', 'Square Online'],
   },
   {
     slug: 'software-outsourcing',

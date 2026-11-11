@@ -124,3 +124,29 @@
 .btn--ghost:hover {
   --btn-bg: rgba(255, 255, 255, 0.12);
 }
+
+/* Light sweep on hover */
+.btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 800ms var(--ease);
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  transform: translateX(120%);
+}
+
+.btn--outline::before {
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.18) 50%, transparent 70%);
+}

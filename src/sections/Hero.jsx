@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { Fragment, useRef } from 'react';
 import { CheckCircle2, ShieldCheck, BadgeCheck, Timer, TrendingUp, Sparkles } from 'lucide-react';
 import Button from '../components/ui/Button';
 import { team, projects, logos } from '../data/images';
@@ -9,6 +9,29 @@ const trust = [
   { icon: BadgeCheck, label: 'Pre-vetted senior experts' },
   { icon: Timer, label: 'Kick-off in 2 weeks' },
 ];
+
+/** Each word slides up from behind a mask, staggered. */
+function SplitWords({ parts, start = 120, step = 70 }) {
+  let n = 0;
+  return (
+    <span aria-hidden="true">
+      {parts.map((part) =>
+        part.text.split(' ').map((word) => {
+          const delay = start + n++ * step;
+          return (
+            <Fragment key={`${word}-${n}`}>
+              <span className="word">
+                <span className={`word__in ${part.className ?? ''}`} style={{ animationDelay: `${delay}ms` }}>
+                  {word}
+                </span>
+              </span>{' '}
+            </Fragment>
+          );
+        }),
+      )}
+    </span>
+  );
+}
 
 export default function Hero() {
   const stageRef = useRef(null);
@@ -43,9 +66,15 @@ export default function Hero() {
             AI-powered product engineering
           </p>
 
-          <h1 id="hero-title" className="hero__title hero-in" style={{ '--d': '80ms' }}>
-            Engineering <span className="hero__hl">Digital Experiences</span> That Move Businesses{' '}
-            <span className="text-gradient">Forward.</span>
+          <h1 id="hero-title" className="hero__title" aria-label="Engineering Digital Experiences That Move Businesses Forward.">
+            <SplitWords
+              parts={[
+                { text: 'Engineering' },
+                { text: 'Digital Experiences', className: 'hero__hl' },
+                { text: 'That Move Businesses' },
+                { text: 'Forward.', className: 'text-gradient' },
+              ]}
+            />
           </h1>
 
           <p className="hero__desc hero-in" style={{ '--d': '160ms' }}>
