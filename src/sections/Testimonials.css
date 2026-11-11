@@ -1,0 +1,225 @@
+.testi__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 1rem + 4vw, 5rem);
+  align-items: center;
+}
+
+.testi__intro h2 {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-3xl);
+}
+
+.testi__intro p {
+  margin-top: var(--sp-4);
+  color: var(--c-text-muted);
+}
+
+.testi__note {
+  display: block;
+  margin-top: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--c-text-subtle);
+}
+
+.testi__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-top: var(--sp-6);
+}
+
+.testi__arrow {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid var(--c-border-strong);
+  background: #fff;
+  transition: all var(--dur) var(--ease);
+}
+
+.testi__arrow:hover {
+  background: var(--c-ink);
+  border-color: var(--c-ink);
+  color: #fff;
+}
+
+.testi__arrow--next {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: #fff;
+}
+
+.testi__arrow--next:hover {
+  background: var(--c-accent-hover);
+  border-color: var(--c-accent-hover);
+}
+
+.testi__count {
+  font-family: var(--font-heading);
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  min-width: 60px;
+  text-align: center;
+}
+
+.testi__count strong {
+  color: var(--c-text);
+  font-size: var(--fs-lg);
+}
+
+.testi__viewport {
+  overflow: hidden;
+  border-radius: var(--r-2xl);
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.testi__track {
+  display: flex;
+  transition: transform 700ms var(--ease);
+}
+
+.tcard {
+  flex: 0 0 100%;
+  margin: 0;
+  padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+  border-radius: var(--r-2xl);
+  background: #fff;
+  border: 1px solid var(--c-border);
+  opacity: 0.4;
+  transition: opacity 700ms var(--ease);
+}
+
+.tcard.is-active {
+  opacity: 1;
+}
+
+.tcard__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tcard__quote {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-lg);
+  background: var(--c-accent);
+  color: #fff;
+}
+
+.tcard__stars {
+  display: flex;
+  gap: 2px;
+  color: #f5a524;
+}
+
+.tcard blockquote {
+  margin: var(--sp-6) 0;
+}
+
+.tcard blockquote p {
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 0.95rem + 0.7vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+}
+
+.tcard__author {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--c-border);
+}
+
+.tcard__author img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.tcard__author strong {
+  display: block;
+  font-size: var(--fs-base);
+}
+
+.tcard__author span {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+
+.tcard__author .tcard__sample {
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  background: var(--c-surface-2);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  align-self: center;
+}
+
+.testi__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--sp-5);
+}
+
+.testi__dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--r-pill);
+  background: var(--c-border-strong);
+  overflow: hidden;
+  transition: width var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+
+.testi__dot.is-active {
+  width: 42px;
+  background: rgba(255, 91, 46, 0.25);
+}
+
+.testi__dot.is-active:not(:has(span)) {
+  background: var(--c-accent);
+}
+
+.testi__dot span {
+  position: absolute;
+  inset: 0;
+  background: var(--c-accent);
+  transform-origin: left;
+  animation: dotProgress linear forwards;
+}
+
+@keyframes dotProgress {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@media (max-width: 960px) {
+  .testi__layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .tcard__author {
+    flex-wrap: wrap;
+  }
+  .tcard__author .tcard__sample {
+    margin-left: 0;
+  }
+}

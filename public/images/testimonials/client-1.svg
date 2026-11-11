@@ -1,0 +1,17 @@
+<!-- PLACEHOLDER: testimonials/client-1 — replace with a real photo -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" width="400" height="480">
+  
+  <defs>
+    <linearGradient id="g" gradientTransform="rotate(70 .5 .5)">
+      <stop offset="0" stop-color="#14171F"/>
+      <stop offset="1" stop-color="#3A4150"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="480" fill="url(#g)"/>
+  <circle cx="320" cy="80" r="120" fill="#fff" opacity=".08"/>
+  <path d="M60 480c8-92 64-150 140-150s132 58 140 150z" fill="#0B0D12" opacity=".85"/>
+  <path d="M150 340l50 46 50-46" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="6"/>
+  <rect x="172" y="262" width="56" height="70" rx="20" fill="#8D5A3B"/>
+  <ellipse cx="200" cy="200" rx="74" ry="86" fill="#8D5A3B"/>
+  <path d="M124 196c-4-70 38-106 80-106 52 0 82 40 74 104-10-30-34-52-76-56-38-3-64 22-78 58z" fill="#0E0E10"/>
+</svg>

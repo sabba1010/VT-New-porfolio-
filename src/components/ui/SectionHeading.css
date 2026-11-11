@@ -1,0 +1,38 @@
+.sh {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-5) var(--sp-7);
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.sh__text {
+  max-width: 720px;
+}
+
+.sh__title {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-3xl);
+}
+
+.sh__desc {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-md);
+  color: var(--c-text-muted);
+  max-width: 600px;
+}
+
+.section--dark .sh__desc {
+  color: var(--c-text-inverse-muted);
+}
+
+.sh--center {
+  justify-content: center;
+  text-align: center;
+}
+
+.sh--center .sh__text,
+.sh--center .sh__desc {
+  margin-inline: auto;
+}

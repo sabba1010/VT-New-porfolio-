@@ -1,0 +1,175 @@
+.global {
+  overflow: hidden;
+  background:
+    radial-gradient(900px 500px at 50% 0%, rgba(255, 91, 46, 0.12), transparent 70%),
+    var(--c-ink);
+}
+
+.global__map {
+  position: relative;
+  margin-inline: auto;
+  max-width: 1100px;
+}
+
+.global__map svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.global__arcs path {
+  fill: none;
+  stroke: url(#arcGrad);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 8;
+  animation: dash 3s linear infinite;
+  opacity: 0.75;
+  transition: opacity var(--dur) var(--ease), stroke-width var(--dur) var(--ease);
+}
+
+.global__arcs path.is-active {
+  opacity: 1;
+  stroke-width: 2.6;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -56;
+  }
+}
+
+.pin {
+  cursor: pointer;
+}
+
+.pin__dot {
+  fill: var(--c-accent);
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.pin__pulse {
+  fill: rgba(255, 91, 46, 0.35);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pinPulse 2.4s var(--ease) infinite;
+}
+
+@keyframes pinPulse {
+  0% {
+    transform: scale(0.3);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.pin__label {
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+  pointer-events: none;
+}
+
+.pin__label rect {
+  fill: #fff;
+}
+
+.pin__label text {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--c-ink);
+}
+
+.pin.is-active .pin__label,
+.pin:hover .pin__label {
+  opacity: 1;
+}
+
+.pin.is-active .pin__dot {
+  fill: #fff;
+  stroke: var(--c-accent);
+}
+
+/* Location cards */
+.global__list {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--sp-3);
+  margin-top: var(--sp-7);
+}
+
+.loc {
+  display: flex;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--c-border-dark);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: default;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.loc.is-active,
+.loc:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--c-accent);
+}
+
+.loc__code {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  font-family: var(--font-heading);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+
+.loc h3 {
+  font-size: var(--fs-base);
+}
+
+.loc p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-sm);
+  color: var(--c-text-inverse-muted);
+}
+
+.loc__role {
+  display: block;
+  margin-top: 6px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--c-accent-2);
+}
+
+@media (max-width: 1100px) {
+  .global__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .global__map {
+    margin-inline: calc(var(--gutter) * -0.5);
+  }
+  .global__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .loc {
+    flex-direction: column;
+  }
+  .pin__label {
+    display: none;
+  }
+}

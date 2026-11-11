@@ -1,0 +1,126 @@
+.btn {
+  --btn-bg: var(--c-accent);
+  --btn-fg: #fff;
+  --btn-icon-bg: rgba(255, 255, 255, 0.2);
+  --btn-icon-fg: currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: var(--r-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.btn--md {
+  padding: 7px 7px 7px 24px;
+  font-size: var(--fs-sm);
+  min-height: 52px;
+}
+
+.btn--sm {
+  padding: 5px 5px 5px 18px;
+  font-size: var(--fs-sm);
+  min-height: 44px;
+  gap: 10px;
+}
+
+.btn--lg {
+  padding: 9px 9px 9px 30px;
+  font-size: var(--fs-base);
+  min-height: 62px;
+}
+
+.btn--no-icon {
+  padding-inline: 26px;
+}
+
+.btn__icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--btn-icon-bg);
+  color: var(--btn-icon-fg);
+  transition: transform var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+
+.btn--sm .btn__icon {
+  width: 34px;
+  height: 34px;
+}
+
+.btn--lg .btn__icon {
+  width: 44px;
+  height: 44px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:hover .btn__icon {
+  transform: rotate(45deg);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn--primary:hover {
+  --btn-bg: var(--c-accent-hover);
+  box-shadow: var(--shadow-accent);
+}
+
+.btn--dark {
+  --btn-bg: var(--c-ink);
+  --btn-icon-bg: var(--c-accent);
+}
+
+.btn--dark:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.btn--light {
+  --btn-bg: #fff;
+  --btn-fg: var(--c-ink);
+  --btn-icon-bg: var(--c-accent);
+  --btn-icon-fg: #fff;
+}
+
+.btn--outline {
+  --btn-bg: transparent;
+  --btn-fg: var(--c-ink);
+  --btn-icon-bg: var(--c-ink);
+  --btn-icon-fg: #fff;
+  border-color: var(--c-border-strong);
+}
+
+.btn--outline:hover {
+  --btn-bg: var(--c-ink);
+  --btn-fg: #fff;
+  --btn-icon-bg: var(--c-accent);
+  border-color: var(--c-ink);
+}
+
+.btn--ghost {
+  --btn-bg: rgba(255, 255, 255, 0.06);
+  --btn-fg: #fff;
+  --btn-icon-bg: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.btn--ghost:hover {
+  --btn-bg: rgba(255, 255, 255, 0.12);
+}

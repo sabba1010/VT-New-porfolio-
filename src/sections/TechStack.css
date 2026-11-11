@@ -1,0 +1,133 @@
+.tech__tabs-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--sp-6);
+}
+
+.tech__tabs {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: var(--r-pill);
+  background: #fff;
+  border: 1px solid var(--c-border);
+  box-shadow: var(--shadow-sm);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tech__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tech__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 11px 20px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-text-muted);
+  transition: all var(--dur) var(--ease);
+}
+
+.tech__tab:hover {
+  color: var(--c-text);
+  background: var(--c-surface-2);
+}
+
+.tech__tab.is-active {
+  background: var(--c-ink);
+  color: #fff;
+}
+
+.tech__tab.is-active svg {
+  color: var(--c-accent);
+}
+
+.tech__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--sp-4);
+}
+
+.tech__item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
+  border-radius: var(--r-lg);
+  background: #fff;
+  border: 1px solid var(--c-border);
+  animation: techIn 500ms var(--ease) both;
+  animation-delay: calc(var(--i) * 50ms);
+  transition:
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    translate var(--dur) var(--ease);
+}
+
+@keyframes techIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+}
+
+.tech__item:hover {
+  border-color: var(--c-accent);
+  box-shadow: var(--shadow-md);
+  translate: 0 -3px;
+}
+
+.tech__logo {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--r-md);
+  background: var(--c-cream);
+}
+
+.tech__logo img,
+.tech__logo .smart-fallback {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  transition: transform var(--dur) var(--ease);
+}
+
+.tech__item:hover .tech__logo img {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+.tech__name {
+  font-weight: 700;
+  font-size: var(--fs-sm);
+}
+
+@media (max-width: 1024px) {
+  .tech__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .tech__tabs-wrap {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .tech__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-3);
+  }
+  .tech__item {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--sp-3);
+    padding: var(--sp-4);
+  }
+}

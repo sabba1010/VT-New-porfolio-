@@ -1,0 +1,22 @@
+<!-- PLACEHOLDER: projects/project-6 — replace with a real project image (recommended 1200×750) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  
+  <defs>
+    <linearGradient id="g" gradientTransform="rotate(145 .5 .5)">
+      <stop offset="0" stop-color="#1E2A78"/>
+      <stop offset="1" stop-color="#4F6BFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#g)"/>
+  <circle cx="1080" cy="90" r="260" fill="#fff" opacity=".08"/>
+  <circle cx="80" cy="700" r="220" fill="#000" opacity=".08"/>
+  
+  <rect x="120" y="110" width="960" height="520" rx="22" fill="#fff" opacity=".96"/>
+  <rect x="150" y="140" width="120" height="18" rx="9" fill="#0B0D12"/>
+  <rect x="560" y="144" width="64" height="10" rx="5" fill="#C9CDD6"/><rect x="650" y="144" width="64" height="10" rx="5" fill="#C9CDD6"/><rect x="740" y="144" width="64" height="10" rx="5" fill="#C9CDD6"/><rect x="830" y="144" width="64" height="10" rx="5" fill="#C9CDD6"/>
+  <rect x="150" y="186" width="900" height="170" rx="18" fill="#0B0D12" opacity=".92"/>
+  <rect x="186" y="226" width="280" height="26" rx="10" fill="#fff"/>
+  <rect x="186" y="266" width="200" height="14" rx="7" fill="#fff" opacity=".5"/>
+  <rect x="186" y="304" width="120" height="32" rx="16" fill="#FF5B2E"/>
+  <rect x="150" y="380" width="210" height="160" rx="16" fill="#F1F2F5"/><rect x="150" y="556" width="130" height="12" rx="6" fill="#0B0D12" opacity=".75"/><rect x="150" y="578" width="70" height="12" rx="6" fill="#FF5B2E"/><rect x="380" y="380" width="210" height="160" rx="16" fill="#F1F2F5"/><rect x="380" y="556" width="130" height="12" rx="6" fill="#0B0D12" opacity=".75"/><rect x="380" y="578" width="70" height="12" rx="6" fill="#FF5B2E"/><rect x="610" y="380" width="210" height="160" rx="16" fill="#F1F2F5"/><rect x="610" y="556" width="130" height="12" rx="6" fill="#0B0D12" opacity=".75"/><rect x="610" y="578" width="70" height="12" rx="6" fill="#FF5B2E"/><rect x="840" y="380" width="210" height="160" rx="16" fill="#F1F2F5"/><rect x="840" y="556" width="130" height="12" rx="6" fill="#0B0D12" opacity=".75"/><rect x="840" y="578" width="70" height="12" rx="6" fill="#FF5B2E"/>
+</svg>
