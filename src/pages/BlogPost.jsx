@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Clock } from 'lucide-react';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import PostCard from '../components/page/PostCard';
 import CTABanner from '../components/page/CTABanner';
@@ -30,7 +29,6 @@ function Block({ block }) {
 export default function BlogPost() {
   const { slug } = useParams();
   const post = getPost(slug);
-  usePageMeta(post?.title, post?.excerpt);
   if (!post) return <NotFound />;
 
   const idx = posts.indexOf(post);

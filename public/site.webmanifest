@@ -1,0 +1,12 @@
+{
+  "name": "Velotech",
+  "short_name": "Velotech",
+  "icons": [
+    { "src": "/images/brand/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ],
+  "theme_color": "#0b0d12",
+  "background_color": "#f7f6f2",
+  "display": "standalone",
+  "start_url": "/"
+}

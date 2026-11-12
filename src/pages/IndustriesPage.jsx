@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import CTABanner from '../components/page/CTABanner';
 import Reveal from '../components/ui/Reveal';
@@ -9,7 +8,6 @@ import Testimonials from '../sections/Testimonials';
 import { industries } from '../data/content';
 
 export default function IndustriesPage() {
-  usePageMeta('Industries', 'Software solutions for healthcare, fintech, education, real estate, e-commerce, logistics and more.');
   return (
     <>
       <PageHero

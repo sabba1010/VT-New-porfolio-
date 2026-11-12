@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import CTABanner from '../components/page/CTABanner';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -13,7 +12,6 @@ import NotFound from './NotFound';
 export default function CaseStudyDetail() {
   const { slug } = useParams();
   const cs = getCaseStudy(slug);
-  usePageMeta(cs && `${cs.name} — Case Study`, cs?.desc);
   if (!cs) return <NotFound />;
 
   const idx = caseStudies.indexOf(cs);

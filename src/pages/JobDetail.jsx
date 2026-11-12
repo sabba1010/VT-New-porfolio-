@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import { Check } from 'lucide-react';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import ContactForm from '../components/page/ContactForm';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -13,7 +12,6 @@ import NotFound from './NotFound';
 export default function JobDetail() {
   const { slug } = useParams();
   const job = getJob(slug);
-  usePageMeta(job && `${job.title} — Careers`, job?.summary);
   if (!job) return <NotFound />;
 
   return (

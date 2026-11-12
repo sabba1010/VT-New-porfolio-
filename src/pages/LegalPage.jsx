@@ -1,4 +1,3 @@
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import { company } from '../data/content';
 
@@ -7,11 +6,17 @@ const docs = {
   privacy: {
     title: 'Privacy Policy',
     sections: [
-      { h: 'Overview', p: `This placeholder policy explains how ${company.name} collects, uses and protects personal information submitted through this website.` },
-      { h: 'Information we collect', p: 'We collect information you provide directly, such as your name, email address and project details when you submit a form, plus basic analytics data about how the site is used.' },
-      { h: 'How we use information', p: 'We use your information to respond to inquiries, provide our services, improve this website and, with your consent, send occasional updates.' },
-      { h: 'Cookies', id: 'cookies', p: 'This site may use essential cookies and privacy-friendly analytics. You can control cookies through your browser settings.' },
-      { h: 'Contact', p: `Questions about this policy? Email ${company.email}.` },
+      { h: 'Overview', p: `This placeholder policy explains how ${company.name} ("we", "us") collects, uses and protects personal data submitted through this website. It is written with the EU GDPR, UK GDPR and similar laws in mind, but must be reviewed by a qualified advisor before publication.` },
+      { h: 'Data controller', p: `${company.name}, ${company.address}. Contact: ${company.email}.` },
+      { h: 'Information we collect', p: 'Information you provide directly — such as your name, work email, company, country and project details when you submit a form — and, only if you consent, anonymous analytics about how the site is used.' },
+      { h: 'Lawful basis', p: 'We process inquiry data to take steps at your request before entering into a contract, and on the basis of your consent where you give it (for example, analytics cookies or newsletters). You can withdraw consent at any time.' },
+      { h: 'How we use information', p: 'To respond to your inquiry, prepare proposals, deliver our services and, with your consent, send occasional updates. We never sell your personal data.' },
+      { h: 'International transfers', p: 'Our team works across several countries. Where personal data is transferred outside the UK or EEA, we use appropriate safeguards such as Standard Contractual Clauses.' },
+      { h: 'Retention', p: 'Inquiry data is kept for up to 24 months after our last contact unless a longer period is required for an active contract or by law.' },
+      { h: 'Your rights', p: 'Depending on where you live, you may have the right to access, correct, delete or export your data, to object to or restrict processing, and to complain to your local data protection authority. To exercise these rights, email us and we will respond within 30 days.' },
+      { h: 'Service providers', p: 'We use trusted processors (for example hosting, email and form providers) bound by data processing agreements. A current list is available on request.' },
+      { h: 'Cookies', id: 'cookies', p: 'This site uses only essential cookies by default. Analytics cookies are set only after you accept them in the cookie banner, and you can change your choice at any time by clearing your browser storage.' },
+      { h: 'Contact', p: `Questions about this policy or your data? Email ${company.email}.` },
     ],
   },
   terms: {
@@ -27,7 +32,6 @@ const docs = {
 
 export default function LegalPage({ doc }) {
   const d = docs[doc];
-  usePageMeta(d.title);
   return (
     <>
       <PageHero crumbs={[{ label: d.title }]} title={d.title} desc="Last updated: placeholder date." />

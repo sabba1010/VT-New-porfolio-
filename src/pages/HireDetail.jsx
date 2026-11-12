@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import CTABanner from '../components/page/CTABanner';
 import ContactForm from '../components/page/ContactForm';
@@ -22,7 +21,6 @@ const benefits = [
 export default function HireDetail() {
   const { slug } = useParams();
   const role = getRole(slug);
-  usePageMeta(role && `Hire ${role.title}`, role && `Hire pre-vetted ${role.title.toLowerCase()} from Velotech. ${role.desc}.`);
   if (!role) return <NotFound />;
 
   const siblings = hireRoles.filter((r) => r.groupId === role.groupId);

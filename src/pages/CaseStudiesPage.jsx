@@ -1,5 +1,4 @@
 import { useSearchParams } from 'react-router-dom';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import CTABanner from '../components/page/CTABanner';
 import { CaseCard } from '../sections/CaseStudies';
@@ -7,7 +6,6 @@ import Stats from '../sections/Stats';
 import { caseStudies } from '../data/content';
 
 export default function CaseStudiesPage() {
-  usePageMeta('Case Studies', 'Real projects and measurable results from products designed and engineered by Velotech.');
   // Filter is kept in the URL (?industry=fintech) so filtered views are shareable
   const [params, setParams] = useSearchParams();
   const active = params.get('industry') || 'all';

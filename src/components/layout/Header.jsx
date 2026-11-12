@@ -47,6 +47,8 @@ export default function Header() {
 
   // Close all menus whenever the route changes
   const { pathname } = useLocation();
+  // Home hero is black: use light header text until the user scrolls
+  const onDark = pathname === '/' && !scrolled && !open;
   useEffect(() => {
     setOpen(null);
     setMobileOpen(false);
@@ -80,12 +82,12 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className={`header ${scrolled || open ? 'is-solid' : ''}`}
+      className={`header ${scrolled || open ? 'is-solid' : ''} ${onDark ? 'header--on-dark' : ''}`}
       onMouseLeave={scheduleClose}
     >
       <div className="container header__inner">
         <Link to="/" className="header__logo" aria-label="Velotech home" onClick={close}>
-          <Logo />
+          <Logo light={onDark} />
         </Link>
 
         <nav className="header__nav" aria-label="Primary">

@@ -1,4 +1,3 @@
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import CTABanner from '../components/page/CTABanner';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -10,7 +9,6 @@ import Stats from '../sections/Stats';
 import { approach } from '../data/content';
 
 export default function ServicesPage() {
-  usePageMeta('Services', 'End-to-end software design and development services: web, mobile, AI, e-commerce, custom software and outsourcing.');
   return (
     <>
       <PageHero

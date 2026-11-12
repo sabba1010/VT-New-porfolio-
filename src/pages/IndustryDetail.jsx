@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
 import { AlertTriangle, ArrowRight } from 'lucide-react';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import CTABanner from '../components/page/CTABanner';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -14,7 +13,6 @@ import NotFound from './NotFound';
 export default function IndustryDetail() {
   const { slug } = useParams();
   const industry = getIndustry(slug);
-  usePageMeta(industry && `${industry.name} Software Development`, industry?.desc);
   if (!industry) return <NotFound />;
 
   const related = caseStudies.filter((c) => c.industrySlug === industry.slug);

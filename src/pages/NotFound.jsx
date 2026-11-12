@@ -1,9 +1,7 @@
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import Button from '../components/ui/Button';
 
 export default function NotFound() {
-  usePageMeta('Page not found');
   return (
     <PageHero
       center

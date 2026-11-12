@@ -1,4 +1,4 @@
-import { Fragment, useRef } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { CheckCircle2, ShieldCheck, BadgeCheck, Timer, TrendingUp, Sparkles } from 'lucide-react';
 import Button from '../components/ui/Button';
 import { team, projects, logos } from '../data/images';
@@ -36,7 +36,29 @@ function SplitWords({ parts, start = 120, step = 70 }) {
 export default function Hero() {
   const stageRef = useRef(null);
 
-  // Subtle mouse parallax for the floating UI elements
+  // Product window starts tilted back and flattens as the page scrolls
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return undefined;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const p = Math.min(Math.max(window.scrollY / (window.innerHeight * 0.6), 0), 1);
+      el.style.setProperty('--tilt', `${(1 - p) * 16}deg`);
+      el.style.setProperty('--lift', p.toFixed(3));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  // Subtle mouse parallax for the floating cards
   const onPointerMove = (e) => {
     const el = stageRef.current;
     if (!el || e.pointerType !== 'mouse') return;
@@ -50,83 +72,77 @@ export default function Hero() {
   };
 
   return (
-    <section className="hero" id="top" aria-labelledby="hero-title">
+    <section className="hero section--dark" id="top" aria-labelledby="hero-title">
       <div className="hero__bg" aria-hidden="true">
         <span className="hero__grid" />
-        <span className="hero__blob hero__blob--1" />
-        <span className="hero__blob hero__blob--2" />
+        <span className="hero__spot" />
       </div>
 
-      <div className="container hero__inner">
-        <div className="hero__content">
-          <p className="hero__badge hero-in" style={{ '--d': '0ms' }}>
-            <span className="hero__badge-tag">
-              <Sparkles size={13} /> New
-            </span>
-            AI-powered product engineering
-          </p>
+      <div className="container hero__content">
+        <p className="hero__badge hero-in" style={{ '--d': '0ms' }}>
+          <span className="hero__badge-tag">
+            <Sparkles size={13} /> New
+          </span>
+          AI-powered product engineering
+        </p>
 
-          <h1 id="hero-title" className="hero__title" aria-label="Engineering Digital Experiences That Move Businesses Forward.">
-            <SplitWords
-              parts={[
-                { text: 'Engineering' },
-                { text: 'Digital Experiences', className: 'hero__hl' },
-                { text: 'That Move Businesses' },
-                { text: 'Forward.', className: 'text-gradient' },
-              ]}
-            />
-          </h1>
+        <h1 id="hero-title" className="hero__title" aria-label="Engineering Digital Experiences That Move Businesses Forward.">
+          <SplitWords
+            parts={[
+              { text: 'Engineering Digital Experiences' },
+              { text: 'That Move Businesses' },
+              { text: 'Forward.', className: 'hero__dim' },
+            ]}
+          />
+        </h1>
 
-          <p className="hero__desc hero-in" style={{ '--d': '160ms' }}>
-            Velotech transforms ambitious ideas into powerful digital products through modern
-            software engineering, creative design, and intelligent technology.
-          </p>
+        <p className="hero__desc hero-in" style={{ '--d': '520ms' }}>
+          Velotech transforms ambitious ideas into powerful digital products through modern software
+          engineering, creative design, and intelligent technology.
+        </p>
 
-          <div className="hero__ctas hero-in" style={{ '--d': '240ms' }}>
-            <Button href="/contact" size="lg">
-              Let&apos;s Talk
-            </Button>
-            <Button href="/case-studies" size="lg" variant="outline">
-              Explore Our Work
-            </Button>
-          </div>
+        <div className="hero__ctas hero-in" style={{ '--d': '600ms' }}>
+          <Button href="/contact" size="lg">
+            Let&apos;s Talk
+          </Button>
+          <Button href="/case-studies" size="lg" variant="ghost">
+            Explore Our Work
+          </Button>
+        </div>
 
-          <div className="hero__proof hero-in" style={{ '--d': '320ms' }}>
+        <div className="hero__meta hero-in" style={{ '--d': '680ms' }}>
+          <div className="hero__proof">
             <div className="hero__avatars">
               {team.slice(0, 4).map((src, i) => (
-                <img key={src} src={src} alt="" width="44" height="44" style={{ zIndex: 4 - i }} />
+                <img key={src} src={src} alt="" width="36" height="36" style={{ zIndex: 4 - i }} />
               ))}
-              <span className="hero__avatars-more">60+</span>
             </div>
-            <p>
-              <strong>Senior engineers & designers</strong>
-              <span>ready to join your product team</span>
-            </p>
+            <span>
+              <strong>60+</strong> senior engineers &amp; designers
+            </span>
           </div>
-
-          <ul className="hero__trust hero-in" style={{ '--d': '400ms' }}>
+          <ul className="hero__trust">
             {trust.map(({ icon: Icon, label }) => (
               <li key={label}>
-                <Icon size={18} /> {label}
+                <Icon size={16} /> {label}
               </li>
             ))}
           </ul>
         </div>
+      </div>
 
-        {/* ── Visual stage ── */}
+      {/* ── Product stage ── */}
+      <div className="container">
         <div
           className="hero__stage hero-in"
-          style={{ '--d': '200ms' }}
+          style={{ '--d': '420ms' }}
           ref={stageRef}
           onPointerMove={onPointerMove}
           onPointerLeave={onPointerLeave}
           aria-hidden="true"
         >
-          <span className="hero__ring hero__ring--1" />
-          <span className="hero__ring hero__ring--2" />
-
-          <div className="hero__screen" data-depth="1">
-            <div className="hero__screen-bar">
+          <div className="hero__frame">
+            <div className="hero__frame-bar">
               <i /> <i /> <i />
               <span>app.velotech.dev</span>
             </div>
@@ -175,7 +191,7 @@ export default function Hero() {
             <p>Your dedicated squad</p>
             <div className="hero__team-row">
               {team.slice(4, 7).map((src) => (
-                <img key={src} src={src} alt="" width="34" height="34" />
+                <img key={src} src={src} alt="" width="32" height="32" />
               ))}
               <span className="hero__live">
                 <i /> Online
@@ -186,7 +202,7 @@ export default function Hero() {
       </div>
 
       {/* ── Logo strip ── */}
-      <div className="container hero__logos hero-in" style={{ '--d': '500ms' }}>
+      <div className="container hero__logos hero-in" style={{ '--d': '760ms' }}>
         <p>Trusted by fast-growing teams worldwide</p>
         <div className="marquee" style={{ '--marquee-dur': '40s' }}>
           <div className="marquee__track">

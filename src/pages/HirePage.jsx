@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, BadgeCheck, ShieldCheck, Timer } from 'lucide-react';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import CTABanner from '../components/page/CTABanner';
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import Button from '../components/ui/Button';
 import Testimonials from '../sections/Testimonials';
+import Standards from '../sections/Standards';
 import { hireGroups } from '../data/content';
 import { engagementModels, hiringSteps } from '../data/hire';
 import { team } from '../data/images';
@@ -54,7 +54,6 @@ export function EngagementAndProcess() {
 }
 
 export default function HirePage() {
-  usePageMeta('Hire Developers', 'Hire pre-vetted AI, web and mobile developers. Start in two weeks with a risk-free trial.');
   return (
     <>
       <PageHero
@@ -131,6 +130,7 @@ export default function HirePage() {
       ))}
 
       <EngagementAndProcess />
+      <Standards tone="cream" />
       <Testimonials />
       <CTABanner title="Ready to scale your engineering team?" cta="Hire Developers" />
     </>

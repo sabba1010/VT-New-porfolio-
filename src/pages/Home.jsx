@@ -1,31 +1,28 @@
-import { usePageMeta } from '../hooks/usePageMeta';
 import Hero from '../sections/Hero';
 import Services from '../sections/Services';
 import Ticker from '../sections/Ticker';
 import CaseStudies from '../sections/CaseStudies';
 import Stats from '../sections/Stats';
-import Industries from '../sections/Industries';
+import Standards from '../sections/Standards';
 import Testimonials from '../sections/Testimonials';
-import FAQ from '../sections/FAQ';
-import FinalCTA from '../sections/FinalCTA';
+import CTABanner from '../components/page/CTABanner';
 
 /**
- * Home is intentionally focused: each section links out to its full page
- * (Tech stack → /services, Team & global presence → /about, Blog → /blog).
+ * Home is a short, focused overview. Everything else has its own page:
+ * Industries → /industries, FAQ → /contact & service pages, full contact
+ * form → /contact, Tech stack → /services, Team & offices → /about, Blog → /blog.
  */
 export default function Home() {
-  usePageMeta(null);
   return (
     <>
       <Hero />
-      <Services />
+      <Services compact />
       <Ticker />
-      <CaseStudies limit={3} />
+      <CaseStudies compact limit={3} />
       <Stats />
-      <Industries />
+      <Standards compact />
       <Testimonials />
-      <FAQ limit={5} />
-      <FinalCTA />
+      <CTABanner />
     </>
   );
 }

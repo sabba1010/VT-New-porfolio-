@@ -1,14 +1,13 @@
 import { Mail, MapPin, Phone, Clock } from 'lucide-react';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import ContactForm from '../components/page/ContactForm';
+import LocalTime from '../components/ui/LocalTime';
 import FAQ from '../sections/FAQ';
 import { company, locations } from '../data/content';
 
 export default function ContactPage() {
-  usePageMeta('Contact Us', 'Tell us about your project. Velotech replies within one business day with next steps and a free consultation.');
   const info = [
     { icon: Mail, title: 'Email us', body: <a href={`mailto:${company.email}`}>{company.email}</a> },
     { icon: Phone, title: 'Call us', body: <a href={`tel:${company.phone.replace(/[^+\d]/g, '')}`}>{company.phone}</a> },
@@ -54,7 +53,7 @@ export default function ContactPage() {
 
       <section className="section section--cream">
         <div className="container">
-          <SectionHeading eyebrow="Our offices" title="Find us around the world" align="center" />
+          <SectionHeading eyebrow="Our offices" title="Find us around the world" desc="Teams in six countries — so there is always someone online in your working hours." align="center" />
           <ul className="fgrid">
             {locations.map((l, i) => (
               <Reveal as="li" key={l.code} delay={(i % 3) * 80} className="info-card">
@@ -66,6 +65,7 @@ export default function ContactPage() {
                     {l.city}, {l.country}
                   </h3>
                   <p>{l.role}</p>
+                  <LocalTime tz={l.tz} />
                 </div>
               </Reveal>
             ))}

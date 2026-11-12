@@ -1,4 +1,3 @@
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import CTABanner from '../components/page/CTABanner';
 import Button from '../components/ui/Button';
@@ -7,10 +6,10 @@ import Stats from '../sections/Stats';
 import GlobalPresence from '../sections/GlobalPresence';
 import Testimonials from '../sections/Testimonials';
 import Partners from '../sections/Partners';
+import Standards from '../sections/Standards';
 import { culture } from '../data/images';
 
 export default function AboutPage() {
-  usePageMeta('About Us', 'Velotech is a digital engineering agency helping businesses turn ideas into scalable digital products.');
   return (
     <>
       <PageHero
@@ -37,6 +36,7 @@ export default function AboutPage() {
       <About />
       <Stats />
       <GlobalPresence />
+      <Standards />
       <Testimonials />
       <Partners />
       <CTABanner />

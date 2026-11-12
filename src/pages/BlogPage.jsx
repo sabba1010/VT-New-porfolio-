@@ -1,12 +1,10 @@
 import { useSearchParams } from 'react-router-dom';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import PostCard from '../components/page/PostCard';
 import CTABanner from '../components/page/CTABanner';
 import { posts } from '../data/blog';
 
 export default function BlogPage() {
-  usePageMeta('Blog & Insights', 'Articles on product strategy, design, AI and software engineering from the Velotech team.');
   const [params, setParams] = useSearchParams();
   const active = params.get('category') || 'All';
   const categories = ['All', ...new Set(posts.map((p) => p.category))];

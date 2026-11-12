@@ -43,8 +43,37 @@ export function CaseCard({ item, featured, delay }) {
   );
 }
 
-export default function CaseStudies({ limit = 5 }) {
+export default function CaseStudies({ limit = 5, compact = false }) {
   const [first, ...rest] = caseStudies.slice(0, limit);
+
+  if (compact) {
+    // Home: equal cards in one row (swipeable carousel on phones)
+    return (
+      <section className="section cases cases--compact" id="work" aria-labelledby="cases-title">
+        <div className="container">
+          <SectionHeading
+            id="cases-title"
+            eyebrow="Case studies"
+            title={
+              <>
+                Real projects. <span className="text-accent">Measurable</span> results.
+              </>
+            }
+            action={
+              <Button href="/case-studies" variant="outline">
+                View All Projects
+              </Button>
+            }
+          />
+          <div className="cases__row">
+            {caseStudies.slice(0, limit).map((item, i) => (
+              <CaseCard key={item.slug} item={item} delay={i * 100} />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
   return (
     <section className="section cases" id="work" aria-labelledby="cases-title">
       <div className="container">

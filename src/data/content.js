@@ -144,12 +144,12 @@ export const approach = [
 /* ─────────────────────────── Global presence ─────────────────────────── */
 // lat / lon are used to position pins on the map.
 export const locations = [
-  { country: 'USA', city: 'New York', code: 'US', lat: 40.7, lon: -74, role: 'North America HQ' },
-  { country: 'Canada', city: 'Toronto', code: 'CA', lat: 43.7, lon: -79.4, role: 'Client success' },
-  { country: 'UK', city: 'London', code: 'GB', lat: 51.5, lon: -0.1, role: 'EMEA office' },
-  { country: 'Germany', city: 'Berlin', code: 'DE', lat: 52.5, lon: 13.4, role: 'Engineering hub' },
-  { country: 'Bangladesh', city: 'Dhaka', code: 'BD', lat: 23.8, lon: 90.4, role: 'Delivery center' },
-  { country: 'Australia', city: 'Sydney', code: 'AU', lat: -33.9, lon: 151.2, role: 'APAC office' },
+  { country: 'USA', city: 'New York', code: 'US', lat: 40.7, lon: -74, role: 'North America HQ', tz: 'America/New_York' },
+  { country: 'Canada', city: 'Toronto', code: 'CA', lat: 43.7, lon: -79.4, role: 'Client success', tz: 'America/Toronto' },
+  { country: 'UK', city: 'London', code: 'GB', lat: 51.5, lon: -0.1, role: 'EMEA office', tz: 'Europe/London' },
+  { country: 'Germany', city: 'Berlin', code: 'DE', lat: 52.5, lon: 13.4, role: 'Engineering hub', tz: 'Europe/Berlin' },
+  { country: 'Bangladesh', city: 'Dhaka', code: 'BD', lat: 23.8, lon: 90.4, role: 'Delivery center', tz: 'Asia/Dhaka' },
+  { country: 'Australia', city: 'Sydney', code: 'AU', lat: -33.9, lon: 151.2, role: 'APAC office', tz: 'Australia/Sydney' },
 ];
 
 /* ─────────────────────────── Testimonials (SAMPLE) ─────────────────────────── */

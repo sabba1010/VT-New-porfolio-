@@ -1,16 +1,32 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CheckCircle2 } from 'lucide-react';
 import Button from '../ui/Button';
 import { services } from '../../data/content';
 import '../../sections/FinalCTA.css';
 
-const budgets = ['< $10k', '$10k – $25k', '$25k – $50k', '$50k – $100k', '$100k+'];
+const budgets = ['Under $10k', '$10k – $25k', '$25k – $50k', '$50k – $100k', '$100k+', 'Not sure yet'];
+
+// Main markets first, then the rest alphabetically. Names are hard-coded
+// (not Intl.DisplayNames) so prerendered HTML matches every browser exactly.
+const countries = [
+  ['US', 'United States'], ['GB', 'United Kingdom'], ['CA', 'Canada'], ['DE', 'Germany'], ['AU', 'Australia'],
+  ['AE', 'United Arab Emirates'], ['NL', 'Netherlands'], ['FR', 'France'], ['SE', 'Sweden'], ['SG', 'Singapore'],
+  ['AT', 'Austria'], ['BD', 'Bangladesh'], ['BE', 'Belgium'], ['BR', 'Brazil'], ['CN', 'China'], ['CZ', 'Czechia'],
+  ['DK', 'Denmark'], ['EG', 'Egypt'], ['FI', 'Finland'], ['GR', 'Greece'], ['HK', 'Hong Kong'], ['IN', 'India'],
+  ['IE', 'Ireland'], ['IL', 'Israel'], ['IT', 'Italy'], ['JP', 'Japan'], ['KW', 'Kuwait'], ['MY', 'Malaysia'],
+  ['MX', 'Mexico'], ['NZ', 'New Zealand'], ['NG', 'Nigeria'], ['NO', 'Norway'], ['PK', 'Pakistan'], ['PH', 'Philippines'],
+  ['PL', 'Poland'], ['PT', 'Portugal'], ['QA', 'Qatar'], ['RO', 'Romania'], ['SA', 'Saudi Arabia'], ['ZA', 'South Africa'],
+  ['KR', 'South Korea'], ['ES', 'Spain'], ['CH', 'Switzerland'], ['TH', 'Thailand'], ['TR', 'Türkiye'], ['UA', 'Ukraine'],
+].map(([code, name]) => ({ code, name }));
 
 const validate = (v) => {
   const e = {};
   if (!v.name.trim()) e.name = 'Please enter your name.';
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) e.email = 'Please enter a valid email address.';
+  if (!v.country) e.country = 'Please select your country.';
   if (v.message.trim().length < 10) e.message = 'Tell us a little more (at least 10 characters).';
+  if (!v.consent) e.consent = 'Please confirm you agree so we can reply to you.';
   return e;
 };
 
@@ -34,14 +50,15 @@ function Field({ label, id, error, children }) {
  * - `idPrefix`: keeps input ids unique when several forms exist in the app.
  */
 export default function ContactForm({ title = 'Start your project', topic, topicLabel = 'Regarding', idPrefix = 'cta', submitLabel = 'Send Message' }) {
-  const empty = { name: '', email: '', service: '', budget: '', message: '' };
+  const empty = { name: '', email: '', company: '', country: '', service: '', budget: '', message: '', consent: false };
   const [values, setValues] = useState(empty);
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
   const id = (f) => `${idPrefix}-${f}`;
 
   const update = (field) => (e) => {
-    setValues((v) => ({ ...v, [field]: e.target.value }));
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    setValues((v) => ({ ...v, [field]: value }));
     if (errors[field]) setErrors((er) => ({ ...er, [field]: undefined }));
   };
 
@@ -88,6 +105,22 @@ export default function ContactForm({ title = 'Start your project', topic, topic
           <input id={id('email')} type="email" autoComplete="email" value={values.email} onChange={update('email')} placeholder="jane@company.com" />
         </Field>
       </div>
+      <div className="form__row">
+        <Field label="Company (optional)" id={id('company')}>
+          <input id={id('company')} type="text" autoComplete="organization" value={values.company} onChange={update('company')} placeholder="Company Ltd." />
+        </Field>
+        <Field label="Country" id={id('country')} error={errors.country}>
+          <select id={id('country')} autoComplete="country" value={values.country} onChange={update('country')}>
+            <option value="">Select your country</option>
+            {countries.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.name}
+              </option>
+            ))}
+            <option value="OTHER">Other</option>
+          </select>
+        </Field>
+      </div>
       {topic ? (
         <Field label={topicLabel} id={id('topic')}>
           <input id={id('topic')} type="text" value={topic} readOnly />
@@ -102,7 +135,7 @@ export default function ContactForm({ title = 'Start your project', topic, topic
               ))}
             </select>
           </Field>
-          <Field label="Budget" id={id('budget')}>
+          <Field label="Budget (USD)" id={id('budget')}>
             <select id={id('budget')} value={values.budget} onChange={update('budget')}>
               <option value="">Select a range</option>
               {budgets.map((b) => (
@@ -115,10 +148,22 @@ export default function ContactForm({ title = 'Start your project', topic, topic
       <Field label="Project details" id={id('message')} error={errors.message}>
         <textarea id={id('message')} rows="4" value={values.message} onChange={update('message')} placeholder="Tell us about your idea, timeline and goals…" />
       </Field>
+      <div className={`consent-field ${errors.consent ? 'has-error' : ''}`}>
+        <input id={id('consent')} type="checkbox" checked={values.consent} onChange={update('consent')} aria-describedby={errors.consent ? `${id('consent')}-error` : undefined} />
+        <label htmlFor={id('consent')}>
+          I agree to Velotech processing my details to respond to this inquiry, as described in the{' '}
+          <Link to="/privacy-policy">Privacy Policy</Link>.
+        </label>
+        {errors.consent && (
+          <span className="field__error" id={`${id('consent')}-error`} role="alert">
+            {errors.consent}
+          </span>
+        )}
+      </div>
       <Button type="submit" className="form__submit">
         {submitLabel}
       </Button>
-      <p className="form__note">We respect your privacy. No spam, ever.</p>
+      <p className="form__note">We reply within one business day. Happy to sign an NDA before you share details.</p>
     </form>
   );
 }

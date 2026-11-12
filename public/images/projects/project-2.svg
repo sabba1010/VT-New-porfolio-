@@ -3,8 +3,8 @@
   
   <defs>
     <linearGradient id="g" gradientTransform="rotate(65 .5 .5)">
-      <stop offset="0" stop-color="#5B21B6"/>
-      <stop offset="1" stop-color="#A78BFA"/>
+      <stop offset="0" stop-color="#3F3F46"/>
+      <stop offset="1" stop-color="#A1A1AA"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="750" fill="url(#g)"/>
@@ -15,7 +15,7 @@
     <rect x="270" y="140" width="200" height="420" rx="34" fill="#0B0D12"/>
     <rect x="280" y="150" width="180" height="400" rx="26" fill="#fff"/>
     <rect x="340" y="160" width="60" height="12" rx="6" fill="#0B0D12"/>
-    <rect x="296" y="196" width="148" height="110" rx="16" fill="#FF5B2E" opacity="0.85"/>
+    <rect x="296" y="196" width="148" height="110" rx="16" fill="#27272A" opacity="0.85"/>
     <rect x="296" y="324" width="100" height="12" rx="6" fill="#0B0D12" opacity=".8"/>
     <rect x="296" y="346" width="140" height="10" rx="5" fill="#C9CDD6"/>
     <rect x="296" y="376" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="316" cy="396" r="10" fill="#0B0D12" opacity=".25"/><rect x="296" y="428" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="316" cy="448" r="10" fill="#0B0D12" opacity=".25"/><rect x="296" y="480" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="316" cy="500" r="10" fill="#0B0D12" opacity=".25"/>
@@ -23,7 +23,7 @@
     <rect x="500" y="80" width="200" height="420" rx="34" fill="#0B0D12"/>
     <rect x="510" y="90" width="180" height="400" rx="26" fill="#fff"/>
     <rect x="570" y="100" width="60" height="12" rx="6" fill="#0B0D12"/>
-    <rect x="526" y="136" width="148" height="110" rx="16" fill="#FF5B2E" opacity="0.6499999999999999"/>
+    <rect x="526" y="136" width="148" height="110" rx="16" fill="#27272A" opacity="0.6499999999999999"/>
     <rect x="526" y="264" width="100" height="12" rx="6" fill="#0B0D12" opacity=".8"/>
     <rect x="526" y="286" width="140" height="10" rx="5" fill="#C9CDD6"/>
     <rect x="526" y="316" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="546" cy="336" r="10" fill="#0B0D12" opacity=".25"/><rect x="526" y="368" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="546" cy="388" r="10" fill="#0B0D12" opacity=".25"/><rect x="526" y="420" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="546" cy="440" r="10" fill="#0B0D12" opacity=".25"/>
@@ -31,7 +31,7 @@
     <rect x="730" y="140" width="200" height="420" rx="34" fill="#0B0D12"/>
     <rect x="740" y="150" width="180" height="400" rx="26" fill="#fff"/>
     <rect x="800" y="160" width="60" height="12" rx="6" fill="#0B0D12"/>
-    <rect x="756" y="196" width="148" height="110" rx="16" fill="#FF5B2E" opacity="0.44999999999999996"/>
+    <rect x="756" y="196" width="148" height="110" rx="16" fill="#27272A" opacity="0.44999999999999996"/>
     <rect x="756" y="324" width="100" height="12" rx="6" fill="#0B0D12" opacity=".8"/>
     <rect x="756" y="346" width="140" height="10" rx="5" fill="#C9CDD6"/>
     <rect x="756" y="376" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="776" cy="396" r="10" fill="#0B0D12" opacity=".25"/><rect x="756" y="428" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="776" cy="448" r="10" fill="#0B0D12" opacity=".25"/><rect x="756" y="480" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="776" cy="500" r="10" fill="#0B0D12" opacity=".25"/>

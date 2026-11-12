@@ -3,8 +3,8 @@
   
   <defs>
     <linearGradient id="g" gradientTransform="rotate(70 .5 .5)">
-      <stop offset="0" stop-color="#14171F"/>
-      <stop offset="1" stop-color="#3A4150"/>
+      <stop offset="0" stop-color="#0A0A0A"/>
+      <stop offset="1" stop-color="#27272A"/>
     </linearGradient>
   </defs>
   <rect width="400" height="480" fill="url(#g)"/>

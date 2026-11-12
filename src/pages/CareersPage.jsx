@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Briefcase, Clock, MapPin } from 'lucide-react';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import CTABanner from '../components/page/CTABanner';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -36,7 +35,6 @@ export function JobRow({ job, delay = 0 }) {
 }
 
 export default function CareersPage() {
-  usePageMeta('Careers', 'Join Velotech — open positions in engineering, design, AI and DevOps.');
   return (
     <>
       <PageHero

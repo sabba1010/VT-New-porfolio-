@@ -33,7 +33,7 @@
   max-width: min(var(--container), calc(100% - var(--gutter) * 2));
   padding-inline: 20px 8px;
   border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: saturate(180%) blur(18px);
   -webkit-backdrop-filter: saturate(180%) blur(18px);
   border-color: rgba(11, 13, 18, 0.08);
@@ -622,4 +622,24 @@
 .mnav__socials a:hover {
   background: var(--c-ink);
   color: #fff;
+}
+
+/* ───────────── Light header over the black home hero ───────────── */
+.header--on-dark .header__link {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.header--on-dark .header__link:hover,
+.header--on-dark .header__link.is-open {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header--on-dark .header__link.is-current {
+  color: #fff;
+}
+
+.header--on-dark .header__burger {
+  background: #fff;
+  color: var(--c-ink);
 }

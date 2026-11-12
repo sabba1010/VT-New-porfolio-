@@ -254,3 +254,42 @@
     text-align: left;
   }
 }
+
+/* GDPR consent checkbox */
+.consent-field {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  align-items: start;
+}
+
+.consent-field input {
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: var(--c-accent-ink);
+  cursor: pointer;
+}
+
+.consent-field label {
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--c-text-muted);
+  cursor: pointer;
+}
+
+.consent-field a {
+  color: var(--c-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.consent-field .field__error {
+  grid-column: 2;
+}
+
+.consent-field.has-error input {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}

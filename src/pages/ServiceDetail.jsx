@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
-import { usePageMeta } from '../hooks/usePageMeta';
 import PageHero from '../components/page/PageHero';
 import CTABanner from '../components/page/CTABanner';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -15,7 +14,6 @@ import NotFound from './NotFound';
 export default function ServiceDetail() {
   const { slug } = useParams();
   const service = getService(slug);
-  usePageMeta(service?.title, service?.desc);
   if (!service) return <NotFound />;
 
   const Icon = service.icon;
