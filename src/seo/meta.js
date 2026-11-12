@@ -56,7 +56,7 @@ const serviceLd = (s, path) => ({
 /* ───────────── Static pages ───────────── */
 const staticPages = {
   '/': { title: null, description: site.description, ld: () => [organization(), website()] },
-  '/services': { title: 'Software Development Services', description: 'End-to-end software design and development: web, mobile, AI, e-commerce, CMS, custom software and dedicated teams for global clients.', crumb: 'Services' },
+  '/services': { title: 'Design & Development Services', description: 'Product, packaging, UI/UX, book cover, graphic and social media design, plus web, mobile, AI, e-commerce, CMS and custom software development.', crumb: 'Services' },
   '/industries': { title: 'Industries We Serve', description: 'Software solutions for healthcare, fintech, education, real estate, e-commerce, logistics and more.', crumb: 'Industries' },
   '/hire-developers': { title: 'Hire Dedicated Developers', description: 'Hire pre-vetted AI, web, mobile and CMS developers who work in your time zone. Start in two weeks with a risk-free trial.', crumb: 'Hire Developers' },
   '/case-studies': { title: 'Case Studies', description: 'Real projects and measurable results from products designed and engineered by Velotech.', crumb: 'Case Studies' },

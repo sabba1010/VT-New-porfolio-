@@ -70,7 +70,7 @@ export default function Services({ compact = false }) {
             eyebrow="What we do"
             title={
               <>
-                Engineering future-ready <span className="text-accent">digital products</span>
+                Design &amp; development that makes your <span className="text-accent">brand stand out</span>
               </>
             }
             action={
@@ -97,10 +97,10 @@ export default function Services({ compact = false }) {
           eyebrow="What we do"
           title={
             <>
-              Engineering future-ready <span className="text-accent">digital products</span>
+              Design &amp; development that makes your <span className="text-accent">brand stand out</span>
             </>
           }
-          desc="End-to-end design and engineering services to take your product from first sketch to global scale."
+          desc="From packaging, book covers and social media design to websites, mobile apps and custom software — one team for your brand and your product."
           action={
             <div className="filter" role="tablist" aria-label="Filter services">
               {filters.map((f) => (

@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import ConsentBanner from './ConsentBanner';
+import SmoothScroll from './SmoothScroll';
 import { getRouteMeta, applyHead } from '../../seo/meta';
 
 /** Scrolls to top on page change, or to the #hash target when present. */
@@ -53,6 +54,7 @@ export default function Layout() {
         Skip to content
       </a>
       <ScrollManager />
+      <SmoothScroll />
       <HeadManager />
       <Header />
       <main id="main" className="page-transition" key={pathname}>

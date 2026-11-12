@@ -1,11 +1,156 @@
-import { Layers, PenTool, Globe, Smartphone, BrainCircuit, Code2, ShoppingCart, Users, LayoutTemplate } from 'lucide-react';
+import { Shapes, Package, PenTool, BookOpen, Palette, Share2, Layers, Globe, Smartphone, BrainCircuit, Code2, ShoppingCart, Users, LayoutTemplate } from 'lucide-react';
 import { projects, platforms as platformImg } from './images';
 
 /**
  * Services — powers the home grid, mega menu, /services and /services/:slug.
  * Add a new object here and a new page appears automatically.
+ * `group` drives the filter tabs: 'design' or 'development'.
  */
-export const services = [
+
+/* ─────────────── Design services ─────────────── */
+const designServices = [
+  {
+    slug: 'product-design',
+    title: 'Product Design',
+    short: 'Product Design',
+    desc: 'Concepts, 3D models and photoreal renders that take physical products from sketch to shelf-ready.',
+    icon: Shapes,
+    group: 'design',
+    image: projects[0],
+    tagline: 'Products that look as good as they work.',
+    overview: [
+      'We help brands and makers shape physical products — from early concept sketches and form studies to detailed 3D models and manufacturer-ready files.',
+      'Every design balances aesthetics, ergonomics and production cost, so what you approve on screen is what comes off the line.',
+    ],
+    features: [
+      { title: 'Concept sketching', desc: 'Multiple design directions explored quickly before committing to one.' },
+      { title: '3D modeling', desc: 'Precise, production-ready models built for prototyping and manufacturing.' },
+      { title: 'Photoreal rendering', desc: 'Studio-quality renders for pitches, crowdfunding and e-commerce.' },
+      { title: 'Material & finish (CMF)', desc: 'Colour, material and finish specs that match your brand and budget.' },
+      { title: 'Prototype support', desc: '3D-print-ready files and feedback loops with your prototype shop.' },
+      { title: 'Manufacturing files', desc: 'Technical drawings and specs your factory can work from directly.' },
+    ],
+    tech: ['Blender', 'KeyShot', 'Fusion 360', 'Rhino', 'Illustrator', 'Photoshop'],
+  },
+  {
+    slug: 'packaging-design',
+    title: 'Packaging Design',
+    short: 'Packaging',
+    desc: 'Shelf-stopping boxes, labels and pouches that tell your brand story at first glance.',
+    icon: Package,
+    group: 'design',
+    image: projects[2],
+    tagline: 'Packaging that sells before anyone reads a word.',
+    overview: [
+      'Your packaging is often the first physical touchpoint with a customer. We design structures, labels and full packaging systems that stand out on shelves and in unboxing videos.',
+      'We deliver print-ready dielines with correct bleeds, colour profiles and finishes, and coordinate with your printer so the result matches the mockup.',
+    ],
+    features: [
+      { title: 'Label design', desc: 'Bottles, jars, cans and cosmetics labels with clear hierarchy and legal info.' },
+      { title: 'Box & carton design', desc: 'Custom structures and dielines for retail and e-commerce.' },
+      { title: 'Packaging systems', desc: 'Consistent designs across product ranges, sizes and flavours.' },
+      { title: '3D mockups', desc: 'Realistic renders for approvals, Amazon listings and social media.' },
+      { title: 'Unboxing experience', desc: 'Inserts, thank-you cards and mailer boxes that get shared.' },
+      { title: 'Print-ready files', desc: 'CMYK/Pantone files with bleeds, foils and spot-UV layers set up correctly.' },
+    ],
+    tech: ['Illustrator', 'Photoshop', 'Dimension', 'ArtiosCAD', 'Esko', 'Blender'],
+  },
+  {
+    slug: 'ui-ux-design',
+    title: 'UI/UX Design',
+    short: 'UI/UX Design',
+    desc: 'Research-driven interfaces for websites and apps that feel effortless and convert.',
+    icon: PenTool,
+    group: 'design',
+    image: projects[1],
+    tagline: 'Interfaces that feel effortless — and convert.',
+    overview: [
+      'Our designers blend user research, interaction design and visual craft to create websites and apps people enjoy using every day.',
+      'Every screen is validated with real users and delivered with developer-ready specs and a living design system.',
+    ],
+    features: [
+      { title: 'UX research', desc: 'Interviews, usability testing and journey mapping that reveal real user needs.' },
+      { title: 'Wireframing & prototyping', desc: 'Clickable prototypes to test ideas before any code is written.' },
+      { title: 'Visual UI design', desc: 'Distinctive, accessible interfaces aligned with your brand.' },
+      { title: 'Design systems', desc: 'Token-based component libraries for web and mobile.' },
+      { title: 'Mobile app design', desc: 'Native-feeling iOS and Android screens and flows.' },
+      { title: 'Developer handoff', desc: 'Annotated Figma files, specs and assets ready for build.' },
+    ],
+    tech: ['Figma', 'FigJam', 'Framer', 'Adobe XD', 'Maze', 'Lottie'],
+  },
+  {
+    slug: 'book-cover-design',
+    title: 'Book Cover Design',
+    short: 'Book Covers',
+    desc: 'Genre-savvy covers for print and e-books that stand out on shelves and Amazon thumbnails.',
+    icon: BookOpen,
+    group: 'design',
+    image: projects[3],
+    tagline: 'People do judge a book by its cover — let’s make it count.',
+    overview: [
+      'We design covers for authors and publishers across fiction, non-fiction and children’s books, grounded in what readers of your genre expect — then pushed to stand out.',
+      'You get a front cover that reads at thumbnail size, plus full wraps with spine and back cover sized exactly for your printer.',
+    ],
+    features: [
+      { title: 'E-book covers', desc: 'Front covers optimised for Kindle, Apple Books and small thumbnails.' },
+      { title: 'Print wraps', desc: 'Front, spine and back covers sized for KDP, IngramSpark and offset print.' },
+      { title: 'Custom illustration', desc: 'Hand-crafted artwork when stock imagery won’t do.' },
+      { title: 'Typography & titling', desc: 'Title treatments that capture the tone of your story.' },
+      { title: 'Series branding', desc: 'A consistent look that ties every book in a series together.' },
+      { title: 'Marketing assets', desc: '3D mockups, social banners and ad creatives for launch.' },
+    ],
+    tech: ['Photoshop', 'Illustrator', 'InDesign', 'Procreate', 'KDP', 'IngramSpark'],
+  },
+  {
+    slug: 'graphic-design',
+    title: 'Graphic Design',
+    short: 'Graphic Design',
+    desc: 'Logos, brand identities and marketing collateral that make your business instantly recognisable.',
+    icon: Palette,
+    group: 'design',
+    image: projects[4],
+    tagline: 'A visual identity people remember.',
+    overview: [
+      'From a first logo to a full brand system, we create visuals that communicate who you are — consistently, across every channel.',
+      'We hand over organised source files and a clear brand guide, so your team can keep everything on-brand long after the project ends.',
+    ],
+    features: [
+      { title: 'Logo design', desc: 'Distinctive marks with variations for every size and background.' },
+      { title: 'Brand identity', desc: 'Colour palettes, typography and visual language that fit your audience.' },
+      { title: 'Brand guidelines', desc: 'A practical guide that keeps every designer and vendor consistent.' },
+      { title: 'Print collateral', desc: 'Business cards, flyers, brochures, posters and stationery.' },
+      { title: 'Presentation design', desc: 'Pitch decks and company profiles that win the room.' },
+      { title: 'Illustration & icons', desc: 'Custom illustration and icon sets in your brand style.' },
+    ],
+    tech: ['Illustrator', 'Photoshop', 'InDesign', 'Figma', 'Procreate', 'After Effects'],
+  },
+  {
+    slug: 'social-media-design',
+    title: 'Social Media Design',
+    short: 'Social Media',
+    desc: 'Scroll-stopping posts, carousels, reels covers and ad creatives designed for engagement.',
+    icon: Share2,
+    group: 'design',
+    image: projects[5],
+    tagline: 'Content that stops the scroll.',
+    overview: [
+      'We design on-brand social content for Instagram, Facebook, LinkedIn, TikTok and YouTube — from single posts to full monthly content calendars.',
+      'Templates and a consistent visual system mean your feed looks cohesive, and your team can publish faster without starting from scratch.',
+    ],
+    features: [
+      { title: 'Post & carousel design', desc: 'Feed posts and swipeable carousels built to be saved and shared.' },
+      { title: 'Stories & reels covers', desc: 'Vertical formats, highlight covers and thumbnail designs.' },
+      { title: 'Ad creatives', desc: 'Static and motion ads sized for Meta, LinkedIn and Google placements.' },
+      { title: 'Monthly content packs', desc: 'A steady stream of designed posts planned around your calendar.' },
+      { title: 'Profile branding', desc: 'Profile images, cover banners and YouTube channel art.' },
+      { title: 'Editable templates', desc: 'Canva or Figma templates your team can reuse in minutes.' },
+    ],
+    tech: ['Photoshop', 'Illustrator', 'Canva', 'Figma', 'After Effects', 'Premiere Pro'],
+  },
+];
+
+/* ─────────────── Development services ─────────────── */
+const developmentServices = [
   {
     slug: 'product-design-development',
     title: 'Product Design & Development',
@@ -28,29 +173,6 @@ export const services = [
       { title: 'Launch support', desc: 'Release planning, monitoring and post-launch optimization.' },
     ],
     tech: ['React', 'Next.js', 'Node.js', 'Flutter', 'AWS', 'Figma'],
-  },
-  {
-    slug: 'ui-ux-design',
-    title: 'UI/UX Design',
-    short: 'UI/UX Design',
-    desc: 'Research-driven interfaces and design systems that turn complex journeys into effortless experiences.',
-    icon: PenTool,
-    group: 'design',
-    image: projects[1],
-    tagline: 'Interfaces that feel effortless — and convert.',
-    overview: [
-      'Our designers blend user research, interaction design and visual craft to create products people enjoy using every day.',
-      'Every screen is validated with real users and delivered with developer-ready specs and a living design system.',
-    ],
-    features: [
-      { title: 'UX research', desc: 'Interviews, usability testing and journey mapping that reveal real user needs.' },
-      { title: 'Wireframing & prototyping', desc: 'Clickable prototypes to test ideas before writing code.' },
-      { title: 'Visual design', desc: 'Distinctive, accessible interfaces aligned with your brand.' },
-      { title: 'Design systems', desc: 'Token-based component libraries for web and mobile.' },
-      { title: 'Accessibility audits', desc: 'WCAG-aligned reviews that make your product usable for everyone.' },
-      { title: 'UX optimization', desc: 'Heuristic reviews and A/B testing to lift key metrics.' },
-    ],
-    tech: ['Figma', 'FigJam', 'Framer', 'Maze', 'Storybook', 'Lottie'],
   },
   {
     slug: 'web-development',
@@ -150,7 +272,7 @@ export const services = [
     short: 'E-commerce',
     desc: 'High-converting storefronts, headless commerce and marketplace platforms ready for scale.',
     icon: ShoppingCart,
-    group: 'design',
+    group: 'development',
     image: projects[2],
     tagline: 'Commerce experiences that turn browsers into buyers.',
     overview: [
@@ -222,5 +344,7 @@ export const services = [
     tech: ['React', 'Node.js', 'Python', 'Flutter', 'AWS', 'Jira'],
   },
 ];
+
+export const services = [...designServices, ...developmentServices];
 
 export const getService = (slug) => services.find((s) => s.slug === slug);

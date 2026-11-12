@@ -16,10 +16,10 @@ export default function ServicesPage() {
         eyebrow="Our services"
         title={
           <>
-            Full-cycle software services that <span className="text-gradient">scale with you</span>
+            Design &amp; development services that <span className="text-gradient">grow your brand</span>
           </>
         }
-        desc="Strategy, design, engineering and growth — everything you need to launch and scale digital products, delivered by one accountable team."
+        desc="Creative design — product, packaging, UI/UX, book cover, graphic and social media — plus web, mobile, AI, e-commerce and custom software development, delivered by one accountable team."
         actions={
           <>
             <Button href="/contact" size="lg">

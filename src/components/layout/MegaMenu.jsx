@@ -74,7 +74,7 @@ function ServicesMenu({ onNavigate }) {
       </div>
       <Promo
         title="Not sure where to start?"
-        text="Book a free 30-minute consultation with our solution architects."
+        text="Book a free 30-minute call with our design and engineering team."
         onNavigate={onNavigate}
       />
     </div>
