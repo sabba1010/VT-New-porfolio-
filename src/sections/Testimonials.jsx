@@ -6,11 +6,18 @@ import './Testimonials.css';
 
 const AUTOPLAY_MS = 6500;
 
-export default function Testimonials({ tone = 'dark' }) {
+// Only real testimonials are shown; the section disappears while all are samples.
+const published = testimonials.filter((t) => !t.sample);
+
+export default function Testimonials(props) {
+  return published.length ? <TestimonialSlider {...props} /> : null;
+}
+
+function TestimonialSlider({ tone = 'dark' }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const drag = useRef({ x: 0, active: false });
-  const n = testimonials.length;
+  const n = published.length;
 
   const go = useCallback((i) => setIndex(((i % n) + n) % n), [n]);
   const next = useCallback(() => go(index + 1), [go, index]);
@@ -47,7 +54,7 @@ export default function Testimonials({ tone = 'dark' }) {
           <h2 id="testi-title">What our clients say about working with us</h2>
           <p>
             Long-term partnerships built on trust, transparency and results.
-            <span className="testi__note"> Sample testimonials shown — replace with approved client quotes.</span>
+
           </p>
           <div className="testi__nav">
             <button className="testi__arrow" onClick={prev} aria-label="Previous testimonial">
@@ -79,7 +86,7 @@ export default function Testimonials({ tone = 'dark' }) {
           onPointerCancel={() => (drag.current.active = false)}
         >
           <div className="testi__track" style={{ transform: `translateX(-${index * 100}%)` }}>
-            {testimonials.map((t, i) => (
+            {published.map((t, i) => (
               <figure
                 key={i}
                 className={`tcard ${i === index ? 'is-active' : ''}`}
@@ -109,14 +116,14 @@ export default function Testimonials({ tone = 'dark' }) {
                       {t.role}, {t.company}
                     </span>
                   </div>
-                  <span className="tcard__sample">Sample</span>
+
                 </figcaption>
               </figure>
             ))}
           </div>
 
           <div className="testi__dots" role="tablist" aria-label="Choose testimonial">
-            {testimonials.map((_, i) => (
+            {published.map((_, i) => (
               <button
                 key={i}
                 role="tab"

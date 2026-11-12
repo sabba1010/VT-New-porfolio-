@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle2 } from 'lucide-react';
 import Button from '../ui/Button';
-import { services } from '../../data/content';
+import { services, company } from '../../data/content';
+import { submitForm } from '../../lib/forms';
 import '../../sections/FinalCTA.css';
 
-const budgets = ['Under $10k', '$10k – $25k', '$25k – $50k', '$50k – $100k', '$100k+', 'Not sure yet'];
+// Development-first ranges; 'Under $5k' still welcomes smaller design-only jobs.
+const budgets = ['Under $5k', '$5k – $15k', '$15k – $50k', '$50k – $100k', '$100k+', 'Not sure yet'];
 
 // Main markets first, then the rest alphabetically. Names are hard-coded
 // (not Intl.DisplayNames) so prerendered HTML matches every browser exactly.
@@ -53,7 +55,9 @@ export default function ContactForm({ title = 'Start your project', topic, topic
   const empty = { name: '', email: '', company: '', country: '', service: '', budget: '', message: '', consent: false };
   const [values, setValues] = useState(empty);
   const [errors, setErrors] = useState({});
-  const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState(false); // false | 'sent' | 'mailto'
+  const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
   const id = (f) => `${idPrefix}-${f}`;
 
   const update = (field) => (e) => {
@@ -62,7 +66,7 @@ export default function ContactForm({ title = 'Start your project', topic, topic
     if (errors[field]) setErrors((er) => ({ ...er, [field]: undefined }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const found = validate(values);
     setErrors(found);
@@ -70,9 +74,30 @@ export default function ContactForm({ title = 'Start your project', topic, topic
       document.getElementById(id(Object.keys(found)[0]))?.focus();
       return;
     }
-    // TODO: connect to your backend / form service, e.g.
-    // fetch('/api/contact', { method: 'POST', body: JSON.stringify({ ...values, topic }) })
-    setSent(true);
+    const country = countries.find((c) => c.code === values.country)?.name ?? values.country;
+    const data = {
+      name: values.name,
+      email: values.email,
+      company: values.company,
+      country,
+      [topic ? topicLabel.toLowerCase() : 'service']: topic || values.service || '—',
+      budget: values.budget || '—',
+      message: values.message,
+      page: typeof window !== 'undefined' ? window.location.href : '',
+    };
+    setSending(true);
+    setFailed(false);
+    try {
+      const how = await submitForm('contact', data, {
+        subject: `Project enquiry from ${values.name}${values.company ? ` (${values.company})` : ''}`,
+        body: `${values.message}\n\n— ${values.name}\n${values.email}\n${values.company ? values.company + '\n' : ''}${country}\nService: ${data.service ?? topic ?? '—'} · Budget: ${data.budget}`,
+      });
+      setSent(how);
+    } catch {
+      setFailed(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   if (sent) {
@@ -80,7 +105,11 @@ export default function ContactForm({ title = 'Start your project', topic, topic
       <div className="cta__success" role="status">
         <CheckCircle2 size={56} />
         <h3>Thanks, {values.name.split(' ')[0]}!</h3>
-        <p>Your message is on its way. Our team will reach out to {values.email} shortly.</p>
+        <p>
+          {sent === 'mailto'
+            ? `Your email app should now be open with your message ready — just press send. Or write to us directly at ${company.email}.`
+            : `Your message is on its way. We'll reply to ${values.email} within one business day.`}
+        </p>
         <Button
           variant="outline"
           onClick={() => {
@@ -160,9 +189,15 @@ export default function ContactForm({ title = 'Start your project', topic, topic
           </span>
         )}
       </div>
-      <Button type="submit" className="form__submit">
-        {submitLabel}
+      <Button type="submit" className="form__submit" disabled={sending} aria-busy={sending}>
+        {sending ? 'Sending…' : submitLabel}
       </Button>
+      {failed && (
+        <p className="field__error" role="alert">
+          Sorry, your message couldn&apos;t be sent. Please try again or email us at{' '}
+          <a href={`mailto:${company.email}`}>{company.email}</a>.
+        </p>
+      )}
       <p className="form__note">We reply within one business day. Happy to sign an NDA before you share details.</p>
     </form>
   );

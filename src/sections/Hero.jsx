@@ -1,7 +1,8 @@
 import { Fragment } from 'react';
 import { ShieldCheck, BadgeCheck, Timer, Sparkles } from 'lucide-react';
 import Button from '../components/ui/Button';
-import { team, logos } from '../data/images';
+import { team } from '../data/images';
+import { realPartners } from '../data/content';
 import './Hero.css';
 
 const trust = [
@@ -46,13 +47,13 @@ export default function Hero() {
           <span className="hero__badge-tag">
             <Sparkles size={13} /> New
           </span>
-          AI-powered product engineering
+          Software development for global businesses
         </p>
 
-        <h1 id="hero-title" className="hero__title" aria-label="Engineering Digital Experiences That Move Businesses Forward.">
+        <h1 id="hero-title" className="hero__title" aria-label="Engineering Digital Products That Move Businesses Forward.">
           <SplitWords
             parts={[
-              { text: 'Engineering Digital Experiences' },
+              { text: 'Engineering Digital Products' },
               { text: 'That Move Businesses' },
               { text: 'Forward.', className: 'hero__dim' },
             ]}
@@ -60,8 +61,8 @@ export default function Hero() {
         </h1>
 
         <p className="hero__desc hero-in" style={{ '--d': '520ms' }}>
-          Velotech transforms ambitious ideas into powerful digital products through modern software
-          engineering, creative design, and intelligent technology.
+          We build web apps, mobile apps, AI solutions and custom software for startups and
+          enterprises worldwide — with an in-house design team so it looks as good as it works.
         </p>
 
         <div className="hero__ctas hero-in" style={{ '--d': '600ms' }}>
@@ -94,17 +95,19 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Logo strip ── */}
-      <div className="container hero__logos hero-in" style={{ '--d': '760ms' }}>
-        <p>Trusted by fast-growing teams worldwide</p>
-        <div className="marquee" style={{ '--marquee-dur': '40s' }}>
-          <div className="marquee__track">
-            {[...logos.slice(0, 8), ...logos.slice(0, 8)].map((src, i) => (
-              <img key={i} src={src} alt={i < 8 ? `Client logo placeholder ${i + 1}` : ''} aria-hidden={i >= 8} loading="lazy" />
-            ))}
+      {/* ── Logo strip: only shown once real client logos are added ── */}
+      {realPartners.length > 0 && (
+        <div className="container hero__logos hero-in" style={{ '--d': '760ms' }}>
+          <p>Trusted by fast-growing teams worldwide</p>
+          <div className="marquee" style={{ '--marquee-dur': '40s' }}>
+            <div className="marquee__track">
+              {[...realPartners.slice(0, 8), ...realPartners.slice(0, 8)].map(({ logo: src, name }, i) => (
+                <img key={i} src={src} alt={i < 8 ? `${name} logo` : ''} aria-hidden={i >= 8} loading="lazy" />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

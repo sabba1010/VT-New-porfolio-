@@ -8,7 +8,7 @@ import {
 import * as img from './images';
 
 // Detail-page data lives in its own modules; re-exported here for convenience.
-export { services, getService } from './services';
+export { services, getService, developmentServices, designServices } from './services';
 export { industries, getIndustry } from './industries';
 export { hireGroups, hireRoles, getRole } from './hire';
 export { hireGroups as hireDevelopers } from './hire';
@@ -16,20 +16,35 @@ export { caseStudies, getCaseStudy } from './caseStudies';
 export { posts, getPost } from './blog';
 export { jobs, getJob } from './careers';
 
+/**
+ * COMPANY INFO — fill these in before launch.
+ * Anything left empty ('' or '#') is hidden automatically, so visitors
+ * never see fake phone numbers, addresses or dead social links.
+ */
 export const company = {
   name: 'Velotech',
-  tagline: 'Digital engineering & software development agency',
-  email: 'hello@velotech.example',
-  phone: '+1 (555) 010-2040',
-  address: '100 Placeholder Avenue, Suite 400, New York, NY',
+  tagline: 'Software development & design agency',
+  email: 'hello@velotech.example', // ← your real inbox (shown everywhere)
+  phone: '', // e.g. '+880 1XXX-XXXXXX' — international format
+  whatsapp: '', // e.g. '8801XXXXXXXXX' (digits only) — adds a WhatsApp button
+  bookingUrl: '', // e.g. 'https://calendly.com/your-name/30min' — adds "Book a call"
+  address: '', // e.g. 'House 12, Road 5, Dhanmondi, Dhaka 1205, Bangladesh'
+  hours: '', // e.g. 'Sun–Thu, 10:00–19:00 (GMT+6)'
   socials: [
     { label: 'LinkedIn', href: '#', icon: 'linkedin' },
-    { label: 'X (Twitter)', href: '#', icon: 'x' },
     { label: 'Dribbble', href: '#', icon: 'dribbble' },
     { label: 'GitHub', href: '#', icon: 'github' },
     { label: 'Instagram', href: '#', icon: 'instagram' },
+    { label: 'X (Twitter)', href: '#', icon: 'x' },
   ],
 };
+
+/** Socials that actually have a link. */
+export const activeSocials = company.socials.filter((s) => s.href && s.href !== '#');
+/** tel: link from a human-formatted phone number. */
+export const telHref = (phone) => `tel:${phone.replace(/[^+\d]/g, '')}`;
+export const whatsappHref = (msg = 'Hi! I would like to discuss a project.') =>
+  company.whatsapp ? `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(msg)}` : '';
 
 /* ─────────────────────────── Company (mega menu) ─────────────────────────── */
 export const companyLinks = [
@@ -153,7 +168,8 @@ export const locations = [
 ];
 
 /* ─────────────────────────── Testimonials (SAMPLE) ─────────────────────────── */
-// These are sample placeholder testimonials. Replace with real, approved client quotes.
+// Sample testimonials are HIDDEN on the live site (sample: true).
+// Add real, approved client quotes (and delete `sample: true`) to show the section.
 export const testimonials = [
   {
     quote: 'Velotech felt like an extension of our own team. They challenged our assumptions, shipped every sprint on time and the product launched two weeks ahead of schedule.',
@@ -162,6 +178,7 @@ export const testimonials = [
     company: 'Sample Company A',
     photo: img.testimonialPhotos[0],
     rating: 5,
+    sample: true,
   },
   {
     quote: 'The design quality and engineering rigor were outstanding. Our app ratings jumped and our support tickets dropped within the first month after release.',
@@ -170,6 +187,7 @@ export const testimonials = [
     company: 'Sample Company B',
     photo: img.testimonialPhotos[1],
     rating: 5,
+    sample: true,
   },
   {
     quote: 'Transparent, proactive and genuinely invested in our success. Velotech helped us modernize a legacy platform without a single minute of downtime.',
@@ -178,6 +196,7 @@ export const testimonials = [
     company: 'Sample Company C',
     photo: img.testimonialPhotos[2],
     rating: 5,
+    sample: true,
   },
   {
     quote: 'Their AI team turned a rough idea into a production assistant that now handles 60% of our customer queries. Incredible partnership.',
@@ -186,11 +205,14 @@ export const testimonials = [
     company: 'Sample Company D',
     photo: img.testimonialPhotos[3],
     rating: 5,
+    sample: true,
   },
 ];
 
 /* ─────────────────────────── Partners ─────────────────────────── */
-export const partners = img.logos.map((src, i) => ({ name: `Partner ${i + 1}`, logo: src }));
+// Placeholder logos — hidden until you add real partner/client logos (remove `sample: true`).
+export const partners = img.logos.map((src, i) => ({ name: `Partner ${i + 1}`, logo: src, sample: true }));
+export const realPartners = partners.filter((p) => !p.sample);
 
 /* ─────────────────────────── FAQ ─────────────────────────── */
 export const faqs = [

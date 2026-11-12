@@ -1,13 +1,15 @@
 import PageHero from '../components/page/PageHero';
 import { company } from '../data/content';
 
-// Placeholder legal copy — replace with text reviewed by your legal advisor.
+// Generic legal copy — have it reviewed by a qualified advisor for your jurisdiction before launch,
+// then update `LAST_UPDATED`.
+const LAST_UPDATED = 'November 12, 2026';
 const docs = {
   privacy: {
     title: 'Privacy Policy',
     sections: [
-      { h: 'Overview', p: `This placeholder policy explains how ${company.name} ("we", "us") collects, uses and protects personal data submitted through this website. It is written with the EU GDPR, UK GDPR and similar laws in mind, but must be reviewed by a qualified advisor before publication.` },
-      { h: 'Data controller', p: `${company.name}, ${company.address}. Contact: ${company.email}.` },
+      { h: 'Overview', p: `This policy explains how ${company.name} ("we", "us") collects, uses and protects personal data submitted through this website, in line with the EU GDPR, UK GDPR and similar data protection laws.` },
+      { h: 'Data controller', p: `${company.name}${company.address ? `, ${company.address}` : ''}. Contact: ${company.email}.` },
       { h: 'Information we collect', p: 'Information you provide directly — such as your name, work email, company, country and project details when you submit a form — and, only if you consent, anonymous analytics about how the site is used.' },
       { h: 'Lawful basis', p: 'We process inquiry data to take steps at your request before entering into a contract, and on the basis of your consent where you give it (for example, analytics cookies or newsletters). You can withdraw consent at any time.' },
       { h: 'How we use information', p: 'To respond to your inquiry, prepare proposals, deliver our services and, with your consent, send occasional updates. We never sell your personal data.' },
@@ -22,7 +24,7 @@ const docs = {
   terms: {
     title: 'Terms of Service',
     sections: [
-      { h: 'Acceptance', p: `By using this website you agree to these placeholder terms. If you do not agree, please do not use the site.` },
+      { h: 'Acceptance', p: `By using this website you agree to these terms. If you do not agree, please do not use the site.` },
       { h: 'Use of content', p: `All content on this site is owned by ${company.name} unless stated otherwise and may not be reproduced without permission.` },
       { h: 'No warranty', p: 'The website is provided "as is" without warranties of any kind. Project terms are governed by separate written agreements.' },
       { h: 'Changes', p: 'We may update these terms from time to time. Continued use of the site means you accept the updated terms.' },
@@ -34,7 +36,7 @@ export default function LegalPage({ doc }) {
   const d = docs[doc];
   return (
     <>
-      <PageHero crumbs={[{ label: d.title }]} title={d.title} desc="Last updated: placeholder date." />
+      <PageHero crumbs={[{ label: d.title }]} title={d.title} desc={`Last updated: ${LAST_UPDATED}`} />
       <section className="section">
         <div className="container">
           <article className="article">

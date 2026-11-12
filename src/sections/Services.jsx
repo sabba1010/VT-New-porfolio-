@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Sparkles } from 'lucide-react';
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import Button from '../components/ui/Button';
-import { services } from '../data/content';
+import { services, developmentServices, designServices } from '../data/content';
 import './Services.css';
 
 const filters = [
   { id: 'all', label: 'All Services' },
-  { id: 'design', label: 'Design' },
   { id: 'development', label: 'Development' },
+  { id: 'design', label: 'Design' },
 ];
 
 function ServiceCard({ service, index }) {
@@ -70,7 +70,7 @@ export default function Services({ compact = false }) {
             eyebrow="What we do"
             title={
               <>
-                Design &amp; development that makes your <span className="text-accent">brand stand out</span>
+                Engineering future-ready <span className="text-accent">digital products</span>
               </>
             }
             action={
@@ -80,10 +80,25 @@ export default function Services({ compact = false }) {
             }
           />
           <ul className="svc-tiles">
-            {services.map((s, i) => (
+            {developmentServices.map((s, i) => (
               <ServiceTile key={s.slug} service={s} index={i} />
             ))}
           </ul>
+          <Reveal className="svc-design">
+            <p className="svc-design__label">
+              <Sparkles size={16} aria-hidden="true" /> Plus an in-house design studio
+            </p>
+            <ul className="svc-design__list">
+              {designServices.map((s) => (
+                <li key={s.slug}>
+                  <Link to={`/services/${s.slug}`}>
+                    {s.short}
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </section>
     );
@@ -97,10 +112,10 @@ export default function Services({ compact = false }) {
           eyebrow="What we do"
           title={
             <>
-              Design &amp; development that makes your <span className="text-accent">brand stand out</span>
+              Engineering future-ready <span className="text-accent">digital products</span>
             </>
           }
-          desc="From packaging, book covers and social media design to websites, mobile apps and custom software — one team for your brand and your product."
+          desc="Web, mobile, AI, e-commerce and custom software development — backed by an in-house design team for UI/UX, branding and more."
           action={
             <div className="filter" role="tablist" aria-label="Filter services">
               {filters.map((f) => (

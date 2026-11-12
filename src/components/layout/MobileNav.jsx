@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, X } from 'lucide-react';
-import { nav, services, industries, hireDevelopers, companyLinks, company } from '../../data/content';
+import { nav, services, industries, hireDevelopers, companyLinks, company, activeSocials } from '../../data/content';
 import Logo from '../ui/Logo';
 import Button from '../ui/Button';
 import SocialIcon from '../ui/SocialIcon';
@@ -99,13 +99,15 @@ export default function MobileNav({ open, onClose }) {
             Get Started
           </Button>
           <p className="mnav__mail">{company.email}</p>
+          {activeSocials.length > 0 && (
           <div className="mnav__socials">
-            {company.socials.map((s) => (
-              <a key={s.label} href={s.href} aria-label={s.label}>
+            {activeSocials.map((s) => (
+              <a key={s.label} href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer">
                 <SocialIcon name={s.icon} />
               </a>
             ))}
           </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import Reveal from '../components/ui/Reveal';
 import Button from '../components/ui/Button';
-import { partners } from '../data/content';
+import { realPartners as partners } from '../data/content';
 import './Partners.css';
 
 function Row({ items, reverse }) {
@@ -10,7 +10,7 @@ function Row({ items, reverse }) {
       <ul className="marquee__track">
         {doubled.map((p, i) => (
           <li key={i} className="partner" aria-hidden={i >= items.length}>
-            <img src={p.logo} alt={i < items.length ? `${p.name} logo (placeholder)` : ''} loading="lazy" />
+            <img src={p.logo} alt={i < items.length ? `${p.name} logo` : ''} loading="lazy" />
           </li>
         ))}
       </ul>
@@ -19,6 +19,7 @@ function Row({ items, reverse }) {
 }
 
 export default function Partners() {
+  if (!partners.length) return null; // hidden until real logos are added
   const half = Math.ceil(partners.length / 2);
   return (
     <section className="section partners" id="partners" aria-labelledby="partners-title">

@@ -92,6 +92,11 @@ html :is(.section--dark, .section--cream) .standard:hover .standard__icon {
   color: #fff;
 }
 
+/* white hover fill would hide the white text on black — use a subtle lift instead */
+html :is(.section--dark, .section--cream) .standard:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
 html :is(.section--dark, .section--cream) :is(.faq__item.is-open, .job:hover) {
   border-color: rgba(255, 255, 255, 0.5);
 }

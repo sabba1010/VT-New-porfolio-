@@ -1,10 +1,10 @@
-import { Shapes, Package, PenTool, BookOpen, Palette, Share2, Layers, Globe, Smartphone, BrainCircuit, Code2, ShoppingCart, Users, LayoutTemplate } from 'lucide-react';
+import { Shapes, Package, PenTool, BookOpen, Palette, Share2, Layers, Globe, Smartphone, BrainCircuit, Workflow, Code2, ShoppingCart, Users, LayoutTemplate } from 'lucide-react';
 import { projects, platforms as platformImg } from './images';
 
 /**
  * Services — powers the home grid, mega menu, /services and /services/:slug.
  * Add a new object here and a new page appears automatically.
- * `group` drives the filter tabs: 'design' or 'development'.
+ * `group` drives the filter tabs: 'development' (core) or 'design'.
  */
 
 /* ─────────────── Design services ─────────────── */
@@ -244,6 +244,29 @@ const developmentServices = [
     tech: ['Python', 'PyTorch', 'TensorFlow', 'LangChain', 'OpenAI', 'Hugging Face'],
   },
   {
+    slug: 'ai-automation',
+    title: 'AI Automation',
+    short: 'AI Automation',
+    desc: 'AI agents and automated workflows that handle repetitive work across your tools — 24/7, without extra headcount.',
+    icon: Workflow,
+    group: 'development',
+    image: projects[5],
+    tagline: 'Automate the busywork. Keep your team on the work that matters.',
+    overview: [
+      'We map your day-to-day processes — lead handling, support, invoicing, reporting, data entry — and replace the repetitive steps with reliable AI-powered automations that connect the tools you already use.',
+      'Every workflow is built with human approval where it matters, clear logs and error alerts, so you always know what ran, what changed and why.',
+    ],
+    features: [
+      { title: 'Workflow automation', desc: 'Connect your CRM, email, sheets, Slack and 1,000+ apps with Zapier, Make or n8n.' },
+      { title: 'AI agents', desc: 'Agents that research, draft, classify and take actions inside your systems.' },
+      { title: 'Customer support automation', desc: 'AI chat and email assistants that resolve common questions and hand off the rest.' },
+      { title: 'Sales & lead automation', desc: 'Capture, enrich, score and follow up with leads automatically.' },
+      { title: 'Document processing', desc: 'Extract data from invoices, forms and contracts straight into your systems.' },
+      { title: 'Reporting & alerts', desc: 'Scheduled reports and smart alerts generated from your live data.' },
+    ],
+    tech: ['n8n', 'Make', 'Zapier', 'OpenAI', 'Claude', 'Python'],
+  },
+  {
     slug: 'custom-software-development',
     title: 'Custom Software Development',
     short: 'Custom Software',
@@ -345,6 +368,8 @@ const developmentServices = [
   },
 ];
 
-export const services = [...designServices, ...developmentServices];
+// Development is the core offer, so it is listed first everywhere.
+export const services = [...developmentServices, ...designServices];
+export { developmentServices, designServices };
 
 export const getService = (slug) => services.find((s) => s.slug === slug);

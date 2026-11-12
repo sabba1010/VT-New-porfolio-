@@ -1,19 +1,35 @@
-import { Mail, MapPin, Phone, Clock } from 'lucide-react';
+import { Mail, MapPin, Phone, Clock, MessageCircle, CalendarDays } from 'lucide-react';
 import PageHero from '../components/page/PageHero';
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import ContactForm from '../components/page/ContactForm';
 import LocalTime from '../components/ui/LocalTime';
 import FAQ from '../sections/FAQ';
-import { company, locations } from '../data/content';
+import { company, locations, telHref, whatsappHref } from '../data/content';
 
 export default function ContactPage() {
+  const ext = { target: '_blank', rel: 'noopener noreferrer' };
+  // Only channels you've actually filled in (src/data/content.js → company) are shown.
   const info = [
+    company.bookingUrl && {
+      icon: CalendarDays,
+      title: 'Book a free 30-min call',
+      body: <a href={company.bookingUrl} {...ext}>Pick a time that suits your time zone</a>,
+    },
     { icon: Mail, title: 'Email us', body: <a href={`mailto:${company.email}`}>{company.email}</a> },
-    { icon: Phone, title: 'Call us', body: <a href={`tel:${company.phone.replace(/[^+\d]/g, '')}`}>{company.phone}</a> },
-    { icon: MapPin, title: 'Head office', body: <p>{company.address}</p> },
-    { icon: Clock, title: 'Response time', body: <p>Within one business day</p> },
-  ];
+    company.whatsapp && {
+      icon: MessageCircle,
+      title: 'WhatsApp',
+      body: <a href={whatsappHref()} {...ext}>Chat with us instantly</a>,
+    },
+    company.phone && { icon: Phone, title: 'Call us', body: <a href={telHref(company.phone)}>{company.phone}</a> },
+    company.address && { icon: MapPin, title: 'Head office', body: <p>{company.address}</p> },
+    {
+      icon: Clock,
+      title: 'Response time',
+      body: <p>Within one business day{company.hours ? ` · ${company.hours}` : ''}</p>,
+    },
+  ].filter(Boolean);
 
   return (
     <>

@@ -8,8 +8,8 @@ import SmartLink from '../ui/SmartLink';
 
 const serviceTabs = [
   { id: 'all', label: 'All' },
-  { id: 'design', label: 'Design' },
   { id: 'development', label: 'Development' },
+  { id: 'design', label: 'Design' },
 ];
 
 function Promo({ title, text, cta = "Let's Talk", href = '/contact', onNavigate }) {

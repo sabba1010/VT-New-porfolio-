@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { services } from '../data/content';
+import { developmentServices as services } from '../data/content';
 import './Ticker.css';
 
 /** Large kinetic text band listing services — links to each service page. */

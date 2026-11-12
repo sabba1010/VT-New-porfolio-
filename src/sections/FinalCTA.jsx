@@ -42,12 +42,14 @@ export default function FinalCTA({
               </span>
               <a href={`mailto:${company.email}`}>{company.email}</a>
             </li>
-            <li>
-              <span>
-                <Phone size={18} />
-              </span>
-              <a href={`tel:${company.phone.replace(/[^+\d]/g, '')}`}>{company.phone}</a>
-            </li>
+            {company.phone && (
+              <li>
+                <span>
+                  <Phone size={18} />
+                </span>
+                <a href={`tel:${company.phone.replace(/[^+\d]/g, '')}`}>{company.phone}</a>
+              </li>
+            )}
             <li>
               <span>
                 <CalendarCheck size={18} />

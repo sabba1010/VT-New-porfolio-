@@ -7,13 +7,16 @@ import { values, approach } from '../data/content';
 import { culture, team } from '../data/images';
 import './About.css';
 
-// Placeholder team — replace names/roles and photos in src/data/images.js
+// Team — add real names, roles and photos (src/data/images.js). The block stays
+// hidden while names are still the 'Team Member' placeholder.
 const leaders = [
   { name: 'Team Member', role: 'Chief Executive Officer', photo: team[0] },
   { name: 'Team Member', role: 'Chief Technology Officer', photo: team[1] },
   { name: 'Team Member', role: 'Head of Design', photo: team[2] },
   { name: 'Team Member', role: 'Head of Delivery', photo: team[3] },
 ];
+
+const realLeaders = leaders.filter((m) => m.name !== 'Team Member');
 
 export default function About() {
   const colA = useParallax(0.06);
@@ -91,7 +94,8 @@ export default function About() {
           </ol>
         </div>
 
-        {/* Team */}
+        {/* Team (only once real people are added) */}
+        {realLeaders.length > 0 && (
         <div className="team" id="team">
           <SectionHeading
             eyebrow="Our people"
@@ -103,10 +107,10 @@ export default function About() {
             }
           />
           <ul className="team__grid">
-            {leaders.map((m, i) => (
+            {realLeaders.map((m, i) => (
               <Reveal as="li" key={m.role} delay={i * 90} className="member">
                 <div className="member__photo">
-                  <img src={m.photo} alt={`${m.name} — ${m.role} (placeholder photo)`} loading="lazy" />
+                  <img src={m.photo} alt={`${m.name} — ${m.role}`} loading="lazy" />
                 </div>
                 <h3>{m.name}</h3>
                 <p>{m.role}</p>
@@ -114,6 +118,7 @@ export default function About() {
             ))}
           </ul>
         </div>
+        )}
       </div>
     </section>
   );

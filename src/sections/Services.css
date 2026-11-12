@@ -291,3 +291,57 @@
     display: none;
   }
 }
+
+/* ───────────── Home: secondary design-services row ───────────── */
+.svc-design {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-4) var(--sp-5);
+  margin-top: var(--sp-5);
+  padding: var(--sp-4) var(--sp-5);
+  border-radius: var(--r-lg);
+  border: 1px dashed var(--c-border-strong);
+}
+
+.svc-design__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--c-text);
+}
+
+.svc-design__label svg {
+  color: var(--c-accent);
+}
+
+.svc-design__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.svc-design__list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-text-muted);
+  transition: all var(--dur) var(--ease);
+}
+
+.svc-design__list a:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}

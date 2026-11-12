@@ -5,7 +5,7 @@ import './Manifesto.css';
 
 // Words wrapped in *asterisks* are highlighted in the accent colour.
 const STATEMENT =
-  'We are a team of designers and engineers who turn bold ideas into *digital products* people love — built fast, built right, and built to *scale* with your business.';
+  'We are a team of engineers and designers who turn bold ideas into *software products* people love — built fast, built right, and built to *scale* with your business.';
 
 const words = STATEMENT.split(' ').map((raw, i) => {
   const accent = raw.includes('*');
