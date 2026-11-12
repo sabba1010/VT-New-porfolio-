@@ -19,7 +19,7 @@ export default function ServicesPage() {
             Software development services that <span className="text-gradient">scale with you</span>
           </>
         }
-        desc="Web, mobile, AI, AI automation, e-commerce, CMS and custom software development — plus in-house UI/UX, product, packaging, graphic and social media design. One accountable team from idea to launch."
+        desc="Web, mobile, AI, AI automation, e-commerce, CMS and custom software development — plus in-house UI/UX, product and packaging design. One accountable team from idea to launch."
         actions={
           <>
             <Button href="/contact" size="lg">

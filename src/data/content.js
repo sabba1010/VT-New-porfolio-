@@ -267,7 +267,9 @@ export const nav = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services', mega: 'services' },
   { label: 'Industries', href: '/industries', mega: 'industries' },
-  { label: 'Hire Developers', href: '/hire-developers', mega: 'hire' },
+  // Hidden from the navbar for now — the /hire-developers pages still exist.
+  // Uncomment to bring the menu back.
+  // { label: 'Hire Developers', href: '/hire-developers', mega: 'hire' },
   { label: 'Company', href: '/about', mega: 'company' },
   { label: 'Case Studies', href: '/case-studies' },
   { label: 'Contact Us', href: '/contact' },
