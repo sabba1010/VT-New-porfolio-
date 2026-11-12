@@ -47,8 +47,8 @@ export default function Header() {
 
   // Close all menus whenever the route changes
   const { pathname } = useLocation();
-  // Home hero is black: use light header text until the user scrolls
-  const onDark = pathname === '/' && !scrolled && !open;
+  // Page heroes are black: use light header text until the user scrolls
+  const onDark = !scrolled && !open; // every page opens on a black hero
   useEffect(() => {
     setOpen(null);
     setMobileOpen(false);

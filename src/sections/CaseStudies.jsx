@@ -49,7 +49,7 @@ export default function CaseStudies({ limit = 5, compact = false }) {
   if (compact) {
     // Home: equal cards in one row (swipeable carousel on phones)
     return (
-      <section className="section cases cases--compact" id="work" aria-labelledby="cases-title">
+      <section className="section section--dark cases cases--compact" id="work" aria-labelledby="cases-title">
         <div className="container">
           <SectionHeading
             id="cases-title"

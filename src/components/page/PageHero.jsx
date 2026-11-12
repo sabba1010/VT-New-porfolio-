@@ -8,7 +8,7 @@ import './page.css';
  */
 export default function PageHero({ eyebrow, title, desc, crumbs = [], actions, aside, meta, center = false }) {
   return (
-    <section className={`phero ${aside ? 'phero--split' : ''} ${center ? 'phero--center' : ''}`}>
+    <section className={`phero section--dark ${aside ? 'phero--split' : ''} ${center ? 'phero--center' : ''}`}>
       <div className="phero__bg" aria-hidden="true">
         <span className="phero__grid" />
         <span className="phero__blob" />

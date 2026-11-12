@@ -6,6 +6,7 @@ import '@fontsource-variable/sora';
 import './styles/tokens.css';
 import './styles/base.css';
 import './components/page/page.css';
+import './styles/sections.css'; // alternating black / white sections
 import App from './App';
 
 const container = document.getElementById('root');

@@ -1,39 +1,54 @@
-<!-- PLACEHOLDER: projects/project-2 — replace with a real project image (recommended 1200×750) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
-  
+<!-- PLACEHOLDER: projects/project-2 (fintech) — replace with a real project image (1200×750) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" font-family="Manrope, 'Segoe UI', Arial, sans-serif">
   <defs>
-    <linearGradient id="g" gradientTransform="rotate(65 .5 .5)">
-      <stop offset="0" stop-color="#3F3F46"/>
-      <stop offset="1" stop-color="#A1A1AA"/>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#312E81"/><stop offset="1" stop-color="#A855F7"/>
     </linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity=".22"/>
+    </filter>
   </defs>
-  <rect width="1200" height="750" fill="url(#g)"/>
-  <circle cx="1080" cy="90" r="260" fill="#fff" opacity=".08"/>
-  <circle cx="80" cy="700" r="220" fill="#000" opacity=".08"/>
+  <rect width="1200" height="750" fill="url(#g2)"/>
+  <circle cx="1080" cy="80" r="260" fill="#fff" opacity=".10"/>
+  <circle cx="90" cy="700" r="230" fill="#fff" opacity=".08"/>
   
-  <g>
-    <rect x="270" y="140" width="200" height="420" rx="34" fill="#0B0D12"/>
-    <rect x="280" y="150" width="180" height="400" rx="26" fill="#fff"/>
-    <rect x="340" y="160" width="60" height="12" rx="6" fill="#0B0D12"/>
-    <rect x="296" y="196" width="148" height="110" rx="16" fill="#27272A" opacity="0.85"/>
-    <rect x="296" y="324" width="100" height="12" rx="6" fill="#0B0D12" opacity=".8"/>
-    <rect x="296" y="346" width="140" height="10" rx="5" fill="#C9CDD6"/>
-    <rect x="296" y="376" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="316" cy="396" r="10" fill="#0B0D12" opacity=".25"/><rect x="296" y="428" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="316" cy="448" r="10" fill="#0B0D12" opacity=".25"/><rect x="296" y="480" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="316" cy="500" r="10" fill="#0B0D12" opacity=".25"/>
-  </g><g>
-    <rect x="500" y="80" width="200" height="420" rx="34" fill="#0B0D12"/>
-    <rect x="510" y="90" width="180" height="400" rx="26" fill="#fff"/>
-    <rect x="570" y="100" width="60" height="12" rx="6" fill="#0B0D12"/>
-    <rect x="526" y="136" width="148" height="110" rx="16" fill="#27272A" opacity="0.6499999999999999"/>
-    <rect x="526" y="264" width="100" height="12" rx="6" fill="#0B0D12" opacity=".8"/>
-    <rect x="526" y="286" width="140" height="10" rx="5" fill="#C9CDD6"/>
-    <rect x="526" y="316" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="546" cy="336" r="10" fill="#0B0D12" opacity=".25"/><rect x="526" y="368" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="546" cy="388" r="10" fill="#0B0D12" opacity=".25"/><rect x="526" y="420" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="546" cy="440" r="10" fill="#0B0D12" opacity=".25"/>
-  </g><g>
-    <rect x="730" y="140" width="200" height="420" rx="34" fill="#0B0D12"/>
-    <rect x="740" y="150" width="180" height="400" rx="26" fill="#fff"/>
-    <rect x="800" y="160" width="60" height="12" rx="6" fill="#0B0D12"/>
-    <rect x="756" y="196" width="148" height="110" rx="16" fill="#27272A" opacity="0.44999999999999996"/>
-    <rect x="756" y="324" width="100" height="12" rx="6" fill="#0B0D12" opacity=".8"/>
-    <rect x="756" y="346" width="140" height="10" rx="5" fill="#C9CDD6"/>
-    <rect x="756" y="376" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="776" cy="396" r="10" fill="#0B0D12" opacity=".25"/><rect x="756" y="428" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="776" cy="448" r="10" fill="#0B0D12" opacity=".25"/><rect x="756" y="480" width="148" height="40" rx="12" fill="#F1F2F5"/><circle cx="776" cy="500" r="10" fill="#0B0D12" opacity=".25"/>
+  <!-- back card -->
+  <g transform="rotate(-14 820 300)" filter="url(#sh)">
+    <rect x="690" y="200" width="380" height="230" rx="24" fill="url(#cardB)"/>
   </g>
+  <defs>
+    <linearGradient id="cardA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#EC4899"/></linearGradient>
+    <linearGradient id="cardB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B"/><stop offset="1" stop-color="#F97316"/></linearGradient>
+  </defs>
+  <!-- phone -->
+  <g filter="url(#sh)"><rect x="420" y="60" width="320" height="640" rx="44" fill="#0B0B12"/></g>
+  <rect x="434" y="74" width="292" height="612" rx="34" fill="#fff"/>
+  <rect x="535" y="88" width="90" height="20" rx="10" fill="#0B0B12"/>
+  <text x="458" y="150" font-size="15" fill="#64748B">Total balance</text>
+  <text x="458" y="190" font-size="34" font-weight="800" fill="#0F172A">$12,480</text>
+  <rect x="458" y="210" width="244" height="148" rx="18" fill="url(#cardA)"/>
+  <rect x="478" y="240" width="40" height="30" rx="6" fill="#FDE68A"/>
+  <circle cx="664" cy="330" r="14" fill="#fff" opacity=".7"/><circle cx="682" cy="330" r="14" fill="#fff" opacity=".4"/>
+  <rect x="478" y="320" width="120" height="10" rx="5" fill="rgba(255,255,255,.75)"/>
+  <!-- mini chart -->
+  <rect x="462" y="426" width="22" height="44" rx="6" fill="#DDD6FE"/><rect x="496" y="400" width="22" height="70" rx="6" fill="#DDD6FE"/><rect x="530" y="418" width="22" height="52" rx="6" fill="#DDD6FE"/><rect x="564" y="382" width="22" height="88" rx="6" fill="#DDD6FE"/><rect x="598" y="406" width="22" height="64" rx="6" fill="#DDD6FE"/><rect x="632" y="370" width="22" height="100" rx="6" fill="#7C3AED"/><rect x="666" y="394" width="22" height="76" rx="6" fill="#DDD6FE"/>
+  <!-- transactions -->
+  <circle cx="478" cy="514" r="18" fill="#DCFCE7"/>
+  <circle cx="478" cy="514" r="7" fill="#22C55E"/>
+  <rect x="506" y="504" width="110" height="10" rx="5" fill="#334155"/><rect x="506" y="522" width="70" height="8" rx="4" fill="#94A3B8"/>
+  <text x="702" y="520" font-size="15" font-weight="700" text-anchor="end" fill="#16A34A">+$860</text><circle cx="478" cy="568" r="18" fill="#FFEDD5"/>
+  <circle cx="478" cy="568" r="7" fill="#F97316"/>
+  <rect x="506" y="558" width="110" height="10" rx="5" fill="#334155"/><rect x="506" y="576" width="70" height="8" rx="4" fill="#94A3B8"/>
+  <text x="702" y="574" font-size="15" font-weight="700" text-anchor="end" fill="#0F172A">-$42</text><circle cx="478" cy="622" r="18" fill="#DBEAFE"/>
+  <circle cx="478" cy="622" r="7" fill="#3B82F6"/>
+  <rect x="506" y="612" width="110" height="10" rx="5" fill="#334155"/><rect x="506" y="630" width="70" height="8" rx="4" fill="#94A3B8"/>
+  <text x="702" y="628" font-size="15" font-weight="700" text-anchor="end" fill="#0F172A">-$128</text>
+  <!-- success toast -->
+  <g filter="url(#sh)"><rect x="140" y="420" width="250" height="84" rx="18" fill="#fff"/></g>
+  <circle cx="186" cy="462" r="20" fill="#22C55E"/><path d="M176 462l7 7 14-14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="218" y="456" font-size="17" font-weight="700" fill="#0F172A">Transfer sent</text>
+  <text x="218" y="480" font-size="14" fill="#64748B">Instant · 0 fees</text>
+  <!-- coins -->
+  <circle cx="220" cy="230" r="46" fill="#FBBF24"/><circle cx="220" cy="230" r="31.28" fill="none" stroke="#F59E0B" stroke-width="4"/><circle cx="300" cy="300" r="32" fill="#FBBF24"/><circle cx="300" cy="300" r="21.76" fill="none" stroke="#F59E0B" stroke-width="4"/><circle cx="980" cy="600" r="40" fill="#FBBF24"/><circle cx="980" cy="600" r="27.200000000000003" fill="none" stroke="#F59E0B" stroke-width="4"/>
+  
 </svg>

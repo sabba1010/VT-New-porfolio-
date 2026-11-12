@@ -5,11 +5,11 @@ import Button from '../components/ui/Button';
 import { faqs, company } from '../data/content';
 import './FAQ.css';
 
-export default function FAQ({ limit } = {}) {
+export default function FAQ({ limit, tone = 'dark' } = {}) {
   const [open, setOpen] = useState(0);
 
   return (
-    <section className="section section--cream faq" id="faq" aria-labelledby="faq-title">
+    <section className={`section ${tone === 'dark' ? 'section--cream' : ''} faq`} id="faq" aria-labelledby="faq-title">
       <div className="container faq__layout">
         <Reveal className="faq__intro">
           <span className="eyebrow">FAQ</span>

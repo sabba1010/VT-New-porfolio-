@@ -6,7 +6,7 @@ import './Testimonials.css';
 
 const AUTOPLAY_MS = 6500;
 
-export default function Testimonials() {
+export default function Testimonials({ tone = 'dark' }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const drag = useRef({ x: 0, active: false });
@@ -40,7 +40,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="section section--cream testi" id="testimonials" aria-labelledby="testi-title">
+    <section className={`section ${tone === 'dark' ? 'section--cream' : ''} testi`} id="testimonials" aria-labelledby="testi-title">
       <div className="container testi__layout">
         <Reveal className="testi__intro">
           <span className="eyebrow">Testimonials</span>

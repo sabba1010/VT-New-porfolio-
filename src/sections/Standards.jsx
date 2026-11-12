@@ -19,7 +19,7 @@ const items = [
 
 export default function Standards({ tone = 'light', compact = false }) {
   return (
-    <section className={`section standards ${tone === 'cream' ? 'section--cream' : ''} ${compact ? 'standards--compact' : ''}`} aria-labelledby="standards-title">
+    <section className={`section standards ${tone === 'dark' || tone === 'cream' ? 'section--cream' : ''} ${compact ? 'standards--compact' : ''}`} aria-labelledby="standards-title">
       <div className="container">
         <SectionHeading
           id="standards-title"

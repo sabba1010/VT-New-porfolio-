@@ -20,8 +20,8 @@ export default function Home() {
       <Ticker />
       <CaseStudies compact limit={3} />
       <Stats />
-      <Standards compact />
-      <Testimonials />
+      <Standards compact tone="dark" />
+      <Testimonials tone="light" />
       <CTABanner />
     </>
   );

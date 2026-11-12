@@ -73,7 +73,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <FAQ />
+      <FAQ tone="light" />
     </>
   );
 }

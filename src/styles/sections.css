@@ -1,0 +1,190 @@
+/* ─────────────────────────────────────────────
+   Alternating black / white sections
+   ─────────────────────────────────────────────
+   Pages alternate one white section, one black section.
+   - `.section--dark`  → black (heroes, case studies, industries, map…)
+   - `.section--cream` → the "alternate" section, now also black
+   Inside a black section the colour tokens switch to their dark
+   versions, so every component (text, borders, cards) adapts
+   automatically. The `html` prefix gives these rules enough
+   specificity to win over component styles regardless of load order.
+*/
+
+/* 1 ── Dark scope: tokens + surface */
+html .section--dark,
+html .section--cream {
+  --c-text: #f5f6f8;
+  --c-text-muted: #a3a9b6;
+  --c-text-subtle: #8b90a0;
+  --c-border: rgba(255, 255, 255, 0.1);
+  --c-border-strong: rgba(255, 255, 255, 0.22);
+  --c-cream: rgba(255, 255, 255, 0.04);
+  --c-surface: #12141a;
+  --c-surface-2: rgba(255, 255, 255, 0.06);
+  --c-card: #12141a;
+  --c-accent: var(--c-accent-bright);
+  --c-accent-hover: #ff7a52;
+  --c-accent-soft: rgba(255, 91, 46, 0.14);
+  color: var(--c-text);
+}
+
+html .section--cream {
+  background: var(--c-ink);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* subtle film grain, same as other dark surfaces */
+html .section--cream::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+html .section--cream > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 2 ── Eyebrows & headings on black */
+html .section--cream .eyebrow {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--c-text);
+}
+
+html :is(.section--dark, .section--cream) .eyebrow::before {
+  box-shadow: 0 0 0 4px rgba(255, 91, 46, 0.22);
+}
+
+/* 3 ── Cards become dark surfaces */
+html :is(.section--dark, .section--cream)
+  :is(.fcard, .mcard, .step, .post-card, .info-card, .job, .side-card, .meta-strip > div,
+      .faq__item, .faq__card, .tcard, .testi__arrow:not(.testi__arrow--next), .chip, .case__meta span) {
+  background: var(--c-card);
+  border-color: var(--c-border);
+}
+
+html :is(.section--dark, .section--cream) :is(.fcard, .mcard, .post-card, .info-card, .job):hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.8);
+}
+
+/* results already dark — give them an edge on black */
+html .section--cream .result {
+  border: 1px solid var(--c-border);
+  background: var(--c-card);
+}
+
+/* 4 ── Ink-filled elements invert to white on black */
+html :is(.section--dark, .section--cream)
+  :is(.chip.is-active, .filter__btn.is-active, .step__num, .standard__icon, .link-list a.is-active) {
+  background: #fff;
+  border-color: #fff;
+  color: var(--c-ink);
+}
+
+html :is(.section--dark, .section--cream) .standard:hover .standard__icon {
+  background: var(--c-accent);
+  color: #fff;
+}
+
+html :is(.section--dark, .section--cream) :is(.faq__item.is-open, .job:hover) {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+html :is(.section--dark, .section--cream) .link-list a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* 5 ── Buttons on black */
+html :is(.section--dark, .section--cream) .btn--outline {
+  --btn-fg: #fff;
+  --btn-icon-bg: #fff;
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+html :is(.section--dark, .section--cream) .btn--outline .btn__icon {
+  color: var(--c-ink);
+}
+
+html :is(.section--dark, .section--cream) .btn--outline:hover {
+  --btn-bg: #fff;
+  --btn-fg: var(--c-ink);
+  --btn-icon-bg: var(--c-accent-ink);
+  border-color: #fff;
+}
+
+html :is(.section--dark, .section--cream) .btn--outline:hover .btn__icon {
+  color: #fff;
+}
+
+html :is(.section--dark, .section--cream) .btn--dark {
+  --btn-bg: #fff;
+  --btn-fg: var(--c-ink);
+}
+
+/* 6 ── Labels that sit on white chips keep dark text */
+html :is(.section--dark, .section--cream) :is(.case__badge, .post-card__cat) {
+  color: var(--c-ink);
+}
+
+/* 7 ── White elements that stay white inside black sections
+        (reset the tokens back to the light palette) */
+html :is(.section--dark, .section--cream) :is(.hero__float:not(.hero__code), .ind.is-active, .side-card--form, .cta__card) {
+  --c-text: #0b0d12;
+  --c-text-muted: #5c6270;
+  --c-text-subtle: #6b7280;
+  --c-border: #e6e7eb;
+  --c-border-strong: #d5d7dd;
+  --c-cream: #f7f6f2;
+  --c-surface-2: #f2f3f5;
+  --c-accent: var(--c-accent-ink);
+  --c-accent-soft: #ffe8df;
+  color: var(--c-text);
+}
+
+/* 8 ── Page hero (inner pages) on black */
+html .phero {
+  background: var(--c-ink);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+html .phero .phero__grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+}
+
+html .phero .phero__blob {
+  background: rgba(255, 91, 46, 0.22);
+}
+
+html .phero .phero__title {
+  color: #fff;
+}
+
+html .phero .crumbs [aria-current] {
+  color: #fff;
+}
+
+html .phero .phero__aside img {
+  box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* 9 ── Case studies on black */
+html .section--dark .case__link span {
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+html .section--dark .case__media {
+  background: var(--c-card);
+}
+
+/* 10 ── Keep a white gap when the black stats card follows a black section */
+html :is(.section--dark, .section--cream) + .stats-wrap {
+  padding-top: var(--section-y);
+}

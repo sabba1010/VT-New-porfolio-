@@ -130,7 +130,7 @@ export default function HirePage() {
       ))}
 
       <EngagementAndProcess />
-      <Standards tone="cream" />
+      <Standards />
       <Testimonials />
       <CTABanner title="Ready to scale your engineering team?" cta="Hire Developers" />
     </>

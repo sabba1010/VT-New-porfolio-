@@ -10,6 +10,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { projectArt } from './project-art.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', 'public', 'images');
 
@@ -134,8 +135,20 @@ const culture = (name, i) => {
 };
 
 /* ---------- Industry art ---------- */
+const industryColors = [
+  ['#0E7490', '#2DD4BF'], // healthcare
+  ['#312E81', '#A855F7'], // fintech
+  ['#B45309', '#FBBF24'], // education
+  ['#0369A1', '#38BDF8'], // real estate
+  ['#EA580C', '#EC4899'], // e-commerce
+  ['#065F46', '#34D399'], // logistics
+  ['#1D4ED8', '#22D3EE'], // travel
+  ['#9D174D', '#F472B6'], // media
+  ['#1E293B', '#64748B'], // finance
+  ['#B91C1C', '#FB923C'], // retail
+];
 const industry = (name, i) => {
-  const g = gradients[i % gradients.length];
+  const g = industryColors[i % industryColors.length];
   const rings = [0, 1, 2, 3, 4]
     .map((k) => `<circle cx="600" cy="380" r="${80 + k * 70}" fill="none" stroke="#fff" stroke-opacity="${0.22 - k * 0.035}" stroke-width="2"/>`)
     .join('');
@@ -179,7 +192,8 @@ const favicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
 write('brand/favicon.svg', favicon);
 for (let i = 1; i <= 8; i++) write(`team/member-${i}.svg`, portrait(`team/member-${i}`, i));
 for (let i = 1; i <= 5; i++) write(`testimonials/client-${i}.svg`, portrait(`testimonials/client-${i}`, i + 7));
-for (let i = 1; i <= 6; i++) write(`projects/project-${i}.svg`, project(`projects/project-${i}`, i - 1));
+// Colourful, topic-specific case-study art (see project-art.mjs)
+projectArt.forEach((art, i) => write(`projects/project-${i + 1}.svg`, art()));
 for (let i = 1; i <= 5; i++) write(`about/culture-${i}.svg`, culture(`about/culture-${i}`, i - 1));
 
 const industries = ['healthcare', 'fintech', 'education', 'real-estate', 'ecommerce', 'logistics', 'travel', 'media', 'finance', 'retail'];

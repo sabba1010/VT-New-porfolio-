@@ -10,7 +10,7 @@ export default function TechStack() {
   const group = techStack.find((g) => g.id === active);
 
   return (
-    <section className="section section--cream tech" id="technologies" aria-labelledby="tech-title">
+    <section className="section tech" id="technologies" aria-labelledby="tech-title">
       <div className="container">
         <SectionHeading
           id="tech-title"
