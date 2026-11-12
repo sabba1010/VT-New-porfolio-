@@ -19,13 +19,30 @@ function SplitWords({ parts, start = 120, step = 70 }) {
       {parts.map((part) =>
         part.text.split(' ').map((word) => {
           const delay = start + n++ * step;
+          const masked = (
+            <span className="word">
+              <span className={`word__in ${part.className ?? ''}`} style={{ animationDelay: `${delay}ms` }}>
+                {word}
+              </span>
+            </span>
+          );
           return (
             <Fragment key={`${word}-${n}`}>
-              <span className="word">
-                <span className={`word__in ${part.className ?? ''}`} style={{ animationDelay: `${delay}ms` }}>
-                  {word}
+              {part.mark ? (
+                // hand-drawn swoosh under the word, drawn in after the word lands
+                <span className="hero__mark">
+                  {masked}
+                  <svg className="hero__swoosh" viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true">
+                    <path
+                      d="M5 21 C 55 9, 120 5, 190 10 S 275 22, 295 12"
+                      pathLength="1"
+                      style={{ animationDelay: `${delay + 650}ms` }}
+                    />
+                  </svg>
                 </span>
-              </span>{' '}
+              ) : (
+                masked
+              )}{' '}
             </Fragment>
           );
         }),
@@ -54,7 +71,8 @@ export default function Hero() {
           <SplitWords
             parts={[
               { text: 'Engineering Digital Products' },
-              { text: 'That Move Businesses' },
+              { text: 'That Move' },
+              { text: 'Businesses', mark: true },
               { text: 'Forward.', className: 'hero__dim' },
             ]}
           />

@@ -3,7 +3,8 @@ import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import Button from '../components/ui/Button';
 import { useParallax } from '../hooks/useScroll';
-import { values, approach, realLeaders } from '../data/content';
+import { values, approach } from '../data/content';
+import Team from './Team';
 import { culture } from '../data/images';
 import './About.css';
 
@@ -83,31 +84,8 @@ export default function About() {
           </ol>
         </div>
 
-        {/* Team (only once real people are added) */}
-        {realLeaders.length > 0 && (
-        <div className="team" id="team">
-          <SectionHeading
-            eyebrow="Our people"
-            title="The people behind the product"
-            action={
-              <Button href="/careers#culture" variant="outline">
-                Inside Our Culture
-              </Button>
-            }
-          />
-          <ul className="team__grid">
-            {realLeaders.map((m, i) => (
-              <Reveal as="li" key={m.role} delay={i * 90} className="member">
-                <div className="member__photo">
-                  <img src={m.photo} alt={`${m.name} — ${m.role}`} loading="lazy" />
-                </div>
-                <h3>{m.name}</h3>
-                <p>{m.role}</p>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-        )}
+        {/* Team — names, roles, photos and LinkedIn links: src/data/content.js (leaders) */}
+        <Team />
       </div>
     </section>
   );

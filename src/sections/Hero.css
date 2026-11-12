@@ -205,6 +205,46 @@
   margin-bottom: -0.08em;
 }
 
+/* curved underline under "Businesses" */
+.hero__mark {
+  position: relative;
+  display: inline-block;
+}
+
+.hero__swoosh {
+  position: absolute;
+  left: -2%;
+  bottom: -0.2em;
+  width: 104%;
+  height: 0.3em;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.hero__swoosh path {
+  fill: none;
+  stroke: var(--c-accent-bright);
+  stroke-width: 7;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: swooshDraw 900ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes swooshDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__swoosh path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
 .hero__title .word__in {
   display: inline-block;
   animation: wordUp 1000ms var(--ease) both;

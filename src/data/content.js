@@ -47,20 +47,43 @@ export const whatsappHref = (msg = 'Hi! I would like to discuss a project.') =>
   company.whatsapp ? `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(msg)}` : '';
 
 /* ─────────────────────────── Company (mega menu) ─────────────────────────── */
-/* Leadership team (About page). Add real names, roles and photos — the
-   team block and the "Our Team" menu link stay hidden while names are
-   still the 'Team Member' placeholder. */
+/* Leadership team (About page). Fill in `name` and swap the photos in
+   src/data/images.js (team). While `name` is empty, the card shows the
+   role as its title instead of a placeholder name. */
 export const leaders = [
-  { name: 'Team Member', role: 'Chief Executive Officer', photo: img.team[0] },
-  { name: 'Team Member', role: 'Chief Technology Officer', photo: img.team[1] },
-  { name: 'Team Member', role: 'Head of Design', photo: img.team[2] },
-  { name: 'Team Member', role: 'Head of Delivery', photo: img.team[3] },
+  {
+    name: '',
+    role: 'Chief Executive Officer',
+    focus: 'Sets the vision and partners with every client on strategy and growth.',
+    linkedin: '', // e.g. 'https://www.linkedin.com/in/your-name'
+    photo: img.team[0],
+  },
+  {
+    name: '',
+    role: 'Chief Technology Officer',
+    focus: 'Owns architecture, engineering quality and the tech behind every build.',
+    linkedin: '',
+    photo: img.team[1],
+  },
+  {
+    name: '',
+    role: 'Head of Design',
+    focus: 'Leads UI/UX and product design, from research to polished interfaces.',
+    linkedin: '',
+    photo: img.team[2],
+  },
+  {
+    name: '',
+    role: 'Head of Delivery',
+    focus: 'Keeps projects on time and clients in the loop with weekly demos.',
+    linkedin: '',
+    photo: img.team[3],
+  },
 ];
-export const realLeaders = leaders.filter((m) => m.name !== 'Team Member');
 
 export const companyLinks = [
   { title: 'About Us', desc: 'Our story, mission and values', icon: Info, href: '/about' },
-  realLeaders.length > 0 && { title: 'Our Team', desc: 'Meet the people behind Velotech', icon: UsersRound, href: '/about#team' },
+  { title: 'Our Team', desc: 'Meet the people behind Velotech', icon: UsersRound, href: '/about#team' },
   // Partnership enquiries go straight to the contact form
   { title: 'Partnership', desc: 'Grow together with Velotech', icon: Handshake, href: '/contact' },
   { title: 'Life at Velotech', desc: 'Culture, people and perks', icon: Coffee, href: '/careers#culture' },
