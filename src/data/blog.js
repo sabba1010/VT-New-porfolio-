@@ -1,4 +1,4 @@
-import { projects, culture, team } from './images';
+import { projects, culture, team } from './images.js';
 
 /**
  * Blog / insights — powers the home "Latest insights" section, /blog and /blog/:slug.

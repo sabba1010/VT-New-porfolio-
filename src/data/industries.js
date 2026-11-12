@@ -1,7 +1,7 @@
 import {
   HeartPulse, Landmark, GraduationCap, Building2, ShoppingBag, Truck, Plane, Clapperboard, PiggyBank, Store,
 } from 'lucide-react';
-import { industries as img } from './images';
+import { industries as img } from './images.js';
 
 /** Industries — powers the home section, mega menu, /industries and /industries/:slug. */
 export const industries = [

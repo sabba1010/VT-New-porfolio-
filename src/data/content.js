@@ -5,16 +5,16 @@ import {
   Smartphone, Server, MonitorSmartphone, Database, Cloud, Sparkles, LayoutTemplate,
   Info, UsersRound, Handshake, Coffee, Briefcase, Newspaper,
 } from 'lucide-react';
-import * as img from './images';
+import * as img from './images.js';
 
 // Detail-page data lives in its own modules; re-exported here for convenience.
-export { services, getService, developmentServices, designServices } from './services';
-export { industries, getIndustry } from './industries';
-export { hireGroups, hireRoles, getRole } from './hire';
-export { hireGroups as hireDevelopers } from './hire';
-export { caseStudies, getCaseStudy } from './caseStudies';
-export { posts, getPost } from './blog';
-export { jobs, getJob } from './careers';
+export { services, getService, developmentServices, designServices } from './services.js';
+export { industries, getIndustry } from './industries.js';
+export { hireGroups, hireRoles, getRole } from './hire.js';
+export { hireGroups as hireDevelopers } from './hire.js';
+export { caseStudies, getCaseStudy } from './caseStudies.js';
+export { posts, getPost } from './blog.js';
+export { jobs, getJob } from './careers.js';
 
 /**
  * COMPANY INFO — fill these in before launch.
@@ -47,14 +47,26 @@ export const whatsappHref = (msg = 'Hi! I would like to discuss a project.') =>
   company.whatsapp ? `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(msg)}` : '';
 
 /* ─────────────────────────── Company (mega menu) ─────────────────────────── */
+/* Leadership team (About page). Add real names, roles and photos — the
+   team block and the "Our Team" menu link stay hidden while names are
+   still the 'Team Member' placeholder. */
+export const leaders = [
+  { name: 'Team Member', role: 'Chief Executive Officer', photo: img.team[0] },
+  { name: 'Team Member', role: 'Chief Technology Officer', photo: img.team[1] },
+  { name: 'Team Member', role: 'Head of Design', photo: img.team[2] },
+  { name: 'Team Member', role: 'Head of Delivery', photo: img.team[3] },
+];
+export const realLeaders = leaders.filter((m) => m.name !== 'Team Member');
+
 export const companyLinks = [
   { title: 'About Us', desc: 'Our story, mission and values', icon: Info, href: '/about' },
-  { title: 'Our Team', desc: 'Meet the people behind Velotech', icon: UsersRound, href: '/about#team' },
-  { title: 'Partnership', desc: 'Grow together with Velotech', icon: Handshake, href: '/about#partners' },
+  realLeaders.length > 0 && { title: 'Our Team', desc: 'Meet the people behind Velotech', icon: UsersRound, href: '/about#team' },
+  // Partnership enquiries go straight to the contact form
+  { title: 'Partnership', desc: 'Grow together with Velotech', icon: Handshake, href: '/contact' },
   { title: 'Life at Velotech', desc: 'Culture, people and perks', icon: Coffee, href: '/careers#culture' },
   { title: 'Careers', desc: 'Join our growing team', icon: Briefcase, href: '/careers' },
   { title: 'Blog & Insights', desc: 'Articles from our engineers', icon: Newspaper, href: '/blog' },
-];
+].filter(Boolean);
 
 /* ─────────────────────────── Stats ─────────────────────────── */
 export const stats = [

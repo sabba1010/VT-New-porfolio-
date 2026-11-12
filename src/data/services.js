@@ -1,5 +1,5 @@
 import { Shapes, Package, PenTool, BookOpen, Palette, Share2, Layers, Globe, Smartphone, BrainCircuit, Workflow, Code2, ShoppingCart, Users, LayoutTemplate } from 'lucide-react';
-import { projects, platforms as platformImg } from './images';
+import { projects, platforms as platformImg } from './images.js';
 
 /**
  * Services — powers the home grid, mega menu, /services and /services/:slug.

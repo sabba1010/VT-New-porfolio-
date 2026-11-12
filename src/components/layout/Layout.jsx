@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import ConsentBanner from './ConsentBanner';
 import SmoothScroll from './SmoothScroll';
+import ChatWidget from '../chat/ChatWidget';
 import { getRouteMeta, applyHead } from '../../seo/meta';
 
 /** Scrolls to top on page change, or to the #hash target when present. */
@@ -64,6 +65,7 @@ export default function Layout() {
       </main>
       <Footer />
       <ConsentBanner />
+      <ChatWidget />
     </>
   );
 }

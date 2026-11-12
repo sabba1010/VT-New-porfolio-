@@ -19,9 +19,22 @@ export default function Header() {
   const close = useCallback(() => setOpen(null), []);
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
+  // Remembers which menu was just opened by hovering, so the click that
+  // usually follows a hover doesn't immediately toggle it shut again.
+  const hoverOpened = useRef({ id: null, at: 0 });
+
   const openWithHover = (id) => {
     clearTimeout(closeTimer.current);
+    hoverOpened.current = { id, at: performance.now() };
     setOpen(id);
+  };
+  const toggleMenu = (id) => {
+    clearTimeout(closeTimer.current);
+    const h = hoverOpened.current;
+    const justHovered = h.id === id && performance.now() - h.at < 700;
+    hoverOpened.current = { id: null, at: 0 };
+    // a click right after hovering keeps the menu open; otherwise it toggles
+    setOpen((o) => (o === id && !justHovered ? null : id));
   };
   const scheduleClose = () => {
     clearTimeout(closeTimer.current);
@@ -99,7 +112,7 @@ export default function Header() {
                     className={`header__link ${open === item.mega ? 'is-open' : ''} ${section(item.href) ? 'is-current' : ''}`}
                     aria-expanded={open === item.mega}
                     aria-controls={`mega-${item.mega}`}
-                    onClick={() => setOpen((o) => (o === item.mega ? null : item.mega))}
+                    onClick={() => toggleMenu(item.mega)}
                   >
                     {item.label}
                     <ChevronDown size={15} className="header__chev" aria-hidden="true" />

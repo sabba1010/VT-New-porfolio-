@@ -3,20 +3,9 @@ import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import Button from '../components/ui/Button';
 import { useParallax } from '../hooks/useScroll';
-import { values, approach } from '../data/content';
-import { culture, team } from '../data/images';
+import { values, approach, realLeaders } from '../data/content';
+import { culture } from '../data/images';
 import './About.css';
-
-// Team — add real names, roles and photos (src/data/images.js). The block stays
-// hidden while names are still the 'Team Member' placeholder.
-const leaders = [
-  { name: 'Team Member', role: 'Chief Executive Officer', photo: team[0] },
-  { name: 'Team Member', role: 'Chief Technology Officer', photo: team[1] },
-  { name: 'Team Member', role: 'Head of Design', photo: team[2] },
-  { name: 'Team Member', role: 'Head of Delivery', photo: team[3] },
-];
-
-const realLeaders = leaders.filter((m) => m.name !== 'Team Member');
 
 export default function About() {
   const colA = useParallax(0.06);

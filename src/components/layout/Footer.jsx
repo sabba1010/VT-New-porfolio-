@@ -13,7 +13,7 @@ const resources = [
   { label: 'Industries', href: '/industries' },
   { label: 'Blog & Insights', href: '/blog' },
   { label: 'Careers', href: '/careers' },
-  { label: 'FAQ', href: '/#faq' },
+  { label: 'FAQ', href: '/contact#faq' },
 ];
 
 export default function Footer() {

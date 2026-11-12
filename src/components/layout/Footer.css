@@ -198,6 +198,8 @@
   justify-content: space-between;
   gap: var(--sp-4);
   padding-block: var(--sp-5);
+  /* leave room under the row so the fixed "Ask AI" chat button never covers it */
+  padding-bottom: calc(var(--sp-5) + 84px);
   border-top: 1px solid var(--c-border-dark);
   font-size: var(--fs-sm);
   color: var(--c-text-inverse-muted);

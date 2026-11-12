@@ -1,4 +1,4 @@
-import { projects } from './images';
+import { projects } from './images.js';
 
 /**
  * SAMPLE case studies — replace with your real projects.

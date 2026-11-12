@@ -25,6 +25,23 @@ export const site = {
     newsletter: '',
   },
 
+  // AI chat assistant (bottom-right). Needs ANTHROPIC_API_KEY set on the server
+  // (Vercel env var / local .env). If the API isn't reachable the widget
+  // still opens and points visitors to the contact options instead.
+  chat: {
+    enabled: true,
+    endpoint: '/api/chat',
+    name: 'Sara', // the assistant's name — shown in the chat header and used in its replies
+    greeting:
+      "Hi! 👋 I'm Sara, Velotech's AI assistant. Ask me about our services, process or pricing — or tell me about your project and I'll point you in the right direction.",
+    suggestions: [
+      'What services do you offer?',
+      'How much does an app cost?',
+      'Can you automate our workflows with AI?',
+      'How do we get started?',
+    ],
+  },
+
   // Optional analytics. Leave `enabled: false` until you add a provider;
   // when enabled, a GDPR cookie-consent banner is shown before loading it.
   analytics: {
