@@ -1,7 +1,7 @@
 import Hero from '../sections/Hero';
 import Services from '../sections/Services';
 import Ticker from '../sections/Ticker';
-import CaseStudies from '../sections/CaseStudies';
+import CaseScroll from '../sections/CaseScroll';
 import Stats from '../sections/Stats';
 import Standards from '../sections/Standards';
 import Testimonials from '../sections/Testimonials';
@@ -18,7 +18,7 @@ export default function Home() {
       <Hero />
       <Services compact />
       <Ticker />
-      <CaseStudies compact limit={3} />
+      <CaseScroll limit={6} />
       <Stats />
       <Standards compact tone="dark" />
       <Testimonials tone="light" />

@@ -1,0 +1,233 @@
+/* ─────────────────────────────────────────────
+   Pinned horizontal-scroll case studies (home)
+   ───────────────────────────────────────────── */
+.cscroll {
+  --cs-progress: 0;
+  position: relative;
+  /* height is set from JS on desktop (100vh + horizontal travel) */
+}
+
+.cscroll__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cscroll__inner {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.6fr);
+  align-items: center;
+  gap: clamp(2rem, 1rem + 3vw, 4rem);
+  width: 100%;
+  /* left edge lines up with the site container, right side bleeds off-screen */
+  padding-left: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
+  padding-top: var(--header-h);
+}
+
+.cscroll__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-5);
+}
+
+.cscroll__title {
+  font-size: var(--fs-3xl);
+  line-height: 1.1;
+  color: #fff;
+}
+
+.cscroll__desc {
+  margin: 0;
+  max-width: 36ch;
+  color: var(--c-text-muted);
+}
+
+.cscroll__progress {
+  width: 160px;
+  height: 3px;
+  margin-top: var(--sp-3);
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.cscroll__progress span {
+  display: block;
+  height: 100%;
+  background: var(--c-accent);
+  transform-origin: left;
+  transform: scaleX(var(--cs-progress));
+}
+
+.cscroll__viewport {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.cscroll__track {
+  display: flex;
+  gap: var(--sp-5);
+  margin: 0;
+  padding: 0 var(--gutter) 0 0;
+  list-style: none;
+  width: max-content;
+  will-change: transform;
+}
+
+/* ───────────── Card ───────────── */
+.cscard {
+  flex: 0 0 auto;
+  width: clamp(320px, 34vw, 560px);
+}
+
+.cscard__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: #fff;
+  color: var(--c-ink);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.cscard__link:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
+}
+
+.cscard__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #e9eaee;
+}
+
+.cscard__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease);
+}
+
+.cscard__link:hover .cscard__media img {
+  transform: scale(1.05);
+}
+
+.cscard__metric {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  max-width: calc(100% - 32px);
+  padding: 8px 14px;
+  border-radius: var(--r-md);
+  background: var(--c-ink);
+  color: #fff;
+  font-size: var(--fs-sm);
+  --c-accent: var(--c-accent-bright);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--dur) var(--ease);
+}
+
+.cscard__metric strong {
+  font-family: var(--font-heading);
+  color: var(--c-accent-bright);
+  margin-right: 4px;
+}
+
+.cscard__link:hover .cscard__metric,
+.cscard__link:focus-visible .cscard__metric {
+  opacity: 1;
+  transform: none;
+}
+
+.cscard__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+}
+
+.cscard__text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.cscard__title {
+  font-size: var(--fs-xl);
+  color: var(--c-ink);
+}
+
+.cscard__industry {
+  color: #5c6270;
+}
+
+.cscard__arrow {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #d5d7dd;
+  transition: all var(--dur) var(--ease);
+}
+
+.cscard__link:hover .cscard__arrow {
+  background: var(--c-accent-ink);
+  border-color: var(--c-accent-ink);
+  color: #fff;
+  rotate: 45deg;
+}
+
+/* ───────────── Tablet / phone / reduced motion: swipe row ───────────── */
+@media (max-width: 900px), (prefers-reduced-motion: reduce) {
+  .cscroll {
+    height: auto !important;
+    padding-block: var(--section-y);
+  }
+  .cscroll__sticky {
+    position: static;
+    height: auto;
+    display: block;
+  }
+  .cscroll__inner {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+  .cscroll__intro {
+    padding-inline: var(--gutter);
+  }
+  .cscroll__progress {
+    display: none;
+  }
+  .cscroll__viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding-bottom: var(--sp-3);
+  }
+  .cscroll__viewport::-webkit-scrollbar {
+    display: none;
+  }
+  .cscroll__track {
+    transform: none !important;
+    padding-inline: var(--gutter);
+  }
+  .cscard {
+    width: min(82vw, 380px);
+    scroll-snap-align: start;
+  }
+}
