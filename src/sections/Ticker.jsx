@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
-import { developmentServices as services } from '../data/content';
+import { aiServices, developmentServices } from '../data/content';
 import './Ticker.css';
+
+// AI first, then core software services
+const services = [...aiServices, ...developmentServices];
 
 /** Large kinetic text band listing services — links to each service page. */
 export default function Ticker() {

@@ -9,6 +9,7 @@ import './Services.css';
 
 const filters = [
   { id: 'all', label: 'All Services' },
+  { id: 'ai', label: 'AI' },
   { id: 'development', label: 'Development' },
   { id: 'design', label: 'Design' },
 ];
@@ -67,10 +68,10 @@ export default function Services({ compact = false }) {
         <div className="container">
           <SectionHeading
             id="services-title"
-            eyebrow="What we do"
+            eyebrow="Software development"
             title={
               <>
-                Engineering future-ready <span className="text-accent">digital products</span>
+                Full-cycle software, <span className="text-accent">engineered to scale</span>
               </>
             }
             action={
@@ -80,7 +81,8 @@ export default function Services({ compact = false }) {
             }
           />
           <ul className="svc-tiles">
-            {developmentServices.map((s, i) => (
+            {/* six core services on the home page; the rest are under "All Services" */}
+            {developmentServices.slice(0, 6).map((s, i) => (
               <ServiceTile key={s.slug} service={s} index={i} />
             ))}
           </ul>
@@ -112,10 +114,10 @@ export default function Services({ compact = false }) {
           eyebrow="What we do"
           title={
             <>
-              Engineering future-ready <span className="text-accent">digital products</span>
+              AI-powered software, <span className="text-accent">end to end</span>
             </>
           }
-          desc="Web, mobile, AI, e-commerce and custom software development — backed by an in-house design team for UI/UX, branding and more."
+          desc="AI automation, AI integration and AI for growth — plus web, mobile, e-commerce and custom software development, backed by an in-house design team."
           action={
             <div className="filter" role="tablist" aria-label="Filter services">
               {filters.map((f) => (

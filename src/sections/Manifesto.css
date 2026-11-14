@@ -40,11 +40,6 @@
   margin-bottom: var(--sp-6);
 }
 
-.mf__index {
-  font-family: var(--font-heading);
-  font-size: var(--fs-sm);
-  color: var(--c-text-subtle);
-}
 
 .mf__text {
   margin: 0;

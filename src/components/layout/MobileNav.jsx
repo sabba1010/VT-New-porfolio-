@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, X } from 'lucide-react';
-import { nav, services, industries, hireDevelopers, companyLinks, company, activeSocials } from '../../data/content';
+import { nav, services, hireDevelopers, companyLinks, company, activeSocials } from '../../data/content';
 import Logo from '../ui/Logo';
 import Button from '../ui/Button';
 import SocialIcon from '../ui/SocialIcon';
@@ -10,10 +10,6 @@ const subLinks = {
   services: [
     { label: 'All Services', href: '/services' },
     ...services.map((s) => ({ label: s.title, href: `/services/${s.slug}` })),
-  ],
-  industries: [
-    { label: 'All Industries', href: '/industries' },
-    ...industries.map((i) => ({ label: i.name, href: `/industries/${i.slug}` })),
   ],
   hire: [
     { label: 'All Roles', href: '/hire-developers' },

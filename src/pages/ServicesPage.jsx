@@ -16,10 +16,10 @@ export default function ServicesPage() {
         eyebrow="Our services"
         title={
           <>
-            Software development services that <span className="text-gradient">scale with you</span>
+            AI &amp; software services that <span className="text-gradient">grow your business</span>
           </>
         }
-        desc="Web, mobile, AI, AI automation, e-commerce, CMS and custom software development — plus in-house UI/UX, product and packaging design. One accountable team from idea to launch."
+        desc="AI automation, AI integration and AI-driven growth — plus web, mobile, e-commerce, CMS and custom software development and in-house UI/UX, product and packaging design. One accountable team from idea to launch."
         actions={
           <>
             <Button href="/contact" size="lg">

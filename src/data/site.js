@@ -8,9 +8,9 @@ export const site = {
   // Open Graph tags and sitemap.xml.
   url: 'https://www.velotech.example',
   name: 'Velotech',
-  defaultTitle: 'Velotech — Software Development & Design Agency',
+  defaultTitle: 'Velotech — Top Software Development & AI Company',
   description:
-    'Velotech is a software development agency for businesses worldwide — web, mobile, AI, e-commerce and custom software, with an in-house design team for UI/UX, branding and more.',
+    'Velotech is a software development and AI company. We build AI automation, integrate AI into your existing tools, use AI to grow your business, and develop web, mobile and custom software for clients worldwide.',
   ogImage: '/og-image.png', // 1200×630, shown when links are shared
   locale: 'en_US',
   twitter: '', // e.g. '@velotech'
@@ -33,12 +33,12 @@ export const site = {
     endpoint: '/api/chat',
     name: 'Sara', // the assistant's name — shown in the chat header and used in its replies
     greeting:
-      "Hi! 👋 I'm Sara, Velotech's AI assistant. Ask me about our services, process or pricing — or tell me about your project and I'll point you in the right direction.",
+      "Hi! 👋 I'm Sara, Velotech's AI assistant. Ask me how AI could automate or grow your business — or about any software project you have in mind.",
     suggestions: [
-      'What services do you offer?',
-      'How much does an app cost?',
-      'Can you automate our workflows with AI?',
-      'How do we get started?',
+      'What can AI automate in my business?',
+      'Can you add AI to our existing software?',
+      'How can AI help us get more customers?',
+      'How much does a project cost?',
     ],
   },
 

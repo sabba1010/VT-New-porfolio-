@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronRight } from 'lucide-react';
-import { services, industries, hireGroups, companyLinks } from '../../data/content';
+import { services, hireGroups, companyLinks } from '../../data/content';
 import { culture } from '../../data/images';
 import Button from '../ui/Button';
 import SmartLink from '../ui/SmartLink';
 
 const serviceTabs = [
   { id: 'all', label: 'All' },
+  { id: 'ai', label: 'AI' },
   { id: 'development', label: 'Development' },
   { id: 'design', label: 'Design' },
 ];
@@ -77,29 +78,6 @@ function ServicesMenu({ onNavigate }) {
         text="Book a free 30-minute call with our design and engineering team."
         onNavigate={onNavigate}
       />
-    </div>
-  );
-}
-
-function IndustriesMenu({ onNavigate }) {
-  return (
-    <div>
-      <ul className="mega__industries">
-        {industries.map(({ slug, name, icon: Icon }) => (
-          <li key={slug}>
-            <Link to={`/industries/${slug}`} className="mega__ind" onClick={onNavigate}>
-              <span className="mega__icon">
-                <Icon size={20} />
-              </span>
-              <span className="mega__card-title">{name}</span>
-              <ChevronRight size={16} className="mega__chev" />
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <MoreLink to="/industries" onNavigate={onNavigate}>
-        Explore all industries
-      </MoreLink>
     </div>
   );
 }
@@ -186,7 +164,6 @@ function CompanyMenu({ onNavigate }) {
 
 const menus = {
   services: ServicesMenu,
-  industries: IndustriesMenu,
   hire: HireMenu,
   company: CompanyMenu,
 };

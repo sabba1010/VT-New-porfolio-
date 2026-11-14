@@ -62,33 +62,34 @@ export default function Hero() {
       <div className="container hero__content">
         <p className="hero__badge hero-in" style={{ '--d': '0ms' }}>
           <span className="hero__badge-tag">
-            <Sparkles size={13} /> New
+            <Sparkles size={13} /> AI
           </span>
-          Software development for global businesses
+          Top Software Development &amp; AI Company
         </p>
 
-        <h1 id="hero-title" className="hero__title" aria-label="Engineering Digital Products That Move Businesses Forward.">
+        <h1 id="hero-title" className="hero__title" aria-label="AI-Powered Software That Grows Your Business.">
           <SplitWords
             parts={[
-              { text: 'Engineering Digital Products' },
-              { text: 'That Move' },
-              { text: 'Businesses', mark: true },
-              { text: 'Forward.', className: 'hero__dim' },
+              { text: 'AI-Powered Software' },
+              { text: 'That' },
+              { text: 'Grows', mark: true },
+              { text: 'Your' },
+              { text: 'Business.', className: 'hero__dim' },
             ]}
           />
         </h1>
 
         <p className="hero__desc hero-in" style={{ '--d': '520ms' }}>
-          We build web apps, mobile apps, AI solutions and custom software for startups and
-          enterprises worldwide — with an in-house design team so it looks as good as it works.
+          We automate your workflows, integrate AI into the tools you already use and build custom
+          software that helps your business grow — for startups and enterprises worldwide.
         </p>
 
         <div className="hero__ctas hero-in" style={{ '--d': '600ms' }}>
           <Button href="/contact" size="lg">
             Let&apos;s Talk
           </Button>
-          <Button href="/case-studies" size="lg" variant="ghost">
-            Explore Our Work
+          <Button href="/#ai" size="lg" variant="ghost">
+            Explore AI Solutions
           </Button>
         </div>
 

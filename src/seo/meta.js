@@ -6,7 +6,7 @@
 import { site, absUrl } from '../data/site';
 import { company } from '../data/content';
 import { services, getService } from '../data/services';
-import { industries, getIndustry } from '../data/industries';
+
 import { hireRoles, getRole } from '../data/hire';
 import { caseStudies, getCaseStudy } from '../data/caseStudies';
 import { posts, getPost } from '../data/blog';
@@ -56,8 +56,7 @@ const serviceLd = (s, path) => ({
 /* ───────────── Static pages ───────────── */
 const staticPages = {
   '/': { title: null, description: site.description, ld: () => [organization(), website()] },
-  '/services': { title: 'Software Development Services', description: 'Web, mobile, AI, AI automation, e-commerce, CMS and custom software development, plus in-house UI/UX, product and packaging design.', crumb: 'Services' },
-  '/industries': { title: 'Industries We Serve', description: 'Software solutions for healthcare, fintech, education, real estate, e-commerce, logistics and more.', crumb: 'Industries' },
+  '/services': { title: 'AI & Software Development Services', description: 'AI automation, AI integration and AI for business growth, plus web, mobile, e-commerce, CMS and custom software development and in-house UI/UX, product and packaging design.', crumb: 'Services' },
   '/hire-developers': { title: 'Hire Dedicated Developers', description: 'Hire pre-vetted AI, web, mobile and CMS developers who work in your time zone. Start in two weeks with a risk-free trial.', crumb: 'Hire Developers' },
   '/case-studies': { title: 'Case Studies', description: 'Real projects and measurable results from products designed and engineered by Velotech.', crumb: 'Case Studies' },
   '/about': { title: 'About Us', description: 'Velotech is a digital engineering agency with teams across six countries, helping businesses turn ideas into scalable products.', crumb: 'About Us' },
@@ -79,17 +78,6 @@ const dynamic = [
       description: `${s.tagline} ${s.desc}`,
       image: s.image,
       ld: [breadcrumbs([{ name: 'Services', path: '/services' }, { name: s.title, path }]), serviceLd(s, path)],
-    }),
-  },
-  {
-    base: '/industries',
-    get: getIndustry,
-    list: industries,
-    meta: (i, path) => ({
-      title: `${i.name} Software Development`,
-      description: i.desc,
-      image: i.image,
-      ld: [breadcrumbs([{ name: 'Industries', path: '/industries' }, { name: i.name, path }])],
     }),
   },
   {

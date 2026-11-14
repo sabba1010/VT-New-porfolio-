@@ -1,33 +1,58 @@
+import { useId } from 'react';
 import { brand } from '../../data/images';
 
 /**
- * Velotech logo placeholder. To use your own logo, set `brand.logo`
+ * Velotech logo: a solid circle split by a negative-space "V" — the outer
+ * piece in ink/white, the wedge inside the V in brand orange — next to a
+ * bold wordmark. To use an image file instead, set `brand.logo`
  * (and `brand.logoLight` for dark backgrounds) in src/data/images.js.
  */
+export function LogoMark({ size = 36, light = false }) {
+  // unique ids per instance (header, footer and mobile nav each render one)
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, '');
+  const cut = `vt-cut-${uid}`;
+  const clip = `vt-clip-${uid}`;
+  const body = light ? '#ffffff' : '#0b0d12';
+  return (
+    <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+      <defs>
+        {/* the V-shaped gap that splits the circle */}
+        <mask id={cut} maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+          <rect width="64" height="64" fill="#fff" />
+          <polyline points="5,2 32,47 59,2" fill="none" stroke="#000" strokeWidth="6.5" strokeLinejoin="miter" strokeMiterlimit="10" />
+        </mask>
+        <clipPath id={clip}>
+          <circle cx="32" cy="32" r="29" />
+        </clipPath>
+      </defs>
+      <g mask={`url(#${cut})`}>
+        <circle cx="32" cy="32" r="29" fill={body} />
+        {/* wedge inside the V */}
+        <polygon points="5,2 32,47 59,2" fill="#ff5b2e" clipPath={`url(#${clip})`} />
+      </g>
+    </svg>
+  );
+}
+
 export default function Logo({ light = false }) {
   const src = light ? brand.logoLight || brand.logo : brand.logo;
   if (src) {
     return <img src={src} alt="Velotech" height="36" style={{ height: 36, width: 'auto' }} />;
   }
-  const tile = light ? '#ffffff' : '#0b0d12';
-  const mark = light ? '#0b0d12' : '#ffffff';
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
-      <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true">
-        <rect width="64" height="64" rx="16" fill={tile} />
-        <path d="M15 18h9l8 18 8-18h9L36 46h-8z" fill={mark} />
-        <circle cx="48" cy="46" r="5" fill="#ff5b2e" />
-      </svg>
+      <LogoMark light={light} />
       <span
         style={{
           fontFamily: 'var(--font-heading)',
-          fontWeight: 800,
-          fontSize: 20,
-          letterSpacing: '0.06em',
+          fontWeight: 700,
+          fontSize: 24,
+          letterSpacing: '-0.04em',
+          lineHeight: 1,
           color: light ? '#fff' : '#0b0d12',
         }}
       >
-        VELOTECH
+        Velotech
       </span>
     </span>
   );

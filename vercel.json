@@ -1,6 +1,18 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/industries",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
+      "source": "/industries/:slug",
+      "destination": "/case-studies?industry=:slug",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

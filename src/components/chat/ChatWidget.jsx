@@ -86,6 +86,18 @@ export default function ChatWidget() {
 
   useEffect(() => () => abortRef.current?.abort(), []);
 
+  // Other parts of the site can open the chat (optionally with a question):
+  // window.dispatchEvent(new CustomEvent('velotech:chat', { detail: 'question…' }))
+  const sendRef = useRef(null);
+  useEffect(() => {
+    const onOpen = (e) => {
+      setOpen(true);
+      if (typeof e.detail === 'string' && e.detail) setTimeout(() => sendRef.current?.(e.detail), 250);
+    };
+    window.addEventListener('velotech:chat', onOpen);
+    return () => window.removeEventListener('velotech:chat', onOpen);
+  }, []);
+
   if (!cfg.enabled) return null;
 
   const send = async (text) => {
@@ -134,6 +146,8 @@ export default function ChatWidget() {
       abortRef.current = null;
     }
   };
+
+  sendRef.current = send;
 
   const reset = () => {
     abortRef.current?.abort();

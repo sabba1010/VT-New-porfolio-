@@ -10,7 +10,6 @@ import './Footer.css';
 const resources = [
   { label: 'Case Studies', href: '/case-studies' },
   { label: 'Hire Developers', href: '/hire-developers' },
-  { label: 'Industries', href: '/industries' },
   { label: 'Blog & Insights', href: '/blog' },
   { label: 'Careers', href: '/careers' },
   { label: 'FAQ', href: '/contact#faq' },
@@ -42,8 +41,8 @@ export default function Footer() {
           <div className="footer__brand">
             <Logo light />
             <p>
-              Velotech is a software development agency building web apps, mobile apps, AI and custom
-              software for businesses worldwide — with an in-house design team.
+              Velotech is a software development and AI company. We automate workflows, integrate AI
+              into your tools and build custom software that helps businesses worldwide grow.
             </p>
             {activeSocials.length > 0 && (
               <div className="footer__socials">

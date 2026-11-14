@@ -5,7 +5,7 @@ import './Manifesto.css';
 
 // Words wrapped in *asterisks* are highlighted in the accent colour.
 const STATEMENT =
-  'We are a team of engineers and designers who turn bold ideas into *software products* people love — built fast, built right, and built to *scale* with your business.';
+  'We are a team of engineers and AI specialists who turn bold ideas into *intelligent software* — automating the busywork, connecting your tools and helping your business *grow*.';
 
 const words = STATEMENT.split(' ').map((raw, i) => {
   const accent = raw.includes('*');
@@ -69,7 +69,6 @@ export default function Manifesto() {
         <div className="container mf__inner">
           <div className="mf__label">
             <span className="eyebrow">Who we are</span>
-            <span className="mf__index">( 01 )</span>
           </div>
           <p className="mf__text">
             {words.map((w) => (

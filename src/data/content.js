@@ -8,8 +8,28 @@ import {
 import * as img from './images.js';
 
 // Detail-page data lives in its own modules; re-exported here for convenience.
-export { services, getService, developmentServices, designServices } from './services.js';
+export { services, getService, aiServices, developmentServices, designServices } from './services.js';
 export { industries, getIndustry } from './industries.js';
+import { industries as allIndustries } from './industries.js';
+import { caseStudies as allCaseStudies } from './caseStudies.js';
+
+/**
+ * Industries that have at least one case study, each linking straight to its
+ * work: one case study → that case study's page; several → the case-studies
+ * list filtered to the industry. Industries without a case study are left out,
+ * so add a case study (src/data/caseStudies.js) to make an industry appear.
+ */
+export const industryCases = allIndustries
+  .map((ind) => {
+    const cases = allCaseStudies.filter((c) => c.industrySlug === ind.slug);
+    if (!cases.length) return null;
+    return {
+      ...ind,
+      cases,
+      href: cases.length === 1 ? `/case-studies/${cases[0].slug}` : `/case-studies?industry=${ind.slug}`,
+    };
+  })
+  .filter(Boolean);
 export { hireGroups, hireRoles, getRole } from './hire.js';
 export { hireGroups as hireDevelopers } from './hire.js';
 export { caseStudies, getCaseStudy } from './caseStudies.js';
@@ -23,7 +43,7 @@ export { jobs, getJob } from './careers.js';
  */
 export const company = {
   name: 'Velotech',
-  tagline: 'Software development & design agency',
+  tagline: 'Software development & AI company',
   email: 'hello@velotech.example', // ← your real inbox (shown everywhere)
   phone: '', // e.g. '+880 1XXX-XXXXXX' — international format
   whatsapp: '', // e.g. '8801XXXXXXXXX' (digits only) — adds a WhatsApp button
@@ -252,6 +272,14 @@ export const realPartners = partners.filter((p) => !p.sample);
 /* ─────────────────────────── FAQ ─────────────────────────── */
 export const faqs = [
   {
+    q: 'Can you add AI to the software we already use?',
+    a: 'Yes — that’s one of the most common things we do. We connect AI to your existing CRM, ERP, help desk, website or app through secure APIs, so your team gets AI features like smart search, auto-drafted replies and automated workflows without rebuilding anything.',
+  },
+  {
+    q: 'Is our data safe when we use AI?',
+    a: 'We design every AI project with data privacy in mind: access controls, audit logs and only the data a feature actually needs. We happily sign an NDA, and we’ll walk you through how your data is handled before anything goes live.',
+  },
+  {
     q: 'How long does it take to build a software product?',
     a: 'Timelines depend on scope. A focused MVP typically takes 8–12 weeks, while larger platforms run 4–9 months. After discovery, we provide a detailed roadmap with milestones so you always know what ships when.',
   },
@@ -289,7 +317,6 @@ export const faqs = [
 export const nav = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services', mega: 'services' },
-  { label: 'Industries', href: '/industries', mega: 'industries' },
   // Hidden from the navbar for now — the /hire-developers pages still exist.
   // Uncomment to bring the menu back.
   // { label: 'Hire Developers', href: '/hire-developers', mega: 'hire' },

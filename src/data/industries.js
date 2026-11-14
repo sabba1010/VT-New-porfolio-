@@ -3,7 +3,7 @@ import {
 } from 'lucide-react';
 import { industries as img } from './images.js';
 
-/** Industries — powers the home section, mega menu, /industries and /industries/:slug. */
+/** Industries — powers the home "Industries we serve" section, which links each industry to its case study. */
 export const industries = [
   {
     slug: 'healthcare', name: 'Healthcare', icon: HeartPulse, image: img.healthcare,

@@ -35,7 +35,7 @@ export default function CaseStudyDetail() {
             <div>
               <dt>Industry</dt>
               <dd>
-                <Link to={`/industries/${cs.industrySlug}`}>{cs.industry}</Link>
+                <Link to={`/case-studies?industry=${cs.industrySlug}`}>{cs.industry}</Link>
               </dd>
             </div>
             <div>
