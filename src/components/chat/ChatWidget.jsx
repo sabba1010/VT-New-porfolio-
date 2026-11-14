@@ -26,7 +26,7 @@ const save = (msgs) => {
 
 /** Turns /paths, URLs and emails in plain-text replies into links. */
 function RichText({ text }) {
-  const parts = text.split(/(https?:\/\/[^\s)]+|[\w.+-]+@[\w-]+\.[\w.]+|(?<![\w/])\/[a-z][\w\-/#]*)/gi);
+  const parts = text.split(/(https?:\/\/[^\s)]+|[\w.+-]+@[\w-]+\.[\w.]+|(?<![\w/])\/[a-z][\w\-/#?=&.]*)/gi);
   return parts.map((p, i) => {
     if (!p) return null;
     const clean = p.replace(/[.,!?;:]+$/, '');
@@ -48,7 +48,8 @@ function RichText({ text }) {
     if (/^\/[a-z]/i.test(clean))
       return (
         <Fragment key={i}>
-          <Link to={clean}>{clean}</Link>
+          {/* friendlier label for the long pre-filled audit link */}
+          <Link to={clean}>{clean.includes('topic=ai-audit') ? 'Book your free AI audit' : clean}</Link>
           {tail}
         </Fragment>
       );

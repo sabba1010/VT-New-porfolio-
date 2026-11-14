@@ -2,11 +2,14 @@
  * AI chat endpoint (shared by the Vercel function in /api and the Vite dev server).
  * Streams the assistant's reply back as plain text.
  *
- * Needs ANTHROPIC_API_KEY in the environment (Vercel → Project → Settings →
+ * With ANTHROPIC_API_KEY set, replies come from Claude. Without it (or if the
+ * API fails) replies come from the local answer engine in chat-local.js.
+ * Set ANTHROPIC_API_KEY in the environment (Vercel → Project → Settings →
  * Environment Variables; locally in a .env file). The key never reaches the browser.
  */
 import Anthropic from '@anthropic-ai/sdk';
 import { CHAT_SYSTEM_PROMPT } from '../src/data/chatKnowledge.js';
+import { localReply } from './chat-local.js';
 
 const MODEL = 'claude-opus-5-5';
 const MAX_TURNS = 16; // history sent per request
@@ -56,9 +59,6 @@ function send(res, status, text) {
 
 export async function handleChat(req, res) {
   if (req.method !== 'POST') return send(res, 405, 'Method not allowed');
-  if (!process.env.ANTHROPIC_API_KEY && !process.env.ANTHROPIC_AUTH_TOKEN) {
-    return send(res, 503, 'The assistant is not configured yet.');
-  }
 
   const ip = String(req.headers['x-forwarded-for'] ?? req.socket?.remoteAddress ?? 'unknown').split(',')[0].trim();
   if (rateLimited(ip)) return send(res, 429, 'Too many messages — please wait a few minutes.');
@@ -70,6 +70,12 @@ export async function handleChat(req, res) {
     messages = null;
   }
   if (!messages) return send(res, 400, 'Invalid conversation.');
+
+  // No API key yet → answer from the site's own content so visitors can still chat
+  if (!process.env.ANTHROPIC_API_KEY && !process.env.ANTHROPIC_AUTH_TOKEN) {
+    res.setHeader('X-Chat-Mode', 'local');
+    return send(res, 200, localReply(messages));
+  }
 
   client ??= new Anthropic();
 
@@ -115,8 +121,9 @@ export async function handleChat(req, res) {
       console.error('[chat] error:', err);
     }
     if (!res.writableEnded) {
-      if (!wroteText && !res.headersSent) return send(res, 502, 'The assistant is unavailable right now.');
-      res.end(wroteText ? '' : 'Sorry, something went wrong. Please try again or use /contact.');
+      // API failed before any text was sent → fall back to the local answer engine
+      if (!wroteText && err?.name !== 'APIUserAbortError') return res.end(localReply(messages));
+      res.end();
     }
   }
 }
