@@ -1,17 +1,22 @@
 import Reveal from '../ui/Reveal';
 import Button from '../ui/Button';
+import { auditHref } from '../../data/content';
 import './page.css';
 
-/** Compact dark call-to-action used at the bottom of inner pages. */
+/**
+ * Compact dark call-to-action used at the bottom of inner pages.
+ * Default offer: a free 30-minute AI audit (goes to your booking link,
+ * or the contact form with the topic pre-filled).
+ */
 export default function CTABanner({
   title = (
     <>
-      Have an Idea? Let&apos;s Build Something <span className="text-gradient">Extraordinary.</span>
+      Not sure where AI fits? <span className="text-gradient">Let&apos;s find out together.</span>
     </>
   ),
-  desc = 'Tell us about your goals — we will reply within one business day with next steps and a free consultation.',
-  cta = "Let's Talk",
-  href = '/contact',
+  desc = 'Book a free 30-minute AI audit. We’ll look at how your team works today and show you what to automate first — no strings attached.',
+  cta = 'Book a Free AI Audit',
+  href = auditHref,
 }) {
   return (
     <section className="section ctab-wrap">

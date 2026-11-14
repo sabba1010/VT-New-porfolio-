@@ -18,6 +18,13 @@ export async function render(url) {
         <AppRoutes />
       </StaticRouter>
     </StrictMode>,
+    {
+      // Keep every <Suspense> boundary's HTML in place. By default React
+      // "outlines" large boundaries into a hidden <div> and reveals them with
+      // an inline "$RC" script — which our CSP (script-src 'self') blocks in
+      // production, causing React error #419 and a blank flash on every page.
+      progressiveChunkSize: Number.MAX_SAFE_INTEGER,
+    },
   );
   let html = '';
   for await (const chunk of prelude) html += chunk;

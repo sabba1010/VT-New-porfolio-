@@ -1,0 +1,122 @@
+/* ─────────────────────────────────────────────
+   Ways to work with us (engagement models)
+   ───────────────────────────────────────────── */
+.engage__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--sp-4);
+  margin: var(--sp-7) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.engage__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  border-radius: var(--r-xl);
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.engage__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.engage__card.is-featured {
+  --c-accent: var(--c-accent-bright);
+  background: var(--c-ink);
+  border-color: var(--c-ink);
+  color: #fff;
+}
+
+.engage__badge {
+  position: absolute;
+  top: -12px;
+  left: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  background: var(--c-accent-bright);
+  color: #fff;
+  font: 700 var(--fs-xs) / 1 var(--font-heading);
+  letter-spacing: 0.02em;
+}
+
+.engage__name {
+  font-size: var(--fs-md);
+}
+
+.engage__price {
+  margin: var(--sp-4) 0 0;
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.is-featured .engage__price {
+  color: var(--c-accent-bright);
+}
+
+.engage__term {
+  margin: 4px 0 0;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-text-muted);
+}
+
+.is-featured .engage__term,
+.is-featured .engage__desc,
+.is-featured .engage__points li {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.engage__desc {
+  margin: var(--sp-4) 0 0;
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+
+.engage__points {
+  display: grid;
+  gap: 8px;
+  margin: var(--sp-5) 0 var(--sp-6);
+  padding: 0;
+  list-style: none;
+}
+
+.engage__points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: var(--fs-sm);
+  color: var(--c-text);
+}
+
+.engage__points svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--c-accent);
+}
+
+.engage__cta {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+@media (max-width: 1100px) {
+  .engage__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: var(--sp-6);
+  }
+}
+
+@media (max-width: 600px) {
+  .engage__grid {
+    grid-template-columns: 1fr;
+  }
+}

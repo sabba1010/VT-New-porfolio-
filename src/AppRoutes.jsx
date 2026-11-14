@@ -7,8 +7,6 @@ import NotFound from './pages/NotFound';
 // Inner pages are code-split so the home page stays fast.
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
-const HirePage = lazy(() => import('./pages/HirePage'));
-const HireDetail = lazy(() => import('./pages/HireDetail'));
 const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
 const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -30,8 +28,6 @@ export default function AppRoutes() {
         <Route path="services/:slug" element={<ServiceDetail />} />
 
 
-        <Route path="hire-developers" element={<HirePage />} />
-        <Route path="hire-developers/:slug" element={<HireDetail />} />
 
         <Route path="case-studies" element={<CaseStudiesPage />} />
         <Route path="case-studies/:slug" element={<CaseStudyDetail />} />

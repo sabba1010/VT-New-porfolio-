@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import Button from '../components/ui/Button';
 import { caseStudies } from '../data/content';
+import { site } from '../data/site';
 import { gsap, MQ_DESKTOP, MQ_MOTION } from '../lib/motion';
 import './CaseScroll.css';
 
-const TITLE = [
-  { t: 'Real' },
-  { t: 'projects.' },
-  { t: 'Measurable', accent: true },
-  { t: 'results.' },
-];
+const SAMPLE = Boolean(site.proof?.sampleWork);
+
+// While the projects are examples, don't claim "measurable results"
+const TITLE = SAMPLE
+  ? [{ t: 'Products' }, { t: '&' }, { t: 'automations' }, { t: 'we' }, { t: 'build.', accent: true }]
+  : [{ t: 'Real' }, { t: 'projects.' }, { t: 'Measurable', accent: true }, { t: 'results.' }];
 
 /**
  * Pinned horizontal-scroll showcase (home page), powered by GSAP ScrollTrigger.
@@ -119,7 +120,7 @@ export default function CaseScroll({ limit = 6 }) {
       <div className="cscroll__pin">
         <div className="cscroll__inner">
           <div className="cscroll__intro">
-            <span className="eyebrow cscroll__eyebrow">Our case studies</span>
+            <span className="eyebrow cscroll__eyebrow">{SAMPLE ? 'Example projects' : 'Our case studies'}</span>
             <h2 className="cscroll__title" id="cscroll-title">
               {TITLE.map(({ t, accent }) => (
                 <span className="wmask" key={t}>
@@ -128,7 +129,9 @@ export default function CaseScroll({ limit = 6 }) {
               ))}
             </h2>
             <p className="cscroll__desc">
-              A selection of products we have designed, engineered and scaled with our partners.
+              {SAMPLE
+                ? 'Example projects that show how we approach AI and software builds — from first idea to launch.'
+                : 'A selection of products we have designed, engineered and scaled with our partners.'}
             </p>
             <div className="cscroll__cta">
               <Button href="/case-studies" variant="outline">
@@ -153,9 +156,11 @@ export default function CaseScroll({ limit = 6 }) {
                     <span className="cscard__media">
                       <img src={item.image} alt={`${item.name} project preview`} loading="lazy" decoding="async" />
                       <span className="cscard__num">{String(i + 1).padStart(2, '0')}</span>
-                      <span className="cscard__metric">
-                        <strong>{item.metric.value}</strong> {item.metric.label}
-                      </span>
+                      {item.metric && (
+                        <span className="cscard__metric">
+                          <strong>{item.metric.value}</strong> {item.metric.label}
+                        </span>
+                      )}
                     </span>
                     <span className="cscard__body">
                       <span className="cscard__text">

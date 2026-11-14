@@ -11,6 +11,16 @@
       "source": "/industries/:slug",
       "destination": "/case-studies?industry=:slug",
       "permanent": true
+    },
+    {
+      "source": "/hire-developers",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/hire-developers/:slug",
+      "destination": "/services",
+      "permanent": true
     }
   ],
   "headers": [

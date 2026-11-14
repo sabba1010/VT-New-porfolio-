@@ -17,9 +17,11 @@ export function CaseCard({ item, featured, delay }) {
       <Link to={`/case-studies/${item.slug}`} className="case__media" onPointerMove={onMove} aria-label={`View case study: ${item.name}`}>
         <img src={item.image} alt={`${item.name} project preview`} loading="lazy" />
         <span className="case__badge">{item.industry}</span>
-        <span className="case__metric">
-          <strong>{item.metric.value}</strong> {item.metric.label}
-        </span>
+        {item.metric && (
+          <span className="case__metric">
+            <strong>{item.metric.value}</strong> {item.metric.label}
+          </span>
+        )}
         <span className="case__cursor" aria-hidden="true">
           View <ArrowUpRight size={16} />
         </span>

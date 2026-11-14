@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap, MQ_DESKTOP, MQ_MOTION } from '../lib/motion';
 import { stats } from '../data/content';
+import { site } from '../data/site';
 import './Manifesto.css';
 
 // Words wrapped in *asterisks* are highlighted in the accent colour.
@@ -82,7 +83,9 @@ export default function Manifesto() {
               <span className="mf__line" />
             </span>
             <span className="mf__note">
-              {stats.slice(0, 2).map((s) => `${s.value}${s.suffix} ${s.label}`).join(' · ')}
+              {site.proof?.stats
+                ? stats.slice(0, 2).map((s) => `${s.value}${s.suffix} ${s.label}`).join(' · ')
+                : 'AI automation · AI integration · Custom software'}
             </span>
           </div>
         </div>

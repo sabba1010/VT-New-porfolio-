@@ -4,7 +4,7 @@
  */
 import { site } from './site.js';
 import { company, faqs, stats, approach, activeSocials } from './content.js';
-import { aiServices, developmentServices, designServices } from './services.js';
+import { aiServices, developmentServices } from './services.js';
 
 const list = (items) => items.map((s) => `- ${s.title} (/services/${s.slug}): ${s.desc}`).join('\n');
 
@@ -45,18 +45,21 @@ ${company.name} — ${company.tagline}. Clients worldwide; work happens in Engli
 AI services (our main focus):
 ${list(aiServices)}
 
-Software development services:
+Software development and UI/UX design services:
 ${list(developmentServices)}
-
-In-house design services:
-${list(designServices)}
 
 How we work:
 ${approach.map((s) => `${s.step}. ${s.title} — ${s.desc}`).join('\n')}
 
-Key numbers shown on the website:
-${stats.map((s) => `- ${s.value}${s.suffix} ${s.label}`).join('\n')}
-
+${
+  site.proof?.stats
+    ? `Key numbers shown on the website:\n${stats.map((s) => `- ${s.value}${s.suffix} ${s.label}`).join('\n')}\n`
+    : 'Do not quote numbers of projects, clients, staff or years in business — they are not published.\n'
+}${
+  site.proof?.sampleWork
+    ? 'The projects on /case-studies are example projects, not named client engagements — never present them as real clients or quote their results. If asked for references or past clients, offer to have the team share relevant examples on a call via /contact.\n'
+    : ''
+}${site.proof?.offices ? '' : 'Do not mention office locations; say the team works remotely with clients worldwide.\n'}
 Frequently asked questions:
 ${faqs.map((f) => `Q: ${f.q}\nA: ${f.a}`).join('\n\n')}
 

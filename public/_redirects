@@ -1,3 +1,5 @@
 /industries        /case-studies                  301
 /industries/:slug  /case-studies?industry=:slug   301
+/hire-developers   /services                      301
+/hire-developers/* /services                      301
 /*  /404.html  404

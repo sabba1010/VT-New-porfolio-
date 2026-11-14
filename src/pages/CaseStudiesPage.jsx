@@ -4,6 +4,9 @@ import CTABanner from '../components/page/CTABanner';
 import { CaseCard } from '../sections/CaseStudies';
 import Stats from '../sections/Stats';
 import { caseStudies } from '../data/content';
+import { site } from '../data/site';
+
+const SAMPLE = Boolean(site.proof?.sampleWork);
 
 export default function CaseStudiesPage() {
   // Filter is kept in the URL (?industry=fintech) so filtered views are shareable
@@ -22,10 +25,22 @@ export default function CaseStudiesPage() {
         eyebrow="Our work"
         title={
           <>
-            Real projects. <span className="text-gradient">Measurable results.</span>
+            {SAMPLE ? (
+              <>
+                What we build. <span className="text-gradient">How we build it.</span>
+              </>
+            ) : (
+              <>
+                Real projects. <span className="text-gradient">Measurable results.</span>
+              </>
+            )}
           </>
         }
-        desc="Explore how we help startups and enterprises design, build and scale digital products. (Sample projects — replace with your own.)"
+        desc={
+          SAMPLE
+            ? "Example projects that show the kind of AI and software products we design and build — the problem, our approach and the tech behind it."
+            : "Explore how we help startups and enterprises design, build and scale digital products."
+        }
       />
       <section className="section">
         <div className="container">

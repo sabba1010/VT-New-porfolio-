@@ -1,0 +1,250 @@
+/* ─────────────────────────────────────────────
+   Contact page — info panel + form
+   ───────────────────────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(1rem, 0.5rem + 1.5vw, 1.75rem);
+  align-items: stretch; /* both columns share one height — no empty gap */
+}
+
+/* ── Left: dark info panel ── */
+.contact-aside {
+  --c-accent: var(--c-accent-bright);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  border-radius: var(--r-xl);
+  background: var(--c-ink);
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.contact-aside::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 70%);
+}
+
+.contact-aside__glow {
+  position: absolute;
+  right: -30%;
+  top: -35%;
+  width: 80%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 91, 46, 0.32), transparent 65%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.contact-aside .eyebrow {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.contact-aside__title {
+  margin-top: var(--sp-5);
+  font-size: var(--fs-2xl);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.contact-aside__lead {
+  margin: var(--sp-3) 0 0;
+  max-width: 40ch;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+/* contact channels */
+.contact-aside__channels {
+  display: grid;
+  gap: 10px;
+  margin: var(--sp-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-aside__channels li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+
+.contact-aside__channels li:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-aside__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--c-accent-bright), var(--c-accent-2));
+  color: #fff;
+}
+
+.contact-aside__channels div {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.contact-aside__label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-aside__channels a,
+.contact-aside__channels p {
+  margin: 0;
+  font-weight: 700;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.contact-aside__channels a:hover {
+  color: var(--c-accent-bright);
+}
+
+/* what happens next */
+.contact-aside__next {
+  margin-top: var(--sp-7);
+}
+
+.contact-aside__next h3 {
+  font-size: var(--fs-md);
+  color: #fff;
+}
+
+.contact-aside__next ol {
+  position: relative;
+  display: grid;
+  gap: var(--sp-5);
+  margin: var(--sp-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* the vertical line joining the steps */
+.contact-aside__next ol::before {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--c-accent-bright), rgba(255, 255, 255, 0.08));
+}
+
+.contact-aside__next li {
+  position: relative;
+  display: flex;
+  gap: 14px;
+}
+
+.contact-aside__step {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: var(--c-ink);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font: 700 var(--fs-xs) / 1 var(--font-heading);
+  color: #fff;
+}
+
+.contact-aside__next li:first-child .contact-aside__step {
+  background: var(--c-accent-bright);
+  border-color: var(--c-accent-bright);
+}
+
+.contact-aside__next li div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 6px;
+}
+
+.contact-aside__next strong {
+  font-family: var(--font-heading);
+  font-size: var(--fs-base);
+  color: #fff;
+}
+
+.contact-aside__next li span:not(.contact-aside__step) {
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* trust chips pinned to the bottom */
+.contact-aside__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: auto 0 0;
+  padding: var(--sp-6) 0 0;
+  list-style: none;
+}
+
+.contact-aside__trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-aside__trust svg {
+  color: var(--c-accent-bright);
+}
+
+/* ── Right: form card ── */
+.contact-form-card {
+  padding: clamp(1.25rem, 1rem + 1.5vw, 2.25rem);
+  border-radius: var(--r-xl);
+}
+
+.contact-form-card .form__title {
+  font-size: var(--fs-xl);
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  /* form first on phones — it's what people came for */
+  .contact-form-card {
+    order: -1;
+  }
+}

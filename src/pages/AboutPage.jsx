@@ -8,6 +8,8 @@ import Testimonials from '../sections/Testimonials';
 import Partners from '../sections/Partners';
 import Standards from '../sections/Standards';
 import { culture } from '../data/images';
+import { site } from '../data/site';
+import { auditHref } from '../data/content';
 
 export default function AboutPage() {
   return (
@@ -17,25 +19,25 @@ export default function AboutPage() {
         eyebrow="About Velotech"
         title={
           <>
-            We engineer products that <span className="text-gradient">move businesses forward</span>
+            We build AI and software that <span className="text-gradient">moves businesses forward</span>
           </>
         }
-        desc="A team of designers, engineers and strategists across six countries, partnering with startups and enterprises since 2018."
+        desc="A team of engineers, AI specialists and designers across six countries, helping businesses automate their busywork, add AI to the tools they already use and build software that grows with them since 2018."
         actions={
           <>
-            <Button href="/careers" size="lg">
-              Join Our Team
+            <Button href={auditHref} size="lg">
+              Book a Free AI Audit
             </Button>
-            <Button href="/contact" size="lg" variant="outline">
-              Work With Us
+            <Button href="/case-studies" size="lg" variant="outline">
+              See What We Build
             </Button>
           </>
         }
-        aside={<img src={culture[0]} alt="Velotech team at work (placeholder)" />}
+        aside={<img src={culture[0]} alt="The Velotech team at work" />}
       />
       <About />
       <Stats />
-      <GlobalPresence />
+      {site.proof?.offices && <GlobalPresence />}
       <Standards />
       <Testimonials />
       <Partners />

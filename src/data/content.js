@@ -8,7 +8,7 @@ import {
 import * as img from './images.js';
 
 // Detail-page data lives in its own modules; re-exported here for convenience.
-export { services, getService, aiServices, developmentServices, designServices } from './services.js';
+export { services, getService, aiServices, developmentServices } from './services.js';
 export { industries, getIndustry } from './industries.js';
 import { industries as allIndustries } from './industries.js';
 import { caseStudies as allCaseStudies } from './caseStudies.js';
@@ -30,8 +30,6 @@ export const industryCases = allIndustries
     };
   })
   .filter(Boolean);
-export { hireGroups, hireRoles, getRole } from './hire.js';
-export { hireGroups as hireDevelopers } from './hire.js';
 export { caseStudies, getCaseStudy } from './caseStudies.js';
 export { posts, getPost } from './blog.js';
 export { jobs, getJob } from './careers.js';
@@ -65,6 +63,9 @@ export const activeSocials = company.socials.filter((s) => s.href && s.href !== 
 export const telHref = (phone) => `tel:${phone.replace(/[^+\d]/g, '')}`;
 export const whatsappHref = (msg = 'Hi! I would like to discuss a project.') =>
   company.whatsapp ? `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(msg)}` : '';
+/** Where every "Book a free AI audit" button goes: your booking link if set,
+    otherwise the contact form with the topic pre-filled. */
+export const auditHref = company.bookingUrl || '/contact?topic=ai-audit#contact';
 
 /* ─────────────────────────── Company (mega menu) ─────────────────────────── */
 /* Leadership team (About page). Fill in `name` and swap the photos in
@@ -211,6 +212,58 @@ export const approach = [
   { step: '04', title: 'Scale', desc: 'Monitoring, optimization and long-term product partnership.' },
 ];
 
+/* ─────────────────────────── Ways to work with us ───────────────────────────
+   Shown on /services and the AI service pages. `price` is what visitors see —
+   leave it '' to show the `fallback` text instead (e.g. 'From $1,500'). */
+export const engagements = [
+  {
+    id: 'audit',
+    name: 'Free AI Audit',
+    price: 'Free',
+    fallback: 'Free',
+    term: '30-minute call',
+    desc: 'We look at how your team works today and point out the quickest, safest wins for AI.',
+    points: ['Map your current workflows', 'Spot what to automate first', 'Rough cost & timeline'],
+    cta: 'Book a Free AI Audit',
+    href: 'audit', // → your booking link or the pre-filled contact form
+    featured: true,
+    badge: 'Best place to start',
+  },
+  {
+    id: 'pilot',
+    name: 'Pilot Project',
+    price: '',
+    fallback: 'Fixed price',
+    term: 'One workflow, end to end',
+    desc: 'We automate one real process, measure the time it saves and hand it over working.',
+    points: ['Clear scope and fixed quote', 'Live in your tools, not a demo', 'You own the code and setup'],
+    cta: 'Start a Pilot',
+    href: '/contact',
+  },
+  {
+    id: 'build',
+    name: 'Full Build',
+    price: '',
+    fallback: 'Custom quote',
+    term: 'AI systems & software',
+    desc: 'Larger automations, AI integrations or a complete web, mobile or custom software product.',
+    points: ['Delivered in sprints', 'Weekly demos and updates', 'Security and testing built in'],
+    cta: 'Get a Quote',
+    href: '/contact',
+  },
+  {
+    id: 'care',
+    name: 'Ongoing Care',
+    price: '',
+    fallback: 'Monthly plan',
+    term: 'After launch',
+    desc: 'We monitor, improve and extend your automations and software as your business grows.',
+    points: ['Monitoring and fixes', 'New automations as you grow', 'Priority support'],
+    cta: 'Ask About Care Plans',
+    href: '/contact',
+  },
+];
+
 /* ─────────────────────────── Global presence ─────────────────────────── */
 // lat / lon are used to position pins on the map.
 export const locations = [
@@ -317,9 +370,6 @@ export const faqs = [
 export const nav = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services', mega: 'services' },
-  // Hidden from the navbar for now — the /hire-developers pages still exist.
-  // Uncomment to bring the menu back.
-  // { label: 'Hire Developers', href: '/hire-developers', mega: 'hire' },
   { label: 'Company', href: '/about', mega: 'company' },
   { label: 'Case Studies', href: '/case-studies' },
   { label: 'Contact Us', href: '/contact' },

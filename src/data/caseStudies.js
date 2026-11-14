@@ -1,10 +1,11 @@
 import { projects } from './images.js';
+import { site } from './site.js';
 
 /**
- * SAMPLE case studies — replace with your real projects.
+ * Case studies — replace with your real projects (see site.proof.sampleWork).
  * Powers the home showcase, /case-studies and /case-studies/:slug.
  */
-export const caseStudies = [
+const allCaseStudies = [
   {
     slug: 'pulsecare-telehealth',
     name: 'Pulsecare Telehealth',
@@ -138,5 +139,12 @@ export const caseStudies = [
     ],
   },
 ];
+
+/* While site.proof.sampleWork is on these are example projects: the invented
+   client names and result numbers are stripped so they never appear on the
+   site (or in the chatbot). Turn sampleWork off once the projects are real. */
+export const caseStudies = site.proof?.sampleWork
+  ? allCaseStudies.map(({ metric, results, client, duration, team, ...c }) => ({ ...c, sample: true }))
+  : allCaseStudies;
 
 export const getCaseStudy = (slug) => caseStudies.find((c) => c.slug === slug);

@@ -8,6 +8,7 @@ import Button from '../components/ui/Button';
 import SmartImage from '../components/ui/SmartImage';
 import { CaseCard } from '../sections/CaseStudies';
 import FAQ from '../sections/FAQ';
+import Engagements from '../sections/Engagements';
 import { getService, services, caseStudies, approach } from '../data/content';
 import NotFound from './NotFound';
 
@@ -17,9 +18,9 @@ export default function ServiceDetail() {
   if (!service) return <NotFound />;
 
   const Icon = service.icon;
-  // Related work: case studies that list this service (fallback: first two)
+  // Related work: only case studies that actually list this service — no unrelated fallback
   const related = caseStudies.filter((c) => c.services.some((s) => service.title.includes(s) || s.includes(service.short)));
-  const relatedCases = (related.length ? related : caseStudies).slice(0, 2);
+  const relatedCases = related.slice(0, 2);
 
   return (
     <>
@@ -134,12 +135,13 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* Related work */}
+      {/* Related work (hidden when no project matches this service) */}
+      {relatedCases.length > 0 && (
       <section className="section section--cream">
         <div className="container">
           <SectionHeading
             eyebrow="Related work"
-            title="Recent projects"
+            title={relatedCases[0].sample ? "Example projects" : "Recent projects"}
             action={
               <Button href="/case-studies" variant="outline">
                 All Case Studies
@@ -153,6 +155,7 @@ export default function ServiceDetail() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Other services */}
       <section className="section">
@@ -178,6 +181,8 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* engagement models on the AI services (our core offer) */}
+      {service.group === 'ai' && <Engagements />}
       <FAQ />
       <CTABanner />
     </>

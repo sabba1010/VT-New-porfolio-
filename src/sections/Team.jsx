@@ -5,6 +5,7 @@ import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
 import SocialIcon from '../components/ui/SocialIcon';
 import { leaders, jobs } from '../data/content';
+import { site } from '../data/site';
 import { gsap, MQ_MOTION } from '../lib/motion';
 import './Team.css';
 
@@ -66,7 +67,7 @@ export default function Team() {
             The people behind <span className="text-accent">the product</span>
           </>
         }
-        desc="A senior leadership team that stays hands-on — the people you meet on the first call are the people who ship your product."
+        desc="The people who lead your project — from the first call through launch and beyond."
         action={
           <Button href="/careers#culture" variant="outline">
             Inside Our Culture
@@ -113,7 +114,7 @@ export default function Team() {
         <span className="tm-join__text">
           <strong>Want to build with us?</strong>
           <span>
-            {jobs.length > 0 ? `${jobs.length} open roles` : 'We’re always meeting great people'} — see careers at Velotech
+            {site.proof?.hiring && jobs.length > 0 ? `${jobs.length} open roles` : "We’re always happy to meet great people"} — see careers at Velotech
           </span>
         </span>
         <span className="tm-join__arrow" aria-hidden="true">

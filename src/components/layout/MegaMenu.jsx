@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronRight } from 'lucide-react';
-import { services, hireGroups, companyLinks } from '../../data/content';
+import { ArrowRight } from 'lucide-react';
+import { services, companyLinks } from '../../data/content';
 import { culture } from '../../data/images';
 import Button from '../ui/Button';
 import SmartLink from '../ui/SmartLink';
@@ -10,7 +10,6 @@ const serviceTabs = [
   { id: 'all', label: 'All' },
   { id: 'ai', label: 'AI' },
   { id: 'development', label: 'Development' },
-  { id: 'design', label: 'Design' },
 ];
 
 function Promo({ title, text, cta = "Let's Talk", href = '/contact', onNavigate }) {
@@ -82,56 +81,6 @@ function ServicesMenu({ onNavigate }) {
   );
 }
 
-function HireMenu({ onNavigate }) {
-  const [active, setActive] = useState(hireGroups[0].id);
-  const group = hireGroups.find((g) => g.id === active);
-  return (
-    <div className="mega__grid mega__grid--hire">
-      <div className="mega__side" role="tablist" aria-label="Developer categories" aria-orientation="vertical">
-        {hireGroups.map(({ id, label, icon: Icon }) => (
-          <button
-            key={id}
-            role="tab"
-            aria-selected={active === id}
-            className={`mega__side-btn ${active === id ? 'is-active' : ''}`}
-            onMouseEnter={() => setActive(id)}
-            onFocus={() => setActive(id)}
-            onClick={() => setActive(id)}
-          >
-            <Icon size={18} />
-            {label}
-            <ChevronRight size={16} className="mega__chev" />
-          </button>
-        ))}
-        <MoreLink to="/hire-developers" onNavigate={onNavigate}>
-          See all roles
-        </MoreLink>
-      </div>
-      <ul className="mega__cards mega__cards--2" role="tabpanel">
-        {group.roles.map((r) => (
-          <li key={r.slug}>
-            <Link to={`/hire-developers/${r.slug}`} className="mega__card" onClick={onNavigate}>
-              <span className="mega__icon">
-                <group.icon size={20} />
-              </span>
-              <span>
-                <span className="mega__card-title">{r.title}</span>
-                <span className="mega__card-desc">{r.desc}</span>
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <Promo
-        title="Hire pre-vetted engineers in 2 weeks"
-        text="Scale your team with senior talent — risk-free trial period included."
-        cta="Hire Developers"
-        href="/hire-developers"
-        onNavigate={onNavigate}
-      />
-    </div>
-  );
-}
 
 function CompanyMenu({ onNavigate }) {
   return (
@@ -164,7 +113,6 @@ function CompanyMenu({ onNavigate }) {
 
 const menus = {
   services: ServicesMenu,
-  hire: HireMenu,
   company: CompanyMenu,
 };
 

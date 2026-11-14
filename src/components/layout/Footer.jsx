@@ -9,7 +9,6 @@ import './Footer.css';
 
 const resources = [
   { label: 'Case Studies', href: '/case-studies' },
-  { label: 'Hire Developers', href: '/hire-developers' },
   { label: 'Blog & Insights', href: '/blog' },
   { label: 'Careers', href: '/careers' },
   { label: 'FAQ', href: '/contact#faq' },

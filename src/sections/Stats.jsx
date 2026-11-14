@@ -1,6 +1,7 @@
 import { useInView } from '../hooks/useInView';
 import { useCountUp } from '../hooks/useCountUp';
 import { stats } from '../data/content';
+import { site } from '../data/site';
 import './Stats.css';
 
 function Stat({ value, suffix, label, pad, start, index }) {
@@ -23,6 +24,12 @@ function Stat({ value, suffix, label, pad, start, index }) {
 }
 
 export default function Stats() {
+  // hidden until the numbers are real — see site.proof.stats
+  if (!site.proof?.stats) return null;
+  return <StatsCard />;
+}
+
+function StatsCard() {
   const [ref, inView] = useInView({ threshold: 0.3 });
   return (
     <section className="stats-wrap" aria-labelledby="stats-title">

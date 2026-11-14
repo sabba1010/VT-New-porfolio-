@@ -6,6 +6,7 @@ import Button from '../components/ui/Button';
 import Services from '../sections/Services';
 import TechStack from '../sections/TechStack';
 import Stats from '../sections/Stats';
+import Engagements from '../sections/Engagements';
 import { approach } from '../data/content';
 
 export default function ServicesPage() {
@@ -19,7 +20,7 @@ export default function ServicesPage() {
             AI &amp; software services that <span className="text-gradient">grow your business</span>
           </>
         }
-        desc="AI automation, AI integration and AI-driven growth — plus web, mobile, e-commerce, CMS and custom software development and in-house UI/UX, product and packaging design. One accountable team from idea to launch."
+        desc="AI automation, AI integration and AI-driven growth — plus web, mobile, e-commerce, CMS and custom software development and UI/UX design. One accountable team from idea to launch."
         actions={
           <>
             <Button href="/contact" size="lg">
@@ -47,6 +48,7 @@ export default function ServicesPage() {
           </ol>
         </div>
       </section>
+      <Engagements />
       <TechStack />
       <CTABanner />
     </>

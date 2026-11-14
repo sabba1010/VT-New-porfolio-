@@ -3,9 +3,10 @@ import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import Button from '../components/ui/Button';
 import { useParallax } from '../hooks/useScroll';
-import { values, approach } from '../data/content';
+import { values, approach, auditHref } from '../data/content';
 import Team from './Team';
 import { culture } from '../data/images';
+import { site } from '../data/site';
 import './About.css';
 
 export default function About() {
@@ -20,16 +21,16 @@ export default function About() {
             <Reveal>
               <span className="eyebrow">About Velotech</span>
               <h2 id="about-title" className="about__title">
-                Building What&apos;s Next Through <span className="text-gradient">Technology.</span>
+                Practical AI, built on <span className="text-gradient">solid engineering.</span>
               </h2>
               <p className="about__lead">
-                Velotech is a digital engineering agency of designers, engineers and strategists who
-                partner with startups and enterprises to turn bold ideas into scalable, beautifully
-                crafted products.
+                Velotech is an AI automation and software development company. We help businesses
+                cut repetitive work, plug AI into the tools they already use and build web, mobile
+                and custom software around how they actually operate.
               </p>
               <p className="about__copy">
-                We combine product thinking with deep technical expertise — so every line of code
-                and every pixel moves your business metrics forward.
+                We start small — one workflow, one measurable win — then scale what works. Every
+                build is production-grade, secure and handed over with full ownership of the code.
               </p>
             </Reveal>
 
@@ -48,25 +49,27 @@ export default function About() {
             </ul>
 
             <Reveal delay={150}>
-              <Button href="/about" variant="dark">
-                Learn More About Us
+              <Button href={auditHref} variant="dark">
+                Work With Us
               </Button>
             </Reveal>
           </div>
 
           <Reveal className="about__collage" delay={100}>
             <div className="about__col" ref={colA}>
-              <img src={culture[1]} alt="Velotech team collaborating (placeholder)" loading="lazy" />
-              <img src={culture[2]} alt="Velotech office space (placeholder)" loading="lazy" />
+              <img src={culture[1]} alt="Team collaborating" loading="lazy" />
+              <img src={culture[2]} alt="Workspace" loading="lazy" />
             </div>
             <div className="about__col about__col--offset" ref={colB}>
-              <img src={culture[3]} alt="Workshop session (placeholder)" loading="lazy" />
-              <img src={culture[4]} alt="Team celebration (placeholder)" loading="lazy" />
+              <img src={culture[3]} alt="Workshop session" loading="lazy" />
+              <img src={culture[4]} alt="Team celebration" loading="lazy" />
             </div>
-            <div className="about__badge">
-              <strong>08+</strong>
-              <span>Years building digital products</span>
-            </div>
+            {site.proof?.stats && (
+              <div className="about__badge">
+                <strong>08+</strong>
+                <span>Years building digital products</span>
+              </div>
+            )}
           </Reveal>
         </div>
 

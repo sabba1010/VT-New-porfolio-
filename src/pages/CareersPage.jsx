@@ -7,6 +7,11 @@ import Reveal from '../components/ui/Reveal';
 import Button from '../components/ui/Button';
 import { jobs, perks } from '../data/careers';
 import { culture } from '../data/images';
+import { site } from '../data/site';
+import { company } from '../data/content';
+
+// Open roles + perks only show once site.proof.hiring is switched on
+const hiring = Boolean(site.proof?.hiring);
 
 export function JobRow({ job, delay = 0 }) {
   return (
@@ -48,12 +53,30 @@ export default function CareersPage() {
         desc="Work on meaningful products with a talented, friendly team across six countries. We value craft, curiosity and ownership."
         actions={
           <Button href="#positions" size="lg">
-            View Open Positions
+            {hiring ? 'View Open Positions' : 'Get in Touch'}
           </Button>
         }
-        aside={<img src={culture[2]} alt="Life at Velotech (placeholder)" />}
+        aside={<img src={culture[2]} alt="Life at Velotech" />}
       />
 
+      {!hiring && (
+        <section className="section" id="positions">
+          <div className="container" id="culture">
+            <SectionHeading
+              eyebrow="Join us"
+              title="No open roles right now — but we’d still love to hear from you"
+              desc={`We’re always happy to meet great engineers, AI specialists and designers. Send your CV or portfolio to ${company.email} and tell us what you’d love to work on.`}
+              action={
+                <Button href={`mailto:${company.email}?subject=${encodeURIComponent('Job application')}`} variant="outline">
+                  Send Your CV
+                </Button>
+              }
+            />
+          </div>
+        </section>
+      )}
+
+      {hiring && (
       <section className="section" id="culture">
         <div className="container">
           <SectionHeading eyebrow="Life at Velotech" title="Why you'll love working here" />
@@ -68,12 +91,14 @@ export default function CareersPage() {
           </ul>
           <Reveal className="gallery" style={{ marginTop: 'var(--sp-7)' }}>
             {[culture[3], culture[1], culture[4]].map((src, i) => (
-              <img key={i} src={src} alt={`Velotech culture photo ${i + 1} (placeholder)`} loading="lazy" />
+              <img key={i} src={src} alt={`Life at Velotech ${i + 1}`} loading="lazy" />
             ))}
           </Reveal>
         </div>
       </section>
+      )}
 
+      {hiring && (
       <section className="section section--cream" id="positions">
         <div className="container">
           <SectionHeading eyebrow="Open positions" title={`${jobs.length} roles open right now`} />
@@ -84,12 +109,16 @@ export default function CareersPage() {
           </ul>
         </div>
       </section>
+      )}
 
-      <CTABanner
-        title="Don't see the right role?"
-        desc="We are always happy to meet talented people. Send us your CV and tell us what you'd love to work on."
-        cta="Get in Touch"
-      />
+      {/* while not hiring, the "Join us" section above already says this */}
+      {hiring && (
+        <CTABanner
+          title="Don't see the right role?"
+          desc="We are always happy to meet talented people. Send us your CV and tell us what you'd love to work on."
+          cta="Get in Touch"
+        />
+      )}
     </>
   );
 }

@@ -10,10 +10,23 @@ export const site = {
   name: 'Velotech',
   defaultTitle: 'Velotech — Top Software Development & AI Company',
   description:
-    'Velotech is a software development and AI company. We build AI automation, integrate AI into your existing tools, use AI to grow your business, and develop web, mobile and custom software for clients worldwide.',
+    'Velotech builds AI automation, adds AI to the tools you already use and develops web, mobile and custom software for businesses worldwide.',
   ogImage: '/og-image.png', // 1200×630, shown when links are shared
   locale: 'en_US',
   twitter: '', // e.g. '@velotech'
+
+  // ── PROOF SWITCHES ───────────────────────────────────────────
+  // Claims that clients may check. Each one stays hidden until you
+  // switch it on — only do that once it's true and you can back it up.
+  proof: {
+    stats: true, // "250+ projects · 180+ clients · 60+ experts · 8+ years" (content.js → stats)
+    offices: true, // office list + world map (content.js → locations)
+    hiring: true, // open roles + perks on /careers (careers.js)
+    // true = the case studies in caseStudies.js are example/concept projects:
+    // their client names and result numbers are hidden and they're labelled
+    // "example projects". Set to false once they're real client work.
+    sampleWork: false,
+  },
 
   // Form endpoints — where form submissions are POSTed as JSON.
   // Works with Formspree (https://formspree.io/f/xxxx), Web3Forms, Getform, or your own API.

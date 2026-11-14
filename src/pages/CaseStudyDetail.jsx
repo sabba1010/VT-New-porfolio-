@@ -28,24 +28,35 @@ export default function CaseStudyDetail() {
         desc={cs.desc}
         meta={
           <dl className="meta-strip">
-            <div>
-              <dt>Client</dt>
-              <dd>{cs.client}</dd>
-            </div>
+            {cs.sample ? (
+              <div>
+                <dt>Type</dt>
+                <dd>Example project</dd>
+              </div>
+            ) : (
+              <div>
+                <dt>Client</dt>
+                <dd>{cs.client}</dd>
+              </div>
+            )}
             <div>
               <dt>Industry</dt>
               <dd>
                 <Link to={`/case-studies?industry=${cs.industrySlug}`}>{cs.industry}</Link>
               </dd>
             </div>
-            <div>
-              <dt>Duration</dt>
-              <dd>{cs.duration}</dd>
-            </div>
-            <div>
-              <dt>Team</dt>
-              <dd>{cs.team}</dd>
-            </div>
+            {cs.duration && (
+              <div>
+                <dt>Duration</dt>
+                <dd>{cs.duration}</dd>
+              </div>
+            )}
+            {cs.team && (
+              <div>
+                <dt>Team</dt>
+                <dd>{cs.team}</dd>
+              </div>
+            )}
           </dl>
         }
       />
@@ -101,19 +112,21 @@ export default function CaseStudyDetail() {
         </div>
       </section>
 
-      <section className="section section--cream">
-        <div className="container">
-          <SectionHeading eyebrow="Results" title="The impact" align="center" />
-          <ul className="results">
-            {cs.results.map((r, i) => (
-              <Reveal as="li" key={r.label} delay={i * 100} className="result">
-                <strong>{r.value}</strong>
-                <span>{r.label}</span>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
+      {cs.results?.length > 0 && (
+        <section className="section section--cream">
+          <div className="container">
+            <SectionHeading eyebrow="Results" title="The impact" align="center" />
+            <ul className="results">
+              {cs.results.map((r, i) => (
+                <Reveal as="li" key={r.label} delay={i * 100} className="result">
+                  <strong>{r.value}</strong>
+                  <span>{r.label}</span>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       <section className="section">
         <div className="container">
@@ -159,7 +172,7 @@ export default function CaseStudyDetail() {
         </div>
       </section>
 
-      <CTABanner title="Want results like these?" />
+      <CTABanner title={cs.sample ? "Want something like this built?" : "Want results like these?"} />
     </>
   );
 }

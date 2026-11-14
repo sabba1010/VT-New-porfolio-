@@ -7,7 +7,6 @@ import { site, absUrl } from '../data/site';
 import { company } from '../data/content';
 import { services, getService } from '../data/services';
 
-import { hireRoles, getRole } from '../data/hire';
 import { caseStudies, getCaseStudy } from '../data/caseStudies';
 import { posts, getPost } from '../data/blog';
 import { jobs, getJob } from '../data/careers';
@@ -56,10 +55,9 @@ const serviceLd = (s, path) => ({
 /* ───────────── Static pages ───────────── */
 const staticPages = {
   '/': { title: null, description: site.description, ld: () => [organization(), website()] },
-  '/services': { title: 'AI & Software Development Services', description: 'AI automation, AI integration and AI for business growth, plus web, mobile, e-commerce, CMS and custom software development and in-house UI/UX, product and packaging design.', crumb: 'Services' },
-  '/hire-developers': { title: 'Hire Dedicated Developers', description: 'Hire pre-vetted AI, web, mobile and CMS developers who work in your time zone. Start in two weeks with a risk-free trial.', crumb: 'Hire Developers' },
-  '/case-studies': { title: 'Case Studies', description: 'Real projects and measurable results from products designed and engineered by Velotech.', crumb: 'Case Studies' },
-  '/about': { title: 'About Us', description: 'Velotech is a digital engineering agency with teams across six countries, helping businesses turn ideas into scalable products.', crumb: 'About Us' },
+  '/services': { title: 'AI & Software Development Services', description: 'AI automation, AI integration and AI for business growth, plus web, mobile, e-commerce, CMS and custom software development and UI/UX design.', crumb: 'Services' },
+  '/case-studies': { title: 'Case Studies', description: site.proof?.sampleWork ? 'Example AI and software projects that show how Velotech approaches a build — the problem, our approach and the tech behind it.' : 'Real projects and measurable results from products designed and engineered by Velotech.', crumb: 'Case Studies' },
+  '/about': { title: 'About Us', description: 'Velotech is an AI automation and software development company with teams across six countries, helping businesses automate work and build software that grows with them.', crumb: 'About Us' },
   '/careers': { title: 'Careers', description: 'Join Velotech — remote-friendly roles in engineering, design, AI and DevOps.', crumb: 'Careers' },
   '/blog': { title: 'Blog & Insights', description: 'Articles on product strategy, design, AI and software engineering from the Velotech team.', crumb: 'Blog' },
   '/contact': { title: 'Contact Us', description: 'Tell us about your project. Velotech replies within one business day with next steps and a free consultation.', crumb: 'Contact Us' },
@@ -81,21 +79,11 @@ const dynamic = [
     }),
   },
   {
-    base: '/hire-developers',
-    get: getRole,
-    list: hireRoles,
-    meta: (r, path) => ({
-      title: `Hire ${r.title}`,
-      description: `Hire pre-vetted ${r.title.toLowerCase()} from Velotech — ${r.desc.toLowerCase()}. Time-zone overlap, full IP ownership and a risk-free trial.`,
-      ld: [breadcrumbs([{ name: 'Hire Developers', path: '/hire-developers' }, { name: r.title, path }])],
-    }),
-  },
-  {
     base: '/case-studies',
     get: getCaseStudy,
     list: caseStudies,
     meta: (c, path) => ({
-      title: `${c.name} — Case Study`,
+      title: `${c.name} — ${c.sample ? 'Example Project' : 'Case Study'}`,
       description: c.desc,
       image: c.image,
       type: 'article',
@@ -130,7 +118,7 @@ const dynamic = [
   {
     base: '/careers',
     get: getJob,
-    list: jobs,
+    list: site.proof?.hiring ? jobs : [], // job pages only exist while hiring
     meta: (j, path) => ({
       title: `${j.title} — Careers`,
       description: j.summary,

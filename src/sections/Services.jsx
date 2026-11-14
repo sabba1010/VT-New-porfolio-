@@ -4,14 +4,13 @@ import { ArrowRight, ArrowUpRight, Sparkles } from 'lucide-react';
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import Button from '../components/ui/Button';
-import { services, developmentServices, designServices } from '../data/content';
+import { services, developmentServices } from '../data/content';
 import './Services.css';
 
 const filters = [
   { id: 'all', label: 'All Services' },
   { id: 'ai', label: 'AI' },
   { id: 'development', label: 'Development' },
-  { id: 'design', label: 'Design' },
 ];
 
 function ServiceCard({ service, index }) {
@@ -88,10 +87,10 @@ export default function Services({ compact = false }) {
           </ul>
           <Reveal className="svc-design">
             <p className="svc-design__label">
-              <Sparkles size={16} aria-hidden="true" /> Plus an in-house design studio
+              <Sparkles size={16} aria-hidden="true" /> Also from our team
             </p>
             <ul className="svc-design__list">
-              {designServices.map((s) => (
+              {developmentServices.slice(6).map((s) => (
                 <li key={s.slug}>
                   <Link to={`/services/${s.slug}`}>
                     {s.short}

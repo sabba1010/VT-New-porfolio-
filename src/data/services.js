@@ -1,4 +1,4 @@
-import { Shapes, Package, PenTool, Layers, Globe, Smartphone, BrainCircuit, Workflow, Plug, TrendingUp, Code2, ShoppingCart, Users, LayoutTemplate } from 'lucide-react';
+import { PenTool, Layers, Globe, Smartphone, BrainCircuit, Workflow, Plug, TrendingUp, Code2, ShoppingCart, Users, LayoutTemplate } from 'lucide-react';
 import { projects, platforms as platformImg } from './images.js';
 
 /**
@@ -16,7 +16,7 @@ const aiServices = [
     desc: 'AI agents and automated workflows that handle repetitive work across your tools — 24/7, without extra headcount.',
     icon: Workflow,
     group: 'ai',
-    image: projects[5],
+    image: '/images/services/ai-automation.svg',
     tagline: 'Automate the busywork. Keep your team on the work that matters.',
     overview: [
       'We map your day-to-day processes — lead handling, support, invoicing, reporting, data entry — and replace the repetitive steps with reliable AI-powered automations that connect the tools you already use.',
@@ -39,7 +39,7 @@ const aiServices = [
     desc: 'Plug AI into the tools and products you already use — CRM, ERP, help desk, website and apps — without rebuilding.',
     icon: Plug,
     group: 'ai',
-    image: projects[2],
+    image: '/images/services/ai-integration.svg',
     tagline: 'Add AI to your business — without starting over.',
     overview: [
       'Most businesses don’t need a brand-new system to benefit from AI. We connect leading AI models to the software you already run, so your team gets smarter search, instant answers, auto-drafted replies and AI-powered features inside the tools they use every day.',
@@ -62,7 +62,7 @@ const aiServices = [
     desc: 'Use AI to win more customers and grow revenue — smarter lead generation, personalised marketing and sales insights.',
     icon: TrendingUp,
     group: 'ai',
-    image: projects[1],
+    image: '/images/services/ai-business-growth.svg',
     tagline: 'Turn your data into customers, revenue and faster decisions.',
     overview: [
       'We help growing businesses put AI to work where it moves the numbers: finding and qualifying leads, personalising marketing at scale, spotting churn early and turning scattered data into clear next steps.',
@@ -85,7 +85,7 @@ const aiServices = [
     desc: 'LLM-powered assistants, intelligent automation and machine-learning models that create real ROI.',
     icon: BrainCircuit,
     group: 'ai',
-    image: projects[3],
+    image: '/images/services/ai-development.svg',
     tagline: 'Practical AI that saves time and creates new revenue.',
     overview: [
       'We help businesses move from AI experiments to production systems — assistants, document intelligence, forecasting and automation.',
@@ -274,63 +274,13 @@ const developmentServices = [
     ],
     tech: ['React', 'Node.js', 'Python', 'Flutter', 'AWS', 'Jira'],
   },
-];
-
-/* ─────────────── In-house design services ─────────────── */
-const designServices = [
-  {
-    slug: 'product-design',
-    title: 'Product Design',
-    short: 'Product Design',
-    desc: 'Concepts, 3D models and photoreal renders that take physical products from sketch to shelf-ready.',
-    icon: Shapes,
-    group: 'design',
-    image: projects[0],
-    tagline: 'Products that look as good as they work.',
-    overview: [
-      'We help brands and makers shape physical products — from early concept sketches and form studies to detailed 3D models and manufacturer-ready files.',
-      'Every design balances aesthetics, ergonomics and production cost, so what you approve on screen is what comes off the line.',
-    ],
-    features: [
-      { title: 'Concept sketching', desc: 'Multiple design directions explored quickly before committing to one.' },
-      { title: '3D modeling', desc: 'Precise, production-ready models built for prototyping and manufacturing.' },
-      { title: 'Photoreal rendering', desc: 'Studio-quality renders for pitches, crowdfunding and e-commerce.' },
-      { title: 'Material & finish (CMF)', desc: 'Colour, material and finish specs that match your brand and budget.' },
-      { title: 'Prototype support', desc: '3D-print-ready files and feedback loops with your prototype shop.' },
-      { title: 'Manufacturing files', desc: 'Technical drawings and specs your factory can work from directly.' },
-    ],
-    tech: ['Blender', 'KeyShot', 'Fusion 360', 'Rhino', 'Illustrator', 'Photoshop'],
-  },
-  {
-    slug: 'packaging-design',
-    title: 'Packaging Design',
-    short: 'Packaging',
-    desc: 'Shelf-stopping boxes, labels and pouches that tell your brand story at first glance.',
-    icon: Package,
-    group: 'design',
-    image: projects[2],
-    tagline: 'Packaging that sells before anyone reads a word.',
-    overview: [
-      'Your packaging is often the first physical touchpoint with a customer. We design structures, labels and full packaging systems that stand out on shelves and in unboxing videos.',
-      'We deliver print-ready dielines with correct bleeds, colour profiles and finishes, and coordinate with your printer so the result matches the mockup.',
-    ],
-    features: [
-      { title: 'Label design', desc: 'Bottles, jars, cans and cosmetics labels with clear hierarchy and legal info.' },
-      { title: 'Box & carton design', desc: 'Custom structures and dielines for retail and e-commerce.' },
-      { title: 'Packaging systems', desc: 'Consistent designs across product ranges, sizes and flavours.' },
-      { title: '3D mockups', desc: 'Realistic renders for approvals, Amazon listings and social media.' },
-      { title: 'Unboxing experience', desc: 'Inserts, thank-you cards and mailer boxes that get shared.' },
-      { title: 'Print-ready files', desc: 'CMYK/Pantone files with bleeds, foils and spot-UV layers set up correctly.' },
-    ],
-    tech: ['Illustrator', 'Photoshop', 'Dimension', 'ArtiosCAD', 'Esko', 'Blender'],
-  },
   {
     slug: 'ui-ux-design',
     title: 'UI/UX Design',
     short: 'UI/UX Design',
     desc: 'Research-driven interfaces for websites and apps that feel effortless and convert.',
     icon: PenTool,
-    group: 'design',
+    group: 'development',
     image: projects[1],
     tagline: 'Interfaces that feel effortless — and convert.',
     overview: [
@@ -349,7 +299,8 @@ const designServices = [
   },
 ];
 
-export const services = [...aiServices, ...developmentServices, ...designServices];
-export { aiServices, developmentServices, designServices };
+
+export const services = [...aiServices, ...developmentServices];
+export { aiServices, developmentServices };
 
 export const getService = (slug) => services.find((s) => s.slug === slug);

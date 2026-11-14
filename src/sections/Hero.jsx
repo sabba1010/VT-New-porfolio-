@@ -2,13 +2,15 @@ import { Fragment } from 'react';
 import { ShieldCheck, BadgeCheck, Timer, Sparkles } from 'lucide-react';
 import Button from '../components/ui/Button';
 import { team } from '../data/images';
-import { realPartners } from '../data/content';
+import { realPartners, auditHref } from '../data/content';
+import { site } from '../data/site';
 import './Hero.css';
 
+// Commitments we make to every client (not claims about past numbers)
 const trust = [
-  { icon: ShieldCheck, label: 'Risk-free trial' },
-  { icon: BadgeCheck, label: 'Pre-vetted senior experts' },
-  { icon: Timer, label: 'Kick-off in 2 weeks' },
+  { icon: Timer, label: 'Free 30-min AI audit' },
+  { icon: ShieldCheck, label: 'NDA on request' },
+  { icon: BadgeCheck, label: 'You own 100% of the code' },
 ];
 
 /** Each word slides up from behind a mask, staggered. */
@@ -85,8 +87,8 @@ export default function Hero() {
         </p>
 
         <div className="hero__ctas hero-in" style={{ '--d': '600ms' }}>
-          <Button href="/contact" size="lg">
-            Let&apos;s Talk
+          <Button href={auditHref} size="lg">
+            Book a Free AI Audit
           </Button>
           <Button href="/#ai" size="lg" variant="ghost">
             Explore AI Solutions
@@ -94,16 +96,18 @@ export default function Hero() {
         </div>
 
         <div className="hero__meta hero-in" style={{ '--d': '680ms' }}>
-          <div className="hero__proof">
-            <div className="hero__avatars">
-              {team.slice(0, 4).map((src, i) => (
-                <img key={src} src={src} alt="" width="36" height="36" style={{ zIndex: 4 - i }} />
-              ))}
+          {site.proof?.stats && (
+            <div className="hero__proof">
+              <div className="hero__avatars">
+                {team.slice(0, 4).map((src, i) => (
+                  <img key={src} src={src} alt="" width="36" height="36" style={{ zIndex: 4 - i }} />
+                ))}
+              </div>
+              <span>
+                <strong>60+</strong> senior engineers &amp; designers
+              </span>
             </div>
-            <span>
-              <strong>60+</strong> senior engineers &amp; designers
-            </span>
-          </div>
+          )}
           <ul className="hero__trust">
             {trust.map(({ icon: Icon, label }) => (
               <li key={label}>
