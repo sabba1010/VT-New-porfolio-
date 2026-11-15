@@ -5,7 +5,7 @@
  * data (services, FAQ, ways to work, contact details) with simple keyword
  * matching, and hands anything it can't answer to the team.
  */
-import { company, faqs, engagements, auditHref } from '../src/data/content.js';
+import { company, faqs, engagements, auditHref, whatsappHref } from '../src/data/content.js';
 import { services } from '../src/data/services.js';
 import { site } from '../src/data/site.js';
 
@@ -30,7 +30,7 @@ const has = (text, list) => list.some((k) => new RegExp(`\\b${k}`, 'i').test(tex
 
 const contactBlock = () => {
   const lines = [`Email: ${company.email}`];
-  if (company.whatsapp) lines.push(`WhatsApp: https://wa.me/${company.whatsapp}`);
+  if (company.whatsapp) lines.push(`WhatsApp: ${whatsappHref()}`);
   if (company.phone) lines.push(`Phone: ${company.phone}`);
   lines.push(`Or use the form at /contact — the team replies within one business day.`);
   return lines.join('\n');

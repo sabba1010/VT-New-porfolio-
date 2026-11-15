@@ -261,3 +261,7 @@
     font-size: 25vw;
   }
 }
+
+.footer__logo {
+  display: inline-flex;
+}

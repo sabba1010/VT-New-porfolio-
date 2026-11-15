@@ -44,7 +44,7 @@ export const company = {
   tagline: 'Software development & AI company',
   email: 'hello@velotech.example', // ← your real inbox (shown everywhere)
   phone: '', // e.g. '+880 1XXX-XXXXXX' — international format
-  whatsapp: '', // e.g. '8801XXXXXXXXX' (digits only) — adds a WhatsApp button
+  whatsapp: '8801753633333', // digits only, country code first — powers the floating WhatsApp button + links
   bookingUrl: '', // e.g. 'https://calendly.com/your-name/30min' — adds "Book a call"
   address: '', // e.g. 'House 12, Road 5, Dhanmondi, Dhaka 1205, Bangladesh'
   hours: '', // e.g. 'Sun–Thu, 10:00–19:00 (GMT+6)'
@@ -61,7 +61,7 @@ export const company = {
 export const activeSocials = company.socials.filter((s) => s.href && s.href !== '#');
 /** tel: link from a human-formatted phone number. */
 export const telHref = (phone) => `tel:${phone.replace(/[^+\d]/g, '')}`;
-export const whatsappHref = (msg = 'Hi! I would like to discuss a project.') =>
+export const whatsappHref = (msg = 'Hello Team Velotech! I would like to discuss a project.') =>
   company.whatsapp ? `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(msg)}` : '';
 /** Where every "Book a free AI audit" button goes: your booking link if set,
     otherwise the contact form with the topic pre-filled. */

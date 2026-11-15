@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { ArrowUp, ArrowRight, Mail, MapPin, Phone, MessageCircle } from 'lucide-react';
 import Logo from '../ui/Logo';
@@ -38,7 +39,9 @@ export default function Footer() {
       <div className="container">
         <div className="footer__top">
           <div className="footer__brand">
-            <Logo light />
+            <Link to="/" className="footer__logo" aria-label="Velotech — back to home">
+              <Logo light />
+            </Link>
             <p>
               Velotech is a software development and AI company. We automate workflows, integrate AI
               into your tools and build custom software that helps businesses worldwide grow.

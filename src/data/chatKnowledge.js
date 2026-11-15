@@ -3,7 +3,7 @@
  * chatbot always matches what the website says. Imported by the server only.
  */
 import { site } from './site.js';
-import { company, faqs, stats, approach, activeSocials } from './content.js';
+import { company, faqs, stats, approach, activeSocials, whatsappHref } from './content.js';
 import { aiServices, developmentServices } from './services.js';
 
 const list = (items) => items.map((s) => `- ${s.title} (/services/${s.slug}): ${s.desc}`).join('\n');
@@ -11,7 +11,7 @@ const list = (items) => items.map((s) => `- ${s.title} (/services/${s.slug}): ${
 const contactLines = [
   `- Email: ${company.email}`,
   company.phone && `- Phone: ${company.phone}`,
-  company.whatsapp && `- WhatsApp: https://wa.me/${company.whatsapp}`,
+  company.whatsapp && `- WhatsApp: ${whatsappHref()}`,
   company.bookingUrl && `- Book a free 30-minute call: ${company.bookingUrl}`,
   company.address && `- Office: ${company.address}`,
   company.hours && `- Hours: ${company.hours}`,

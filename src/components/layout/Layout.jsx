@@ -3,8 +3,9 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import ConsentBanner from './ConsentBanner';
-import SmoothScroll from './SmoothScroll';
+import SmoothScroll, { scrollToTop } from './SmoothScroll';
 import ChatWidget from '../chat/ChatWidget';
+import WhatsAppButton from './WhatsAppButton';
 import { getRouteMeta, applyHead } from '../../seo/meta';
 
 /** Scrolls to top on page change, or to the #hash target when present. */
@@ -24,6 +25,24 @@ function ScrollManager() {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
   }, [pathname, hash]);
+
+  // Clicking a link to the page you're already on (logo, "Home", …) doesn't
+  // change the route, so nothing would happen — scroll smoothly to the top instead.
+  useEffect(() => {
+    const onClick = (e) => {
+      // (router <Link>s call preventDefault themselves, so don't bail out on that)
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest?.('a[href]');
+      if (!a || (a.target && a.target !== '_self')) return;
+      const url = new URL(a.href, window.location.href);
+      if (url.origin !== window.location.origin || url.hash) return;
+      const here = window.location.pathname.replace(/\/+$/, '') || '/';
+      const there = url.pathname.replace(/\/+$/, '') || '/';
+      if (here === there && url.search === window.location.search) scrollToTop();
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, []);
   return null;
 }
 
@@ -65,6 +84,7 @@ export default function Layout() {
       </main>
       <Footer />
       <ConsentBanner />
+      <WhatsAppButton />
       <ChatWidget />
     </>
   );
