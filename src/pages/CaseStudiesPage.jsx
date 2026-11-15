@@ -44,6 +44,7 @@ export default function CaseStudiesPage() {
       />
       <section className="section">
         <div className="container">
+          <h2 className="sr-only">All projects</h2>
           <div className="chips" role="tablist" aria-label="Filter by industry" style={{ marginBottom: 'var(--sp-7)' }}>
             {filters.map((f) => (
               <button

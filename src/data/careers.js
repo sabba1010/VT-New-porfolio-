@@ -1,6 +1,9 @@
 /**
  * Open positions (placeholders) — powers /careers and /careers/:slug.
  */
+/** Date the current openings were published (used for Google Jobs structured data). Update when you change the roles. */
+export const jobsPosted = '2026-11-01';
+
 export const jobs = [
   {
     slug: 'senior-react-engineer',

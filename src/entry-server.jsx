@@ -8,7 +8,11 @@ import { prerenderToNodeStream } from 'react-dom/static';
 import { StaticRouter } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 
-export { getRouteMeta, allRoutes, headHtml } from './seo/meta';
+export { getRouteMeta, allRoutes, headHtml, routeLastmod, ogKey } from './seo/meta';
+export { services } from './data/services';
+export { posts } from './data/blog';
+export { caseStudies } from './data/caseStudies';
+export { company, faqs } from './data/content';
 export { site } from './data/site';
 
 export async function render(url) {

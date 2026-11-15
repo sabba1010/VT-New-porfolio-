@@ -24,6 +24,7 @@ export default function BlogPage() {
       />
       <section className="section">
         <div className="container">
+          <h2 className="sr-only">All articles</h2>
           <div className="chips" role="tablist" aria-label="Filter by category" style={{ marginBottom: 'var(--sp-7)' }}>
             {categories.map((c) => (
               <button

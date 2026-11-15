@@ -4,14 +4,23 @@
  * ───────────────────────────────────────────────────────────────
  */
 export const site = {
-  // Your production domain, no trailing slash. Used for canonical URLs,
-  // Open Graph tags and sitemap.xml.
-  url: 'https://www.velotech.example',
+  // Production domain, no trailing slash. Canonical URLs, sitemap.xml, robots.txt,
+  // llms.txt, social previews and structured data all follow this.
+  // After changing it, run `npm run og` so the share images show the new address.
+  url: 'https://velotech.studio',
   name: 'Velotech',
   defaultTitle: 'Velotech — Top Software Development & AI Company',
   description:
     'Velotech builds AI automation, adds AI to the tools you already use and develops web, mobile and custom software for businesses worldwide.',
-  ogImage: '/og-image.png', // 1200×630, shown when links are shared
+  ogImage: '/og-image.png', // 1200×630 fallback; per-page images live in /og (npm run og)
+  foundingYear: 2018, // used in structured data only while proof.stats is on
+
+  // Search engine ownership checks — paste the content="" value each tool gives you.
+  // Google Search Console → Settings → Ownership → HTML tag; Bing Webmaster → Meta tag.
+  verification: {
+    google: '',
+    bing: '',
+  },
   locale: 'en_US',
   twitter: '', // e.g. '@velotech'
 
