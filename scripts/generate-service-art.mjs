@@ -143,11 +143,90 @@ const development = frame(`
   ${pill(602, 585, 150, 'Private', { size: 18, h: 44 })}
 `);
 
+/* 5 ── UGC Video Production: a creator video built to be tested */
+const ugc = frame(`
+  <g filter="url(#sh)">
+    <rect x="465" y="70" width="270" height="560" rx="40" fill="#1D2029" stroke="#ffffff22"/>
+    <rect x="477" y="82" width="246" height="536" rx="30" fill="url(#hot)"/>
+  </g>
+  <circle cx="600" cy="270" r="58" fill="#FFD2B8"/>
+  <ellipse cx="600" cy="470" rx="110" ry="90" fill="#B3320A" opacity=".55"/>
+  <rect x="560" y="94" width="80" height="20" rx="10" fill="#0B0D12"/>
+  <circle cx="600" cy="360" r="38" fill="#ffffff44"/>
+  <path d="M590 342 L618 360 L590 378 Z" fill="#fff"/>
+  <rect x="495" y="520" width="170" height="16" rx="8" fill="#ffffffcc"/>
+  <rect x="495" y="546" width="120" height="16" rx="8" fill="#ffffff99"/>
+  <rect x="495" y="574" width="96" height="28" rx="8" fill="#fff"/>
+  <text x="543" y="593" font-size="15" font-weight="800" fill="#0B0D12" text-anchor="middle">Shop now</text>
+  ${[430, 474, 518].map((y) => `<circle cx="700" cy="${y}" r="17" fill="#00000044"/>`).join('')}
+  <path d="M692 428 a6 6 0 0 1 8 -6 a6 6 0 0 1 8 6 c0 6 -8 11 -8 11 s-8 -5 -8 -11z" fill="#FF4D6D"/>
+  ${pill(150, 170, 230, 'Hook A · “Wait…”', { size: 20, h: 54, fill: '#1D2029' })}
+  ${pill(150, 244, 230, 'Hook B · “POV:”', { size: 20, h: 54, fill: '#FF5B2E22', stroke: '#FF5B2E66', color: '#FFB08F' })}
+  ${pill(150, 318, 230, 'Hook C · Demo', { size: 20, h: 54, fill: '#1D2029' })}
+  ${pill(820, 210, 230, '9:16 · Reels', { size: 20, h: 54 })}
+  ${pill(820, 284, 230, '1:1 · Feed', { size: 20, h: 54 })}
+  ${pill(820, 358, 230, '16:9 · YouTube', { size: 20, h: 54 })}
+`);
+
+/* 6 ── Paid Ads Management: campaigns across platforms, measured */
+const adsBars = [120, 170, 150, 210, 250, 300];
+const ads = frame(`
+  <g filter="url(#sh)">
+    <rect x="110" y="100" width="980" height="550" rx="32" fill="#16181F" stroke="#ffffff14"/>
+  </g>
+  <text x="160" y="172" font-size="26" font-weight="800" fill="#fff">Campaign performance</text>
+  ${pill(160, 200, 120, 'Meta', { size: 18, h: 44, fill: '#FF5B2E22', stroke: '#FF5B2E66', color: '#FFB08F' })}
+  ${pill(292, 200, 130, 'Google', { size: 18, h: 44 })}
+  ${pill(434, 200, 124, 'TikTok', { size: 18, h: 44 })}
+  ${['Spend', 'Cost per result', 'Return on ad spend']
+    .map(
+      (t, i) => `
+  <rect x="${160 + i * 300}" y="280" width="280" height="96" rx="18" fill="#1D2029" stroke="#ffffff10"/>
+  <text x="${184 + i * 300}" y="316" font-size="18" font-weight="600" fill="#9CA0AB">${t}</text>
+  <rect x="${184 + i * 300}" y="336" width="${[150, 110, 170][i]}" height="16" rx="8" fill="${i === 2 ? 'url(#hot)' : '#ffffff30'}"/>`,
+    )
+    .join('')}
+  ${adsBars
+    .map((h, i) => `<rect x="${190 + i * 140}" y="${620 - h * 0.62}" width="80" height="${h * 0.62}" rx="12" fill="${i === adsBars.length - 1 ? 'url(#hot)' : '#2A2D36'}"/>`)
+    .join('')}
+  <path d="M230 560 L370 528 L510 540 L650 500 L790 470 L930 432" fill="none" stroke="#FFB547" stroke-width="4" stroke-linecap="round"/>
+`);
+
+/* 7 ── Digital Marketing: one plan across every channel */
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+const posts = [
+  [0, 0, 'hot'], [1, 1, '#3A3E4A'], [2, 0, '#3A3E4A'], [3, 2, 'hot'], [4, 1, '#3A3E4A'],
+  [0, 2, '#3A3E4A'], [2, 2, 'hot'], [4, 0, '#2A2D36'],
+];
+const marketing = frame(`
+  <g filter="url(#sh)">
+    <rect x="110" y="100" width="980" height="550" rx="32" fill="#16181F" stroke="#ffffff14"/>
+  </g>
+  <text x="160" y="172" font-size="26" font-weight="800" fill="#fff">Content calendar</text>
+  ${pill(720, 140, 110, 'Social', { size: 18, h: 44, fill: '#FF5B2E22', stroke: '#FF5B2E66', color: '#FFB08F' })}
+  ${pill(842, 140, 90, 'SEO', { size: 18, h: 44 })}
+  ${pill(944, 140, 100, 'Email', { size: 18, h: 44 })}
+  ${days.map((d, i) => `<text x="${222 + i * 176}" y="236" font-size="18" font-weight="700" fill="#9CA0AB" text-anchor="middle">${d}</text>`).join('')}
+  ${days
+    .map((_, c) => [0, 1, 2].map((r) => `<rect x="${152 + c * 176}" y="${256 + r * 120}" width="140" height="104" rx="16" fill="#1D2029" stroke="#ffffff0d"/>`).join(''))
+    .join('')}
+  ${posts
+    .map(
+      ([c, r, fill]) => `
+  <rect x="${164 + c * 176}" y="${268 + r * 120}" width="116" height="48" rx="10" fill="${fill === 'hot' ? 'url(#hot)' : fill}"/>
+  <rect x="${164 + c * 176}" y="${326 + r * 120}" width="${[90, 70, 100][r]}" height="10" rx="5" fill="#ffffff30"/>`,
+    )
+    .join('')}
+`);
+
 const files = {
   'ai-automation.svg': automation,
   'ai-integration.svg': integration,
   'ai-business-growth.svg': growth,
   'ai-development.svg': development,
+  'ugc-video-production.svg': ugc,
+  'paid-ads-management.svg': ads,
+  'digital-marketing.svg': marketing,
 };
 for (const [name, svg] of Object.entries(files)) writeFileSync(join(out, name), svg);
 console.log(`wrote ${Object.keys(files).length} illustrations to public/images/services/`);

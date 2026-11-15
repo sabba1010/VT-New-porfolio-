@@ -66,9 +66,8 @@ export function localReply(messages) {
     return `Happy to set that up! You can book a free 30-minute AI audit here: ${auditHref}\n\n${contactBlock()}`;
   }
   if (has(text, ['services', 'what do you do', 'what you do', 'offer', 'help with', 'kaj', 'service'])) {
-    const ai = services.filter((s) => s.group === 'ai').map(serviceLine).join('\n');
-    const dev = services.filter((s) => s.group !== 'ai').map(serviceLine).join('\n');
-    return `Here's what we do:\n\nAI services\n${ai}\n\nSoftware development\n${dev}\n\nTell me a bit about your business and I'll point you to the right one.`;
+    const by = (g) => services.filter((s) => s.group === g).map(serviceLine).join('\n');
+    return `Here's what we do:\n\nAI services\n${by('ai')}\n\nSoftware development\n${by('development')}\n\nMarketing (UGC videos, ads & growth)\n${by('marketing')}\n\nTell me a bit about your business and I'll point you to the right one.`;
   }
 
   // 3 ── best matching service or FAQ

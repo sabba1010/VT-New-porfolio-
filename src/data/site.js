@@ -11,7 +11,7 @@ export const site = {
   name: 'Velotech',
   defaultTitle: 'Velotech — Top Software Development & AI Company',
   description:
-    'Velotech builds AI automation, adds AI to the tools you already use and develops web, mobile and custom software for businesses worldwide.',
+    'Velotech builds AI automation and custom web, mobile and software products, then grows them with UGC videos, paid ads and digital marketing — for businesses worldwide.',
   ogImage: '/og-image.png', // 1200×630 fallback; per-page images live in /og (npm run og)
   foundingYear: 2018, // used in structured data only while proof.stats is on
 

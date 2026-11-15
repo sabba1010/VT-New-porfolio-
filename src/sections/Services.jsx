@@ -11,6 +11,7 @@ const filters = [
   { id: 'all', label: 'All Services' },
   { id: 'ai', label: 'AI' },
   { id: 'development', label: 'Development' },
+  { id: 'marketing', label: 'Marketing' },
 ];
 
 function ServiceCard({ service, index }) {

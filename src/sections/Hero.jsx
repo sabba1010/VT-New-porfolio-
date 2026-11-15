@@ -83,7 +83,7 @@ export default function Hero() {
 
         <p className="hero__desc hero-in" style={{ '--d': '520ms' }}>
           We automate your workflows, integrate AI into the tools you already use and build custom
-          software that helps your business grow — for startups and enterprises worldwide.
+          software — then grow it with UGC videos, ads and marketing. For startups and enterprises worldwide.
         </p>
 
         <div className="hero__ctas hero-in" style={{ '--d': '600ms' }}>

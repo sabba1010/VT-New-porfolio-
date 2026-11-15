@@ -10,6 +10,7 @@ const serviceTabs = [
   { id: 'all', label: 'All' },
   { id: 'ai', label: 'AI' },
   { id: 'development', label: 'Development' },
+  { id: 'marketing', label: 'Marketing' },
 ];
 
 function Promo({ title, text, cta = "Let's Talk", href = '/contact', onNavigate }) {

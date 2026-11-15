@@ -13,13 +13,16 @@ const items = [
   { label: 'CMS Development', slug: 'cms-development' },
   { label: 'AI Development', slug: 'ai-development' },
   { label: 'UI/UX Design', slug: 'ui-ux-design' },
+  { label: 'UGC Videos', slug: 'ugc-video-production' },
+  { label: 'Paid Ads', slug: 'paid-ads-management' },
+  { label: 'Digital Marketing', slug: 'digital-marketing' },
 ];
 
-/** Large kinetic text band listing development services. */
+/** Large kinetic text band listing our development and marketing services. */
 export default function Ticker() {
   const loop = [...items, ...items]; // doubled for a seamless marquee
   return (
-    <section className="ticker" aria-label="Our development services">
+    <section className="ticker" aria-label="Our services">
       <div className="ticker__track">
         {loop.map((s, i) => (
           <Link

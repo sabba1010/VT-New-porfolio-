@@ -20,7 +20,7 @@ export default function ServicesPage() {
             AI &amp; software services that <span className="text-gradient">grow your business</span>
           </>
         }
-        desc="AI automation, AI integration and AI-driven growth — plus web, mobile, e-commerce, CMS and custom software development and UI/UX design. One accountable team from idea to launch."
+        desc="AI automation, AI integration and AI-driven growth — plus web, mobile, e-commerce, CMS and custom software development and UI/UX design — plus UGC videos, paid ads and digital marketing. One accountable team from idea to growth."
         actions={
           <>
             <Button href="/contact" size="lg">

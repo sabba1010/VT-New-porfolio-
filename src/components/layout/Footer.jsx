@@ -43,8 +43,8 @@ export default function Footer() {
               <Logo light />
             </Link>
             <p>
-              Velotech is a software development and AI company. We automate workflows, integrate AI
-              into your tools and build custom software that helps businesses worldwide grow.
+              Velotech is a software development and AI company. We automate workflows, build custom
+              software and grow it with UGC videos, ads and marketing — for businesses worldwide.
             </p>
             {activeSocials.length > 0 && (
               <div className="footer__socials">

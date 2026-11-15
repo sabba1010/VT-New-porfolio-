@@ -8,7 +8,7 @@ import {
 import * as img from './images.js';
 
 // Detail-page data lives in its own modules; re-exported here for convenience.
-export { services, getService, aiServices, developmentServices } from './services.js';
+export { services, getService, aiServices, developmentServices, marketingServices } from './services.js';
 export { industries, getIndustry } from './industries.js';
 import { industries as allIndustries } from './industries.js';
 import { caseStudies as allCaseStudies } from './caseStudies.js';

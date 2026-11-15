@@ -24,14 +24,30 @@
 }
 
 /* ── Pill ── */
+/* Soft peach — a light tint of the brand orange with deep orange-brown text
+   (≈8:1 contrast). The WhatsApp icon keeps its own green so it's recognisable. */
+.wab {
+  --wab-bg: #ffe8df;
+  --wab-bg-hover: #ffdccd;
+  --wab-fg: #7a2405;
+  --wab-line: #ffc9b4;
+}
+
 .wab__pill {
   display: flex;
   align-items: center;
   padding: 6px;
   border-radius: var(--r-pill);
-  background: #fff;
-  border: 1px solid rgba(11, 13, 18, 0.08);
-  box-shadow: 0 18px 44px -16px rgba(11, 13, 18, 0.45), 0 2px 6px rgba(11, 13, 18, 0.06);
+  background: var(--wab-bg);
+  border: 1.5px solid var(--wab-line);
+  box-shadow: 0 18px 40px -18px rgba(207, 58, 10, 0.55), 0 2px 6px rgba(11, 13, 18, 0.08);
+  transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+
+.wab__pill:hover {
+  transform: translateY(-2px);
+  background: var(--wab-bg-hover);
+  box-shadow: 0 24px 48px -18px rgba(207, 58, 10, 0.65), 0 2px 6px rgba(11, 13, 18, 0.08);
 }
 
 .wab__main {
@@ -40,7 +56,7 @@
   gap: 10px;
   padding-right: 14px;
   border-radius: var(--r-pill);
-  color: var(--c-ink);
+  color: var(--wab-fg);
 }
 
 .wab__avatar {
@@ -56,6 +72,7 @@
   border-radius: 50%;
   object-fit: cover;
   background: #e9eaee;
+  box-shadow: 0 0 0 2px var(--c-accent-bright, #ff5b2e);
 }
 
 /* green "online" dot */
@@ -99,13 +116,14 @@
 }
 
 .wab__main:hover .wab__label {
-  color: #128c4b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .wab__divider {
   width: 1px;
   height: 26px;
-  background: rgba(11, 13, 18, 0.12);
+  background: rgba(122, 36, 5, 0.18);
 }
 
 .wab__toggle {
@@ -117,13 +135,14 @@
   border: 0;
   border-radius: var(--r-pill);
   background: transparent;
-  color: var(--c-text-muted);
+  color: var(--wab-fg);
   cursor: pointer;
   transition: background-color var(--dur-fast) var(--ease);
 }
 
-.wab__toggle:hover {
-  background: #f1f2f4;
+.wab__toggle:hover,
+.wab.is-open .wab__toggle {
+  background: rgba(122, 36, 5, 0.08);
 }
 
 .wab__chev {
@@ -137,7 +156,7 @@
 .wab__main:focus-visible,
 .wab__toggle:focus-visible,
 .wab__item:focus-visible {
-  outline: 3px solid #25d366;
+  outline: 3px solid var(--c-accent-bright, #ff5b2e);
   outline-offset: 2px;
 }
 

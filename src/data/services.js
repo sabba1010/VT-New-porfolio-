@@ -1,10 +1,10 @@
-import { PenTool, Layers, Globe, Smartphone, BrainCircuit, Workflow, Plug, TrendingUp, Code2, ShoppingCart, Users, LayoutTemplate } from 'lucide-react';
+import { Clapperboard, Megaphone, Target, PenTool, Layers, Globe, Smartphone, BrainCircuit, Workflow, Plug, TrendingUp, Code2, ShoppingCart, Users, LayoutTemplate } from 'lucide-react';
 import { projects, platforms as platformImg } from './images.js';
 
 /**
  * Services — powers the home grid, mega menu, /services and /services/:slug.
  * Add a new object here and a new page appears automatically.
- * `group` drives the filter tabs: 'ai' (our focus), 'development' or 'design'.
+ * `group` drives the filter tabs: 'ai' (our focus), 'development' or 'marketing'.
  */
 
 /* ─────────────── AI services (our core focus — listed first everywhere) ─────────────── */
@@ -300,7 +300,80 @@ const developmentServices = [
 ];
 
 
-export const services = [...aiServices, ...developmentServices];
-export { aiServices, developmentServices };
+/* ─────────────── Marketing services (UGC, ads & growth) ─────────────── */
+const marketingServices = [
+  {
+    slug: 'ugc-video-production',
+    title: 'UGC Video Production',
+    short: 'UGC Videos',
+    desc: 'Authentic creator-style videos for TikTok, Reels, Shorts and ads — scripted, shot and edited to stop the scroll and sell.',
+    icon: Clapperboard,
+    group: 'marketing',
+    image: '/images/services/ugc-video-production.svg',
+    tagline: 'Real people. Real reactions. Content that converts.',
+    overview: [
+      'UGC (user-generated content) style videos feel like a recommendation from a friend, not an ad — which is why they outperform polished studio spots on social. We handle the whole thing: hooks and scripts, creators, filming, editing, captions and every format you need.',
+      'Each video is built to be tested: several hooks per concept, multiple aspect ratios and clear briefs, so your ads team can find winners fast and scale them.',
+    ],
+    features: [
+      { title: 'Hooks & scripts', desc: 'Scroll-stopping first three seconds and scripts written for your product and audience.' },
+      { title: 'Creator content', desc: 'Product demos, unboxings, testimonials and problem–solution videos with real creators.' },
+      { title: 'Editing & captions', desc: 'Fast-paced edits, on-screen text, subtitles, music and brand-safe visuals.' },
+      { title: 'Ad-ready variations', desc: 'Multiple hooks, CTAs and lengths per video so you can A/B test quickly.' },
+      { title: 'Every format', desc: '9:16, 1:1 and 16:9 cuts for TikTok, Instagram Reels, YouTube Shorts and feeds.' },
+      { title: 'Monthly content packs', desc: 'A steady flow of fresh creatives so your ads never go stale.' },
+    ],
+    tech: ['TikTok', 'Instagram Reels', 'YouTube Shorts', 'CapCut', 'Premiere Pro', 'After Effects'],
+  },
+  {
+    slug: 'paid-ads-management',
+    title: 'Paid Ads Management',
+    short: 'Paid Ads',
+    desc: 'Meta, Google and TikTok ad campaigns planned, launched and optimised to bring in customers at a cost that makes sense.',
+    icon: Target,
+    group: 'marketing',
+    image: '/images/services/paid-ads-management.svg',
+    tagline: 'Ads that pay for themselves — and then some.',
+    overview: [
+      'We plan, launch and manage paid campaigns across Meta (Facebook & Instagram), Google, YouTube and TikTok — from account setup and tracking to creative testing and daily optimisation.',
+      'You get transparent reporting on what you spend and what it brings back, plus clear recommendations on where to put the next dollar.',
+    ],
+    features: [
+      { title: 'Meta ads', desc: 'Facebook and Instagram campaigns for leads, sales and app installs.' },
+      { title: 'Google & YouTube ads', desc: 'Search, Performance Max, Shopping and YouTube campaigns that capture demand.' },
+      { title: 'TikTok ads', desc: 'Spark Ads and in-feed campaigns built around UGC creatives.' },
+      { title: 'Tracking & analytics', desc: 'Pixel, Conversions API, GA4 and event setup so every result is measured.' },
+      { title: 'Creative testing', desc: 'Structured tests of hooks, angles and offers to find what scales.' },
+      { title: 'Reporting', desc: 'Clear weekly reports on spend, cost per result and return on ad spend.' },
+    ],
+    tech: ['Meta Ads', 'Google Ads', 'TikTok Ads', 'YouTube Ads', 'GA4', 'Looker Studio'],
+  },
+  {
+    slug: 'digital-marketing',
+    title: 'Digital Marketing',
+    short: 'Digital Marketing',
+    desc: 'Full-funnel marketing — strategy, social media, content, SEO and email — run by one team alongside your product.',
+    icon: Megaphone,
+    group: 'marketing',
+    image: '/images/services/digital-marketing.svg',
+    tagline: 'One team for the product and the growth.',
+    overview: [
+      'We plan and run your marketing end to end: positioning, social media, content, SEO, email and landing pages — connected to your ads and your product, so every channel pushes in the same direction.',
+      'Because our engineers and marketers work side by side, tracking, landing pages and automations get built properly — not patched together.',
+    ],
+    features: [
+      { title: 'Marketing strategy', desc: 'Audience, positioning, channels and a clear monthly plan tied to goals.' },
+      { title: 'Social media management', desc: 'Content calendars, posting and community management across platforms.' },
+      { title: 'SEO & content', desc: 'Keyword research, on-page SEO and articles that bring in organic traffic.' },
+      { title: 'Email marketing', desc: 'Welcome flows, newsletters and automations that turn leads into customers.' },
+      { title: 'Landing pages & CRO', desc: 'High-converting pages and experiments that lift sign-ups and sales.' },
+      { title: 'AI-powered marketing', desc: 'AI for audience research, personalisation and faster content production.' },
+    ],
+    tech: ['Meta Business Suite', 'Google Search Console', 'Semrush', 'HubSpot', 'Klaviyo', 'Canva'],
+  },
+];
+
+export const services = [...aiServices, ...developmentServices, ...marketingServices];
+export { aiServices, developmentServices, marketingServices };
 
 export const getService = (slug) => services.find((s) => s.slug === slug);

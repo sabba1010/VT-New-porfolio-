@@ -11,12 +11,12 @@ export const pageSeo = {
   '/': {
     // title: null → uses site.defaultTitle
     description:
-      'Velotech is an AI and software development company. We build AI automation, add AI to your tools and develop custom web and mobile apps. Book a free AI audit.',
+      'Velotech is an AI and software development company with an in-house marketing team — AI automation, custom web and mobile apps, UGC videos and paid ads.',
   },
   '/services': {
     title: 'AI & Software Development Services',
     description:
-      'AI automation, AI integration and custom AI development, plus web, mobile, e-commerce and custom software development — one accountable team from idea to launch.',
+      'AI automation and custom AI, web, mobile and e-commerce development, plus UGC videos, paid ads and digital marketing — one accountable team from idea to growth.',
   },
   '/case-studies': {
     title: 'Case Studies: AI & Software Projects',
@@ -102,6 +102,21 @@ export const serviceSeo = {
     description:
       'Extend your team with pre-vetted engineers, designers and QA — dedicated teams or staff augmentation that work in your time zone, with full IP ownership.',
   },
+  'ugc-video-production': {
+    title: 'UGC Video Production for TikTok, Reels & Ads',
+    description:
+      'UGC video production that sells — creator-style product demos, unboxings and testimonials with scroll-stopping hooks, edited for TikTok, Reels, Shorts and ads.',
+  },
+  'paid-ads-management': {
+    title: 'Paid Ads Management: Meta, Google & TikTok',
+    description:
+      'Paid ads management for Meta, Google, YouTube and TikTok — campaign setup, conversion tracking, creative testing and weekly reporting on spend and return.',
+  },
+  'digital-marketing': {
+    title: 'Digital Marketing Services: Social, SEO & Email',
+    description:
+      'Full-funnel digital marketing — strategy, social media management, SEO, content, email and landing pages, run by one team alongside your product and ads.',
+  },
   'ui-ux-design': {
     title: 'UI/UX Design Services for Web & Mobile Apps',
     description:
@@ -129,4 +144,7 @@ export const expertise = [
   'Mobile app development',
   'E-commerce development',
   'UI/UX design',
+  'UGC video production',
+  'Paid social advertising',
+  'Digital marketing',
 ];
