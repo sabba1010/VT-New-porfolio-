@@ -90,7 +90,7 @@ export default function Hero() {
           <Button href={auditHref} size="lg">
             Book a Free AI Audit
           </Button>
-          <Button href="/#ai" size="lg" variant="ghost">
+          <Button href="/services" size="lg" variant="ghost">
             Explore AI Solutions
           </Button>
         </div>

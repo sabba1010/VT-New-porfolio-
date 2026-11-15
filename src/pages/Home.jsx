@@ -1,5 +1,4 @@
 import Hero from '../sections/Hero';
-import AISpotlight from '../sections/AISpotlight';
 import Services from '../sections/Services';
 import Manifesto from '../sections/Manifesto';
 import Ticker from '../sections/Ticker';
@@ -20,7 +19,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <AISpotlight />
       <Services compact />
       <Manifesto />
       <Ticker />
