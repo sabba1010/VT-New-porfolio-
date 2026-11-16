@@ -45,6 +45,11 @@
   transition: filter 700ms var(--ease), scale 1.1s var(--ease);
 }
 
+/* illustrated avatars stay in colour; real photos get the grayscale → colour hover */
+.tm-card__photo img[src$='.svg'] {
+  filter: none;
+}
+
 .tm-card:hover .tm-card__photo img,
 .tm-card:focus-within .tm-card__photo img {
   filter: none;
@@ -68,7 +73,7 @@
   z-index: 2;
   padding: 6px 12px;
   border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(11, 13, 18, 0.45);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.25);

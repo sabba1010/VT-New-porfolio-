@@ -7,3 +7,6 @@ dist-ssr
 .env
 .env.local
 .env.*.local
+
+# local-only stock portraits for testing the team section (never deployed)
+public/images/team-test/

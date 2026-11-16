@@ -75,7 +75,7 @@ const allPosts = [
     date: '2026-08-21',
     readTime: '7 min read',
     cover: projects[1],
-    author: { name: 'Team Member', role: 'Mobile Lead', photo: team[3] },
+    author: { name: 'Team Member', role: 'Mobile Lead', photo: team[4] },
     body: [
       { type: 'p', text: 'Both frameworks are mature and production-proven. The right choice depends less on benchmarks and more on your team, product and roadmap.' },
       { type: 'h2', text: 'Choose Flutter when' },
@@ -93,7 +93,7 @@ const allPosts = [
     date: '2026-08-07',
     readTime: '4 min read',
     cover: culture[1],
-    author: { name: 'Team Member', role: 'Head of Delivery', photo: team[4] },
+    author: { name: 'Team Member', role: 'Head of Delivery', photo: team[3] },
     body: [
       { type: 'p', text: 'Working across six countries taught us that great remote delivery is not about more meetings — it is about clear, written communication and predictable rhythms.' },
       { type: 'h2', text: 'Overlap hours are sacred' },

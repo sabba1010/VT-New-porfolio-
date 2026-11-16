@@ -15,7 +15,13 @@ export const brand = {
   logoLight: null, // version used on dark backgrounds
 };
 
-export const team = Array.from({ length: 8 }, (_, i) => `/images/team/member-${i + 1}.svg`);
+// real photos dropped in public/images/ai/team/<n>.jpg replace the illustrated avatars.
+// TEST ONLY: on `npm run dev` the stock portraits in public/images/team-test/ (gitignored)
+// are shown instead. Production builds never use them — stock faces must not pose as the team.
+const TEST_TEAM = import.meta.env.DEV && import.meta.env.VITE_TEAM_TEST !== 'off';
+export const team = Array.from({ length: 8 }, (_, i) =>
+  TEST_TEAM ? `/images/team-test/${i + 1}.jpg` : pickImage(`team/${i + 1}`, `/images/team/member-${i + 1}.svg`),
+);
 
 export const testimonialPhotos = Array.from(
   { length: 5 },
