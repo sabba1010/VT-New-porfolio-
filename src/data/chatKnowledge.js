@@ -5,6 +5,7 @@
 import { site } from './site.js';
 import { company, faqs, stats, approach, activeSocials, whatsappHref } from './content.js';
 import { aiServices, developmentServices, marketingServices } from './services.js';
+import { reviewSummary, reviewCountries } from './reviews.js';
 
 const list = (items) => items.map((s) => `- ${s.title} (/services/${s.slug}): ${s.desc}`).join('\n');
 
@@ -63,6 +64,8 @@ ${
     ? 'The projects on /case-studies are example projects, not named client engagements — never present them as real clients or quote their results. If asked for references or past clients, offer to have the team share relevant examples on a call via /contact.\n'
     : ''
 }${site.proof?.offices ? '' : 'Do not mention office locations; say the team works remotely with clients worldwide.\n'}
+Client reviews: rated ${reviewSummary.rating.toFixed(1)}/5 from ${reviewSummary.count} verified ${reviewSummary.platform} reviews (${reviewSummary.fiveStar} five-star), from clients in ${reviewCountries.join(', ')}. Clients praise clear communication, attention to detail, on-time delivery and fair pricing. Reviews are shown on the home page (/#testimonials). Do not quote client usernames.
+
 Frequently asked questions:
 ${faqs.map((f) => `Q: ${f.q}\nA: ${f.a}`).join('\n\n')}
 
