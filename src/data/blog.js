@@ -1,10 +1,11 @@
 import { projects, culture, team } from './images.js';
+import { pickImage } from './aiImages.js';
 
 /**
  * Blog / insights — powers the home "Latest insights" section, /blog and /blog/:slug.
  * Body is an array of blocks: { type: 'p' | 'h2' | 'list' | 'quote', text | items }.
  */
-export const posts = [
+const allPosts = [
   {
     slug: 'how-to-scope-an-mvp',
     title: 'How to Scope an MVP That Actually Validates Your Idea',
@@ -120,6 +121,9 @@ export const posts = [
     ],
   },
 ];
+
+// each article uses its own generated cover (scripts/generate-art.mjs)
+export const posts = allPosts.map((p) => ({ ...p, cover: pickImage(`blog/${p.slug}`, `/images/blog/${p.slug}.svg`) }));
 
 export const getPost = (slug) => posts.find((p) => p.slug === slug);
 

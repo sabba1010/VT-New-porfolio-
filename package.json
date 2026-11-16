@@ -4,12 +4,13 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "dev": "node scripts/scan-ai-images.mjs && vite",
+    "build": "node scripts/scan-ai-images.mjs && vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview",
     "placeholders": "node scripts/generate-placeholders.mjs",
     "build:spa": "vite build",
-    "og": "vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/generate-og.mjs"
+    "og": "vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/generate-og.mjs",
+    "images": "node scripts/scan-ai-images.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.8.0",

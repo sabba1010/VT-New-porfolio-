@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" font-family="Manrope, 'Segoe UI', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16181F"/><stop offset="1" stop-color="#0B0D12"/></linearGradient>
+    <linearGradient id="hot" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5B2E"/><stop offset="1" stop-color="#FFB547"/></linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.1" r="0.75"><stop offset="0" stop-color="#FF5B2E" stop-opacity=".32"/><stop offset="1" stop-color="#FF5B2E" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#fff" stroke-opacity=".045"/></pattern>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000" flood-opacity=".5"/></filter>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/><rect width="1200" height="750" fill="url(#grid)"/><rect width="1200" height="750" fill="url(#glow)"/>
+<g filter="url(#sh)"><rect x="120" y="90" width="960" height="570" rx="18" fill="#16181F" stroke="#ffffff14"/></g>
+  <rect x="120" y="90" width="960" height="40" rx="18" fill="#1D2029"/><rect x="120" y="112" width="960" height="18" fill="#1D2029"/>
+  <circle cx="142" cy="110" r="5" fill="#FF5F57"/><circle cx="160" cy="110" r="5" fill="#FEBC2E"/><circle cx="178" cy="110" r="5" fill="#28C840"/>
+  <rect x="204" y="100" width="320" height="20" rx="10" fill="#0B0D12"/><text x="218" y="114" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="600" fill="#9CA0AB" text-anchor="start">velotech.studio</text>
+    <rect x="160" y="160" width="120" height="14" rx="7" fill="#ffffff55"/><rect x="700" y="162" width="60" height="10" rx="5" fill="#ffffff22"/><rect x="790" y="162" width="60" height="10" rx="5" fill="#ffffff22"/><rect x="880" y="162" width="60" height="10" rx="5" fill="#ffffff22"/><rect x="970" y="162" width="60" height="10" rx="5" fill="#ffffff22"/>
+    <text x="160" y="260" font-family="Sora, Manrope, 'Segoe UI', Arial, sans-serif" font-size="46" font-weight="800" fill="#fff" text-anchor="start">Fast. Accessible.</text>
+    <text x="160" y="318" font-family="Sora, Manrope, 'Segoe UI', Arial, sans-serif" font-size="46" font-weight="800" fill="#FF8A5C" text-anchor="start">SEO-ready.</text>
+    <rect x="160" y="352" width="380" height="12" rx="6" fill="#ffffff22"/><rect x="160" y="376" width="300" height="12" rx="6" fill="#ffffff22"/>
+    <rect x="160" y="414" width="170" height="52" rx="26" fill="url(#hot)"/><text x="245" y="446" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">Get started</text>
+    <rect x="640" y="230" width="380" height="260" rx="18" fill="#1D2029" stroke="#ffffff10"/>
+    <circle cx="830" cy="342" r="72" fill="none" stroke="#ffffff14" stroke-width="14"/>
+    <circle cx="830" cy="342" r="72" fill="none" stroke="#22C55E" stroke-width="14" stroke-dasharray="452" stroke-dashoffset="8" transform="rotate(-90 830 342)" stroke-linecap="round"/>
+    <text x="830" y="356" font-family="Sora, Manrope, 'Segoe UI', Arial, sans-serif" font-size="40" font-weight="800" fill="#fff" text-anchor="middle">100</text>
+    <text x="830" y="456" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="16" font-weight="700" fill="#9CA0AB" text-anchor="middle">Performance score</text>
+    <rect x="160" y="520" width="280" height="100" rx="14" fill="#1D2029" stroke="#ffffff10"/><rect x="184" y="548" width="120" height="12" rx="6" fill="#ffffff40"/><rect x="184" y="572" width="200" height="10" rx="5" fill="#ffffff22"/><rect x="460" y="520" width="280" height="100" rx="14" fill="#1D2029" stroke="#ffffff10"/><rect x="484" y="548" width="120" height="12" rx="6" fill="#ffffff40"/><rect x="484" y="572" width="200" height="10" rx="5" fill="#ffffff22"/><rect x="760" y="520" width="280" height="100" rx="14" fill="#1D2029" stroke="#ffffff10"/><rect x="784" y="548" width="120" height="12" rx="6" fill="#ffffff40"/><rect x="784" y="572" width="200" height="10" rx="5" fill="#ffffff22"/>
+</svg>

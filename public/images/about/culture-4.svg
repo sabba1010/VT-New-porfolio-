@@ -1,21 +1,16 @@
-<!-- PLACEHOLDER: about/culture-4 — replace with an office / culture photo -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="Manrope, 'Segoe UI', Arial, sans-serif">
   <defs>
-    <linearGradient id="g" gradientTransform="rotate(120 .5 .5)">
-      <stop offset="0" stop-color="#1E2A78"/>
-      <stop offset="1" stop-color="#4F6BFF"/>
-    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16181F"/><stop offset="1" stop-color="#0B0D12"/></linearGradient>
+    <linearGradient id="hot" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5B2E"/><stop offset="1" stop-color="#FFB547"/></linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.1" r="0.75"><stop offset="0" stop-color="#FF5B2E" stop-opacity=".32"/><stop offset="1" stop-color="#FF5B2E" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#fff" stroke-opacity=".045"/></pattern>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000" flood-opacity=".5"/></filter>
   </defs>
-  <rect width="800" height="600" fill="url(#g)"/>
-  <rect x="0" y="420" width="800" height="180" fill="#0B0D12" opacity=".25"/>
-  <rect x="180" y="250" width="240" height="150" rx="12" fill="#0B0D12" opacity=".8"/>
-  <rect x="196" y="266" width="208" height="118" rx="6" fill="#fff" opacity=".85"/>
-  <rect x="280" y="400" width="40" height="30" fill="#0B0D12" opacity=".7"/>
-  <rect x="420" y="230" width="210" height="170" rx="12" fill="#0B0D12" opacity=".8"/>
-  <rect x="436" y="246" width="178" height="138" rx="6" fill="#fff" opacity=".85"/>
-  <circle cx="310" cy="470" r="46" fill="#0B0D12" opacity=".55"/>
-  <circle cx="525" cy="470" r="46" fill="#0B0D12" opacity=".55"/>
-  <circle cx="660" cy="120" r="70" fill="#fff" opacity=".15"/>
-  <rect x="0" y="430" width="800" height="16" fill="#fff" opacity=".2"/>
+  <rect width="800" height="600" fill="url(#bg)"/><rect width="800" height="600" fill="url(#grid)"/><rect width="800" height="600" fill="url(#glow)"/>
+<g filter="url(#sh)"><rect x="60" y="60" width="680" height="480" rx="22" fill="#16181F" stroke="#ffffff14"/></g>
+  <text x="96" y="112" font-family="Sora, Manrope, 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="800" fill="#fff" text-anchor="start">Discovery workshop</text>
+  <text x="96" y="140" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="15" font-weight="700" fill="#9CA0AB" text-anchor="start">Goals · users · quick wins</text>
+  <g transform="rotate(-4 160 226)"><rect x="110" y="180" width="100" height="92" rx="6" fill="#FFB547"/><rect x="124" y="202" width="64" height="8" rx="4" fill="#0B0D1255"/><rect x="124" y="220" width="46" height="8" rx="4" fill="#0B0D1240"/></g><g transform="rotate(3 280 218)"><rect x="230" y="172" width="100" height="92" rx="6" fill="#FF8A5C"/><rect x="244" y="194" width="64" height="8" rx="4" fill="#0B0D1255"/><rect x="244" y="212" width="46" height="8" rx="4" fill="#0B0D1240"/></g><g transform="rotate(2 210 326)"><rect x="160" y="280" width="100" height="92" rx="6" fill="#FFD08A"/><rect x="174" y="302" width="64" height="8" rx="4" fill="#0B0D1255"/><rect x="174" y="320" width="46" height="8" rx="4" fill="#0B0D1240"/></g><g transform="rotate(-3 470 222)"><rect x="420" y="176" width="100" height="92" rx="6" fill="#7DD3FC"/><rect x="434" y="198" width="64" height="8" rx="4" fill="#0B0D1255"/><rect x="434" y="216" width="46" height="8" rx="4" fill="#0B0D1240"/></g><g transform="rotate(4 590 236)"><rect x="540" y="190" width="100" height="92" rx="6" fill="#A5B4FC"/><rect x="554" y="212" width="64" height="8" rx="4" fill="#0B0D1255"/><rect x="554" y="230" width="46" height="8" rx="4" fill="#0B0D1240"/></g><g transform="rotate(-2 520 336)"><rect x="470" y="290" width="100" height="92" rx="6" fill="#7DD3FC"/><rect x="484" y="312" width="64" height="8" rx="4" fill="#0B0D1255"/><rect x="484" y="330" width="46" height="8" rx="4" fill="#0B0D1240"/></g><g transform="rotate(3 350 426)"><rect x="300" y="380" width="100" height="92" rx="6" fill="#86EFAC"/><rect x="314" y="402" width="64" height="8" rx="4" fill="#0B0D1255"/><rect x="314" y="420" width="46" height="8" rx="4" fill="#0B0D1240"/></g><g transform="rotate(-3 470 438)"><rect x="420" y="392" width="100" height="92" rx="6" fill="#BBF7D0"/><rect x="434" y="414" width="64" height="8" rx="4" fill="#0B0D1255"/><rect x="434" y="432" width="46" height="8" rx="4" fill="#0B0D1240"/></g><g transform="rotate(2 610 418)"><rect x="560" y="372" width="100" height="92" rx="6" fill="#86EFAC"/><rect x="574" y="394" width="64" height="8" rx="4" fill="#0B0D1255"/><rect x="574" y="412" width="46" height="8" rx="4" fill="#0B0D1240"/></g>
+  <path d="M220 330 C 280 360, 300 380, 330 392" stroke="#FF5B2E" stroke-width="3" fill="none" stroke-dasharray="6 8"/>
+  <path d="M520 320 C 500 350, 470 370, 452 390" stroke="#FF5B2E" stroke-width="3" fill="none" stroke-dasharray="6 8"/>
 </svg>

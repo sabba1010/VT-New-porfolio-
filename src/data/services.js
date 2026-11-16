@@ -1,5 +1,6 @@
 import { Clapperboard, Megaphone, Target, PenTool, Layers, Globe, Smartphone, BrainCircuit, Workflow, Plug, TrendingUp, Code2, ShoppingCart, Users, LayoutTemplate } from 'lucide-react';
 import { projects, platforms as platformImg } from './images.js';
+import { pickImage } from './aiImages.js';
 
 /**
  * Services — powers the home grid, mega menu, /services and /services/:slug.
@@ -112,7 +113,7 @@ const developmentServices = [
     desc: 'Fast, accessible, SEO-ready websites and web apps engineered with modern frameworks.',
     icon: Globe,
     group: 'development',
-    image: projects[2],
+    image: '/images/services/web-development.svg',
     tagline: 'High-performance websites and web apps built to scale.',
     overview: [
       'From marketing sites to complex SaaS platforms, we build web experiences that load fast, rank well and are a pleasure to maintain.',
@@ -135,7 +136,7 @@ const developmentServices = [
     desc: 'Native and cross-platform iOS & Android apps with polished interactions and robust backends.',
     icon: Smartphone,
     group: 'development',
-    image: projects[1],
+    image: '/images/services/mobile-app-development.svg',
     tagline: 'Mobile apps people keep on their home screen.',
     overview: [
       'We design and build native and cross-platform apps with smooth performance, delightful interactions and reliable backends.',
@@ -158,7 +159,7 @@ const developmentServices = [
     desc: 'Tailor-made platforms, integrations and internal tools built around the way your business works.',
     icon: Code2,
     group: 'development',
-    image: projects[3],
+    image: '/images/services/custom-software-development.svg',
     tagline: 'Software shaped around your business — not the other way round.',
     overview: [
       'Off-the-shelf tools rarely fit perfectly. We build custom platforms, ERPs, CRMs and integrations that match your exact workflows.',
@@ -181,7 +182,7 @@ const developmentServices = [
     desc: 'High-converting storefronts, headless commerce and marketplace platforms ready for scale.',
     icon: ShoppingCart,
     group: 'development',
-    image: projects[2],
+    image: '/images/services/ecommerce-development.svg',
     tagline: 'Commerce experiences that turn browsers into buyers.',
     overview: [
       'We build storefronts and marketplaces that are fast, beautiful and optimized for conversion across every device.',
@@ -204,7 +205,7 @@ const developmentServices = [
     desc: 'From discovery to launch, we shape and build digital products that users love and businesses scale.',
     icon: Layers,
     group: 'development',
-    image: projects[0],
+    image: '/images/services/product-design-development.svg',
     tagline: 'Turn a bold idea into a market-ready product — fast.',
     overview: [
       'We partner with founders and product teams across the full lifecycle: discovery workshops, UX research, prototyping, engineering and launch.',
@@ -227,7 +228,7 @@ const developmentServices = [
     desc: 'WordPress, Shopify, Wix, Squarespace and Square Online sites your team can update — no developer needed.',
     icon: LayoutTemplate,
     group: 'development',
-    image: projects[5],
+    image: '/images/services/cms-development.svg',
     tagline: 'Websites and stores your team can manage with confidence.',
     overview: [
       'We design, build and maintain websites on the platforms businesses already trust — WordPress, Shopify, Wix, Squarespace and Square Online — and recommend the right one for your goals and budget.',
@@ -258,7 +259,7 @@ const developmentServices = [
     desc: 'Dedicated, pre-vetted engineering teams that plug into your workflow and ship from week one.',
     icon: Users,
     group: 'development',
-    image: projects[4],
+    image: '/images/services/software-outsourcing.svg',
     tagline: 'Senior engineering capacity, without the hiring overhead.',
     overview: [
       'Extend your team with pre-vetted engineers, designers and QA specialists who work in your tools, rituals and time zone.',
@@ -281,7 +282,7 @@ const developmentServices = [
     desc: 'Research-driven interfaces for websites and apps that feel effortless and convert.',
     icon: PenTool,
     group: 'development',
-    image: projects[1],
+    image: '/images/services/ui-ux-design.svg',
     tagline: 'Interfaces that feel effortless — and convert.',
     overview: [
       'Our designers blend user research, interaction design and visual craft to create websites and apps people enjoy using every day.',
@@ -373,7 +374,14 @@ const marketingServices = [
   },
 ];
 
-export const services = [...aiServices, ...developmentServices, ...marketingServices];
-export { aiServices, developmentServices, marketingServices };
+// an AI image dropped into public/images/ai/services/<slug>.* replaces the illustration
+const withAiImage = (list) => list.map((s) => ({ ...s, image: pickImage(`services/${s.slug}`, s.image) }));
+
+export const services = withAiImage([...aiServices, ...developmentServices, ...marketingServices]);
+const byGroup = (g) => services.filter((s) => s.group === g);
+const aiList = byGroup('ai');
+const devList = byGroup('development');
+const mkList = byGroup('marketing');
+export { aiList as aiServices, devList as developmentServices, mkList as marketingServices };
 
 export const getService = (slug) => services.find((s) => s.slug === slug);

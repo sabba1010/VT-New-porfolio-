@@ -1,21 +1,38 @@
-<!-- PLACEHOLDER: about/culture-1 — replace with an office / culture photo -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="Manrope, 'Segoe UI', Arial, sans-serif">
   <defs>
-    <linearGradient id="g" gradientTransform="rotate(30 .5 .5)">
-      <stop offset="0" stop-color="#0F766E"/>
-      <stop offset="1" stop-color="#34D399"/>
-    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16181F"/><stop offset="1" stop-color="#0B0D12"/></linearGradient>
+    <linearGradient id="hot" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5B2E"/><stop offset="1" stop-color="#FFB547"/></linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.1" r="0.75"><stop offset="0" stop-color="#FF5B2E" stop-opacity=".32"/><stop offset="1" stop-color="#FF5B2E" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#fff" stroke-opacity=".045"/></pattern>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000" flood-opacity=".5"/></filter>
   </defs>
-  <rect width="800" height="600" fill="url(#g)"/>
-  <rect x="0" y="420" width="800" height="180" fill="#0B0D12" opacity=".25"/>
-  <rect x="120" y="250" width="240" height="150" rx="12" fill="#0B0D12" opacity=".8"/>
-  <rect x="136" y="266" width="208" height="118" rx="6" fill="#fff" opacity=".85"/>
-  <rect x="220" y="400" width="40" height="30" fill="#0B0D12" opacity=".7"/>
-  <rect x="420" y="230" width="210" height="170" rx="12" fill="#0B0D12" opacity=".8"/>
-  <rect x="436" y="246" width="178" height="138" rx="6" fill="#fff" opacity=".85"/>
-  <circle cx="250" cy="470" r="46" fill="#0B0D12" opacity=".55"/>
-  <circle cx="525" cy="470" r="46" fill="#0B0D12" opacity=".55"/>
-  <circle cx="660" cy="120" r="70" fill="#fff" opacity=".15"/>
-  <rect x="0" y="430" width="800" height="16" fill="#fff" opacity=".2"/>
+  <rect width="800" height="600" fill="url(#bg)"/><rect width="800" height="600" fill="url(#grid)"/><rect width="800" height="600" fill="url(#glow)"/>
+<g filter="url(#sh)"><rect x="60" y="70" width="680" height="460" rx="22" fill="#16181F" stroke="#ffffff14"/></g>
+  <text x="96" y="122" font-family="Sora, Manrope, 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="800" fill="#fff" text-anchor="start">Sprint board</text>
+  <circle cx="610" cy="112" r="18" fill="#FF5B2E" stroke="#16181F" stroke-width="3"/><text x="610" y="118.48" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="16.2" font-weight="800" fill="#fff" text-anchor="middle">SR</text><circle cx="640" cy="112" r="18" fill="#3B3F9E" stroke="#16181F" stroke-width="3"/><text x="640" y="118.48" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="16.2" font-weight="800" fill="#fff" text-anchor="middle">AK</text><circle cx="670" cy="112" r="18" fill="#0E7490" stroke="#16181F" stroke-width="3"/><text x="670" y="118.48" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="16.2" font-weight="800" fill="#fff" text-anchor="middle">MN</text>
+  <text x="96" y="168" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="15" font-weight="700" fill="#9CA0AB" text-anchor="start">To do</text>
+      <rect x="96" y="184" width="192" height="88" rx="14" fill="#1D2029" stroke="#ffffff10"/>
+      <rect x="112" y="204" width="130" height="10" rx="5" fill="#ffffff40"/><rect x="112" y="224" width="90" height="10" rx="5" fill="#ffffff22"/>
+      <rect x="112" y="244" width="56" height="18" rx="9" fill="#ffffff12"/>
+      <rect x="96" y="288" width="192" height="88" rx="14" fill="#1D2029" stroke="#ffffff10"/>
+      <rect x="112" y="308" width="100" height="10" rx="5" fill="#ffffff40"/><rect x="112" y="328" width="120" height="10" rx="5" fill="#ffffff22"/>
+      <rect x="112" y="348" width="56" height="18" rx="9" fill="#ffffff12"/>
+      <rect x="96" y="392" width="192" height="88" rx="14" fill="#1D2029" stroke="#ffffff10"/>
+      <rect x="112" y="412" width="150" height="10" rx="5" fill="#ffffff40"/><rect x="112" y="432" width="70" height="10" rx="5" fill="#ffffff22"/>
+      <rect x="112" y="452" width="56" height="18" rx="9" fill="#ffffff12"/><text x="308" y="168" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="15" font-weight="700" fill="#9CA0AB" text-anchor="start">In progress</text>
+      <rect x="308" y="184" width="192" height="88" rx="14" fill="#1D2029" stroke="#FF5B2E88"/>
+      <rect x="324" y="204" width="130" height="10" rx="5" fill="#ffffff40"/><rect x="324" y="224" width="90" height="10" rx="5" fill="#ffffff22"/>
+      <rect x="324" y="244" width="56" height="18" rx="9" fill="#FF5B2E33"/>
+      <rect x="308" y="288" width="192" height="88" rx="14" fill="#1D2029" stroke="#ffffff10"/>
+      <rect x="324" y="308" width="100" height="10" rx="5" fill="#ffffff40"/><rect x="324" y="328" width="120" height="10" rx="5" fill="#ffffff22"/>
+      <rect x="324" y="348" width="56" height="18" rx="9" fill="#FF5B2E33"/><text x="520" y="168" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="15" font-weight="700" fill="#9CA0AB" text-anchor="start">Shipped</text>
+      <rect x="520" y="184" width="192" height="88" rx="14" fill="#1E2A22" stroke="#ffffff10"/>
+      <rect x="536" y="204" width="130" height="10" rx="5" fill="#ffffff40"/><rect x="536" y="224" width="90" height="10" rx="5" fill="#ffffff22"/>
+      <circle cx="688" cy="246" r="9" fill="#22C55E"/>
+      <rect x="520" y="288" width="192" height="88" rx="14" fill="#1E2A22" stroke="#ffffff10"/>
+      <rect x="536" y="308" width="100" height="10" rx="5" fill="#ffffff40"/><rect x="536" y="328" width="120" height="10" rx="5" fill="#ffffff22"/>
+      <circle cx="688" cy="350" r="9" fill="#22C55E"/>
+      <rect x="520" y="392" width="192" height="88" rx="14" fill="#1E2A22" stroke="#ffffff10"/>
+      <rect x="536" y="412" width="150" height="10" rx="5" fill="#ffffff40"/><rect x="536" y="432" width="70" height="10" rx="5" fill="#ffffff22"/>
+      <circle cx="688" cy="454" r="9" fill="#22C55E"/>
 </svg>

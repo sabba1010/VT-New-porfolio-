@@ -7,6 +7,7 @@
  *   2. Update the matching path below.
  *  Nothing else in the codebase needs to change.
  */
+import { pickImage } from './aiImages.js';
 
 export const brand = {
   // Set to e.g. '/images/brand/logo.svg' to replace the built-in logo mark.
@@ -23,7 +24,7 @@ export const testimonialPhotos = Array.from(
 
 export const projects = Array.from({ length: 6 }, (_, i) => `/images/projects/project-${i + 1}.svg`);
 
-export const culture = Array.from({ length: 5 }, (_, i) => `/images/about/culture-${i + 1}.svg`);
+export const culture = Array.from({ length: 5 }, (_, i) => pickImage(`culture/${i + 1}`, `/images/about/culture-${i + 1}.svg`));
 
 export const industries = {
   healthcare: '/images/industries/healthcare.svg',

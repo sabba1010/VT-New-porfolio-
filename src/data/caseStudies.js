@@ -1,5 +1,6 @@
 import { projects } from './images.js';
 import { site } from './site.js';
+import { pickImage } from './aiImages.js';
 
 /**
  * Case studies — replace with your real projects (see site.proof.sampleWork).
@@ -140,11 +141,27 @@ const allCaseStudies = [
   },
 ];
 
+// gallery = project cover + illustrations of the services used on it
+const serviceArt = {
+  'Product Design': 'product-design-development', 'Web Development': 'web-development', 'Cloud': 'custom-software-development',
+  'Mobile Apps': 'mobile-app-development', 'UI/UX Design': 'ui-ux-design', 'DevOps': 'custom-software-development',
+  'E-commerce': 'ecommerce-development', 'AI Development': 'ai-development', 'Custom Software': 'custom-software-development',
+};
+const withGallery = (c) => {
+  const image = pickImage(`cases/${c.slug}`, c.image);
+  return {
+    ...c,
+    image,
+    gallery: [image, ...new Set((c.services ?? []).map((s) => serviceArt[s]).filter(Boolean).map((slug) => `/images/services/${slug}.svg`))].slice(0, 3),
+  };
+};
+
 /* While site.proof.sampleWork is on these are example projects: the invented
    client names and result numbers are stripped so they never appear on the
    site (or in the chatbot). Turn sampleWork off once the projects are real. */
-export const caseStudies = site.proof?.sampleWork
+export const caseStudies = (site.proof?.sampleWork
   ? allCaseStudies.map(({ metric, results, client, duration, team, ...c }) => ({ ...c, sample: true }))
-  : allCaseStudies;
+  : allCaseStudies
+).map(withGallery);
 
 export const getCaseStudy = (slug) => caseStudies.find((c) => c.slug === slug);

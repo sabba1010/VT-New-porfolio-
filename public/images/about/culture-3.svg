@@ -1,21 +1,19 @@
-<!-- PLACEHOLDER: about/culture-3 — replace with an office / culture photo -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="Manrope, 'Segoe UI', Arial, sans-serif">
   <defs>
-    <linearGradient id="g" gradientTransform="rotate(90 .5 .5)">
-      <stop offset="0" stop-color="#3F6212"/>
-      <stop offset="1" stop-color="#A3E635"/>
-    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16181F"/><stop offset="1" stop-color="#0B0D12"/></linearGradient>
+    <linearGradient id="hot" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5B2E"/><stop offset="1" stop-color="#FFB547"/></linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.1" r="0.75"><stop offset="0" stop-color="#FF5B2E" stop-opacity=".32"/><stop offset="1" stop-color="#FF5B2E" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#fff" stroke-opacity=".045"/></pattern>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000" flood-opacity=".5"/></filter>
   </defs>
-  <rect width="800" height="600" fill="url(#g)"/>
-  <rect x="0" y="420" width="800" height="180" fill="#0B0D12" opacity=".25"/>
-  <rect x="160" y="250" width="240" height="150" rx="12" fill="#0B0D12" opacity=".8"/>
-  <rect x="176" y="266" width="208" height="118" rx="6" fill="#fff" opacity=".85"/>
-  <rect x="260" y="400" width="40" height="30" fill="#0B0D12" opacity=".7"/>
-  <rect x="420" y="230" width="210" height="170" rx="12" fill="#0B0D12" opacity=".8"/>
-  <rect x="436" y="246" width="178" height="138" rx="6" fill="#fff" opacity=".85"/>
-  <circle cx="290" cy="470" r="46" fill="#0B0D12" opacity=".55"/>
-  <circle cx="525" cy="470" r="46" fill="#0B0D12" opacity=".55"/>
-  <circle cx="660" cy="120" r="70" fill="#fff" opacity=".15"/>
-  <rect x="0" y="430" width="800" height="16" fill="#fff" opacity=".2"/>
+  <rect width="800" height="600" fill="url(#bg)"/><rect width="800" height="600" fill="url(#grid)"/><rect width="800" height="600" fill="url(#glow)"/>
+<g filter="url(#sh)"><rect x="60" y="60" width="680" height="400" rx="18" fill="#16181F" stroke="#ffffff14"/></g>
+  <rect x="60" y="60" width="680" height="40" rx="18" fill="#1D2029"/><rect x="60" y="82" width="680" height="18" fill="#1D2029"/>
+  <circle cx="82" cy="80" r="5" fill="#FF5F57"/><circle cx="100" cy="80" r="5" fill="#FEBC2E"/><circle cx="118" cy="80" r="5" fill="#28C840"/>
+  <rect x="144" y="70" width="320" height="20" rx="10" fill="#0B0D12"/><text x="158" y="84" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="600" fill="#9CA0AB" text-anchor="start">src/agents/lead-router.ts</text>
+  <text x="84" y="134" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#4B4F5C" text-anchor="start">12</text><rect x="124" y="124" width="40" height="12" rx="6" fill="#C792EA"/><rect x="176" y="124" width="120" height="12" rx="6" fill="#82AAFF"/><text x="84" y="174" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#4B4F5C" text-anchor="start">13</text><rect x="146" y="164" width="70" height="12" rx="6" fill="#FFB547"/><rect x="228" y="164" width="180" height="12" rx="6" fill="#E7E8EC"/><text x="84" y="214" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#4B4F5C" text-anchor="start">14</text><rect x="168" y="204" width="30" height="12" rx="6" fill="#82AAFF"/><rect x="210" y="204" width="220" height="12" rx="6" fill="#C3E88D"/><text x="84" y="254" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#4B4F5C" text-anchor="start">15</text><rect x="124" y="244" width="90" height="12" rx="6" fill="#E7E8EC"/><rect x="226" y="244" width="110" height="12" rx="6" fill="#FF5B2E"/><text x="84" y="294" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#4B4F5C" text-anchor="start">16</text><rect x="146" y="284" width="60" height="12" rx="6" fill="#C792EA"/><rect x="218" y="284" width="240" height="12" rx="6" fill="#E7E8EC"/><text x="84" y="334" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#4B4F5C" text-anchor="start">17</text><rect x="168" y="324" width="40" height="12" rx="6" fill="#FFB547"/><rect x="220" y="324" width="160" height="12" rx="6" fill="#C3E88D"/><text x="84" y="374" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#4B4F5C" text-anchor="start">18</text><rect x="124" y="364" width="80" height="12" rx="6" fill="#82AAFF"/><rect x="216" y="364" width="130" height="12" rx="6" fill="#E7E8EC"/>
+  <g filter="url(#sh)"><rect x="380" y="400" width="360" height="140" rx="18" fill="#16181F" stroke="#ffffff14"/></g>
+  <text x="404" y="440" font-family="Consolas, monospace" font-size="16" font-weight="700" fill="#9CA0AB" text-anchor="start">$ npm run deploy</text>
+  <text x="404" y="474" font-family="Consolas, monospace" font-size="16" font-weight="700" fill="#86EFAC" text-anchor="start">✓ tests passed (128)</text>
+  <text x="404" y="506" font-family="Consolas, monospace" font-size="16" font-weight="700" fill="#86EFAC" text-anchor="start">✓ deployed to production</text>
 </svg>
