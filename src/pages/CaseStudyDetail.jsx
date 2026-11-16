@@ -45,6 +45,16 @@ export default function CaseStudyDetail() {
                 <Link to={`/case-studies?industry=${cs.industrySlug}`}>{cs.industry}</Link>
               </dd>
             </div>
+            {cs.liveUrl && (
+              <div>
+                <dt>Live site</dt>
+                <dd>
+                  <a href={cs.liveUrl} target="_blank" rel="noopener noreferrer">
+                    {cs.liveUrl.replace(/^https?:\/\/|\/$/g, '')} ↗
+                  </a>
+                </dd>
+              </div>
+            )}
             {cs.duration && (
               <div>
                 <dt>Duration</dt>
@@ -67,8 +77,15 @@ export default function CaseStudyDetail() {
             <img
               src={cs.image}
               alt={`${cs.name} product screens`}
-              style={{ width: '100%', borderRadius: 'var(--r-2xl)', boxShadow: 'var(--shadow-lg)', aspectRatio: '16 / 8', objectFit: 'cover' }}
+              style={{ width: '100%', borderRadius: 'var(--r-2xl)', boxShadow: 'var(--shadow-lg)', aspectRatio: cs.imageRatio ?? '16 / 8', objectFit: 'cover' }}
             />
+            {cs.liveUrl && (
+              <div style={{ marginTop: 'var(--sp-5)', display: 'flex', justifyContent: 'center' }}>
+                <Button href={cs.liveUrl} target="_blank" rel="noopener noreferrer">
+                  Visit Live Site
+                </Button>
+              </div>
+            )}
           </Reveal>
         </div>
       </section>

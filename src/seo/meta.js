@@ -194,6 +194,7 @@ const caseLd = (c, path) => ({
   keywords: [...(c.tags ?? []), ...(c.services ?? [])].join(', '),
   creator: { '@id': ORG_ID },
   inLanguage: LANG,
+  ...(c.liveUrl && { sameAs: c.liveUrl }),
 });
 
 const plusDays = (iso, days) => {
