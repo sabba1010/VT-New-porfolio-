@@ -12,6 +12,7 @@ export { services, getService, aiServices, developmentServices, marketingService
 export { industries, getIndustry } from './industries.js';
 import { industries as allIndustries } from './industries.js';
 import { caseStudies as allCaseStudies } from './caseStudies.js';
+import { reviews } from './reviews.js';
 
 /**
  * Industries that have at least one case study, each linking straight to its
@@ -274,6 +275,31 @@ export const locations = [
   { country: 'Bangladesh', city: 'Dhaka', code: 'BD', lat: 23.8, lon: 90.4, role: 'Delivery center', tz: 'Asia/Dhaka' },
   { country: 'Australia', city: 'Sydney', code: 'AU', lat: -33.9, lon: 151.2, role: 'APAC office', tz: 'Australia/Sydney' },
 ];
+
+/* Every country our reviewed clients come from (src/data/reviews.js). Shown on the Global Presence map as client pins. Add an entry
+   to `clientCountryPins` when a review arrives from a new country. */
+const clientCountryPins = {
+  us: { country: 'USA', city: 'United States', lat: 39.7, lon: -104.9 },
+  gb: { country: 'UK', city: 'United Kingdom', lat: 55.9, lon: -4.3 },
+  de: { country: 'Germany', city: 'Germany', lat: 48.1, lon: 11.6 },
+  ch: { country: 'Switzerland', city: 'Zürich', lat: 47.4, lon: 8.5 },
+  nl: { country: 'Netherlands', city: 'Amsterdam', lat: 52.4, lon: 4.9 },
+  tz: { country: 'Tanzania', city: 'Zanzibar', lat: -6.2, lon: 39.2 },
+  in: { country: 'India', city: 'Chennai', lat: 13.1, lon: 80.3 },
+};
+const reviewCount = reviews.reduce((m, r) => m.set(r.code, (m.get(r.code) ?? 0) + 1), new Map());
+export const clientLocations = [...reviewCount]
+  .filter(([code]) => clientCountryPins[code])
+  .sort((a, b) => b[1] - a[1])
+  .map(([code, n]) => ({
+    ...clientCountryPins[code],
+    code: code.toUpperCase(),
+    id: `client-${code}`,
+    role: `${n} client review${n > 1 ? 's' : ''}`,
+    client: true,
+  }));
+/** number of countries our reviewed clients come from */
+export const clientCountryCount = reviewCount.size;
 
 /* ─────────────────────────── Testimonials (SAMPLE) ─────────────────────────── */
 // Sample testimonials are HIDDEN on the live site (sample: true).

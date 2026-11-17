@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { MapPin } from 'lucide-react';
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
-import { locations } from '../data/content';
+import { locations as offices, clientLocations, clientCountryCount } from '../data/content';
 import { landPaths, project, MAP_W, MAP_H } from './worldShapes';
 import './GlobalPresence.css';
 
-const HUB = locations.find((l) => l.code === 'BD');
+const keyOf = (l) => l.id ?? l.code;
+const locations = [...offices, ...clientLocations];
+const HUB = offices.find((l) => l.code === 'BD');
 
 // Curved arc between two projected points
 const arc = ([x1, y1], [x2, y2]) => {
@@ -31,11 +33,11 @@ export default function GlobalPresence() {
               Local partnership, <span className="text-gradient">global delivery</span>
             </>
           }
-          desc="Teams across six countries let us work in your time zone and deliver around the clock."
+          desc={`Teams in ${offices.length} countries and clients in ${clientCountryCount} — we work in your time zone and deliver around the clock.`}
         />
 
         <Reveal className="global__map">
-          <svg viewBox={`0 0 ${MAP_W} ${MAP_H}`} role="img" aria-label="World map showing Velotech office locations">
+          <svg viewBox={`0 0 ${MAP_W} ${MAP_H}`} role="img" aria-label="World map showing Velotech offices and client countries">
             <defs>
               <pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse">
                 <circle cx="3" cy="3" r="1.25" fill="rgba(255,255,255,0.28)" />
@@ -58,9 +60,9 @@ export default function GlobalPresence() {
                 .filter((l) => l !== HUB)
                 .map((l, i) => (
                   <path
-                    key={l.code}
+                    key={keyOf(l)}
                     d={arc(hub, project(l.lon, l.lat))}
-                    className={active === l.code ? 'is-active' : ''}
+                    className={active === keyOf(l) ? 'is-active' : ''}
                     style={{ animationDelay: `${i * 0.4}s` }}
                   />
                 ))}
@@ -68,19 +70,19 @@ export default function GlobalPresence() {
 
             {locations.map((l) => {
               const [x, y] = project(l.lon, l.lat);
-              const isActive = active === l.code;
+              const isActive = active === keyOf(l);
               return (
                 <g
-                  key={l.code}
-                  className={`pin ${isActive ? 'is-active' : ''}`}
+                  key={keyOf(l)}
+                  className={`pin ${l.client ? 'pin--client' : ''} ${isActive ? 'is-active' : ''}`}
                   transform={`translate(${x} ${y})`}
-                  onMouseEnter={() => setActive(l.code)}
+                  onMouseEnter={() => setActive(keyOf(l))}
                   onMouseLeave={() => setActive(null)}
                 >
                   <circle r="14" className="pin__pulse" />
                   <circle r="5.5" className="pin__dot" />
                   <g className="pin__label" transform={`translate(0 ${l.lat < 0 ? 26 : -18})`}>
-                    <rect x="-46" y="-13" width="92" height="24" rx="12" />
+                    <rect x={-l.city.length * 3.6 - 14} y="-13" width={l.city.length * 7.2 + 28} height="24" rx="12" />
                     <text textAnchor="middle" y="4">
                       {l.city}
                     </text>
@@ -92,7 +94,7 @@ export default function GlobalPresence() {
         </Reveal>
 
         <ul className="global__list">
-          {locations.map((l, i) => (
+          {offices.map((l, i) => (
             <Reveal
               as="li"
               key={l.code}
@@ -115,6 +117,27 @@ export default function GlobalPresence() {
             </Reveal>
           ))}
         </ul>
+
+        <Reveal className="global__clients">
+          <span className="global__clients-title">Clients in {clientCountryCount} countries</span>
+          <ul>
+            {clientLocations.map((l) => (
+              <li
+                key={l.id}
+                className={`cchip ${active === l.id ? 'is-active' : ''}`}
+                onMouseEnter={() => setActive(l.id)}
+                onMouseLeave={() => setActive(null)}
+                onFocus={() => setActive(l.id)}
+                onBlur={() => setActive(null)}
+                tabIndex={0}
+              >
+                <span className="cchip__dot" aria-hidden="true" />
+                <strong>{l.country}</strong>
+                <span>{l.role}</span>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

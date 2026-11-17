@@ -93,6 +93,14 @@
   stroke: var(--c-accent);
 }
 
+/* Client countries (from reviews): amber pins, no arcs */
+.pin--client .pin__dot {
+  fill: var(--c-accent-2, #ffb547);
+}
+.pin--client .pin__pulse {
+  fill: rgba(255, 181, 71, 0.35);
+}
+
 /* Location cards */
 .global__list {
   display: grid;
@@ -151,6 +159,54 @@
   font-size: var(--fs-xs);
   font-weight: 600;
   color: var(--c-accent-2);
+}
+
+/* Client countries row */
+.global__clients {
+  margin-top: var(--sp-6);
+  text-align: center;
+}
+.global__clients-title {
+  display: block;
+  margin-bottom: var(--sp-3);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text-inverse-muted);
+}
+.global__clients ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-2);
+}
+.cchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--c-border-dark);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: var(--fs-sm);
+  cursor: default;
+  transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.cchip.is-active,
+.cchip:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--c-accent-2);
+}
+.cchip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-accent-2);
+}
+.cchip span:last-child {
+  color: var(--c-text-inverse-muted);
+  font-size: var(--fs-xs);
 }
 
 @media (max-width: 1100px) {
