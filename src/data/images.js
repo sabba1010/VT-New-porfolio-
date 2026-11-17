@@ -18,7 +18,8 @@ export const brand = {
 // real photos dropped in public/images/ai/team/<n>.jpg replace the illustrated avatars.
 // TEST ONLY: on `npm run dev` the stock portraits in public/images/team-test/ (gitignored)
 // are shown instead. Production builds never use them — stock faces must not pose as the team.
-const TEST_TEAM = import.meta.env.DEV && import.meta.env.VITE_TEAM_TEST !== 'off';
+// `?.` keeps this safe outside Vite (the /api/chat function loads these data files in plain Node)
+const TEST_TEAM = Boolean(import.meta.env?.DEV) && import.meta.env?.VITE_TEAM_TEST !== 'off';
 export const team = Array.from({ length: 8 }, (_, i) =>
   TEST_TEAM ? `/images/team-test/${i + 1}.jpg` : pickImage(`team/${i + 1}`, `/images/team/member-${i + 1}.svg`),
 );

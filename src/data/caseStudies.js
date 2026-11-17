@@ -90,25 +90,29 @@ const allCaseStudies = [
     ],
   },
   {
-    slug: 'learnloop-academy',
-    name: 'Learnloop Academy',
+    // real project — no invented numbers; add `metric` / `results` once the client shares them
+    slug: 'smartlearn-lms',
+    name: 'SmartLearn LMS',
     industry: 'Education',
     industrySlug: 'education',
-    desc: 'An interactive learning platform with live classrooms, gamified progress tracking and AI tutoring.',
-    image: projects[4],
-    gallery: [projects[4], projects[1], projects[5]],
-    tags: ['EdTech', 'React Native', 'OpenAI'],
-    metric: { value: '120K', label: 'active learners' },
-    client: 'Sample edtech company',
-    duration: '9 months',
-    team: '11 specialists',
-    services: ['Product Design', 'Mobile Apps', 'AI Development'],
-    challenge: 'Course completion was low and live classes struggled to scale beyond a few hundred concurrent students.',
-    solution: 'We built web and mobile apps with scalable live classrooms, streaks and badges, and an AI tutor that answers questions from course material.',
-    results: [
-      { value: '120K', label: 'active learners' },
-      { value: '2.1×', label: 'course completion rate' },
-      { value: '5K', label: 'concurrent live students' },
+    desc: 'A custom learning management system with SCORM course uploads, live learner progress tracking and course sales for children and adult learners.',
+    image: projects[4], // replaced by public/images/ai/cases/smartlearn-lms.webp
+    imageRatio: '3 / 2',
+    liveUrl: 'https://lms-frontend-gray-ten.vercel.app/',
+    tags: ['Custom LMS', 'SCORM 1.2', 'E-learning', 'Responsive'],
+    client: 'SmartLearn',
+    services: ['Custom Software', 'Web Development', 'UI/UX Design'],
+    challenge:
+      'SmartLearn wanted one place to sell and deliver online courses to two very different audiences — children and working adults — and to companies training their teams. Their course content was built as SCORM packages, which off-the-shelf storefronts can’t play or track, and admins needed to publish new courses without a developer.',
+    solution:
+      'We built a custom LMS website from the ground up. Admins upload SCORM packages straight from the dashboard and the course goes live, learners play them in the browser while a progress bar tracks how far they’ve come, and every course can be found by search, category and price, added to a cart and bought. Students and companies each get their own sign-up, so a business can enrol and manage its whole team.',
+    features: [
+      { title: 'SCORM file upload', desc: 'Admins upload SCORM 1.2 packages (.zip) from the dashboard — no developer needed to publish a course.' },
+      { title: 'Progress tracking', desc: 'Each learner’s progress through a SCORM course is tracked and shown as a live progress bar.' },
+      { title: 'Course catalog & search', desc: 'Browse every course with search plus category (Children / Adult) and price filters.' },
+      { title: 'Cart & checkout', desc: 'Learners add courses to a cart and buy them online.' },
+      { title: 'Student & company accounts', desc: 'Separate sign-ups for individual students and for companies managing a team of learners.' },
+      { title: 'Learner dashboard', desc: 'Secure login gives every learner one place for their courses and progress.' },
     ],
   },
   {

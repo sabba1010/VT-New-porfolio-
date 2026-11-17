@@ -129,6 +129,23 @@ export default function CaseStudyDetail() {
         </div>
       </section>
 
+      {cs.features?.length > 0 && (
+        <section className="section section--cream">
+          <div className="container">
+            <SectionHeading eyebrow="What we built" title="Key features" />
+            <ul className="fgrid">
+              {cs.features.map((f, i) => (
+                <Reveal as="li" key={f.title} delay={(i % 3) * 80} className="fcard">
+                  <span className="fcard__icon">{String(i + 1).padStart(2, '0')}</span>
+                  <h3>{f.title}</h3>
+                  <p>{f.desc}</p>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {cs.results?.length > 0 && (
         <section className="section section--cream">
           <div className="container">

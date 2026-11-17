@@ -13,6 +13,7 @@ export const aiImages = {
   "cases/nestfinder-homes": "/images/ai/cases/nestfinder-homes.jpg",
   "cases/pulsecare-telehealth": "/images/ai/cases/pulsecare-telehealth.jpg",
   "cases/routewise-logistics": "/images/ai/cases/routewise-logistics.jpg",
+  "cases/smartlearn-lms": "/images/ai/cases/smartlearn-lms.webp",
   "culture/1": "/images/ai/culture/1.jpg",
   "culture/2": "/images/ai/culture/2.jpg",
   "culture/3": "/images/ai/culture/3.jpg",
