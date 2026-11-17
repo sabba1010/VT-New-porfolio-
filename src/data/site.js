@@ -7,7 +7,8 @@ export const site = {
   // Production domain, no trailing slash. Canonical URLs, sitemap.xml, robots.txt,
   // llms.txt, social previews and structured data all follow this.
   // After changing it, run `npm run og` so the share images show the new address.
-  url: 'https://velotech.studio',
+  // Must be the domain Vercel serves (velotech.studio 308-redirects to www).
+  url: 'https://www.velotech.studio',
   name: 'Velotech',
   defaultTitle: 'Velotech — Top Software Development & AI Company',
   description:
