@@ -19,7 +19,7 @@ export const site = {
   // Search engine ownership checks — paste the content="" value each tool gives you.
   // Google Search Console → Settings → Ownership → HTML tag; Bing Webmaster → Meta tag.
   verification: {
-    google: '',
+    google: '_D2RxkYFmM1GvwXSrA-rMVfh9t26CXQlUCjAPRP4IvQ',
     bing: '',
   },
   locale: 'en_US',
